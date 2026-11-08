@@ -1,0 +1,61 @@
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest
+  ⨯ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-01 price 100000… 1.41s  
+  ⨯ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-03 cost 1000000… 0.65s  
+  ⨯ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-04 price 13 dig… 0.57s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-02 price tepat kapa… 0.70s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-05 price normal 150… 0.70s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-06 price terkecil 0… 0.69s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-07 cost tepat kapas… 0.70s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest > it nilai harga di atas kapasitas dito…   
+  Expected response status code [422] but received 302.
+Failed asserting that 302 is identical to 422.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest.php:69
+     65▕     $r = fx2Update($this, $p, $override);
+     66▕     $after = fx2Stored($p->id, $field);
+     67▕     $this->record($id, $r, ['input' => $override, 'sebelum' => $before, 'sesudah' => $after, 'errors' => fx2Errors($r)]);
+     68▕ 
+  ➜  69▕     $r->assertUnprocessable()->assertJsonValidationErrorFor($field);
+     70▕     expect($after)->toBe($before);
+     71▕ })->with('fx2_ditolak');
+     72▕ 
+     73▕ dataset('fx2_diterima', [
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest > it nilai harga di atas kapasitas dito…   
+  Expected response status code [422] but received 302.
+Failed asserting that 302 is identical to 422.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest.php:69
+     65▕     $r = fx2Update($this, $p, $override);
+     66▕     $after = fx2Stored($p->id, $field);
+     67▕     $this->record($id, $r, ['input' => $override, 'sebelum' => $before, 'sesudah' => $after, 'errors' => fx2Errors($r)]);
+     68▕ 
+  ➜  69▕     $r->assertUnprocessable()->assertJsonValidationErrorFor($field);
+     70▕     expect($after)->toBe($before);
+     71▕ })->with('fx2_ditolak');
+     72▕ 
+     73▕ dataset('fx2_diterima', [
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest > it nilai harga di atas kapasitas dito…   
+  Expected response status code [422] but received 302.
+Failed asserting that 302 is identical to 422.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest.php:69
+     65▕     $r = fx2Update($this, $p, $override);
+     66▕     $after = fx2Stored($p->id, $field);
+     67▕     $this->record($id, $r, ['input' => $override, 'sebelum' => $before, 'sesudah' => $after, 'errors' => fx2Errors($r)]);
+     68▕ 
+  ➜  69▕     $r->assertUnprocessable()->assertJsonValidationErrorFor($field);
+     70▕     expect($after)->toBe($before);
+     71▕ })->with('fx2_ditolak');
+     72▕ 
+     73▕ dataset('fx2_diterima', [
+
+
+  Tests:    3 failed, 4 passed (11 assertions)
+  Duration: 5.80s
+
