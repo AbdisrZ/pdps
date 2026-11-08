@@ -1,0 +1,24 @@
+{
+    "id": "FX2-04",
+    "waktu": "2026-11-08 12:57:12",
+    "status": 422,
+    "body": {
+        "message": "The price field must not be greater than 99999999.9999.",
+        "errors": {
+            "price": [
+                "The price field must not be greater than 99999999.9999."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The price field must not be greater than 99999999.9999.",
+    "input": {
+        "price": "1000000000000"
+    },
+    "sebelum": "172.1300",
+    "sesudah": "172.1300",
+    "errors": {
+        "price": [
+            "The price field must not be greater than 99999999.9999."
+        ]
+    }
+}

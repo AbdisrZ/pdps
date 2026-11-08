@@ -1,0 +1,11 @@
+{
+    "id": "FX2-06",
+    "waktu": "2026-11-08 12:54:41",
+    "status": 302,
+    "body": "\n\n    \n        \n        \n\n        Redirecting to http://localhost:8000/admin/catalog/products\n    \n    \n        Redirecting to http://localhost:8000/admin/catalog/products.\n    \n",
+    "input": {
+        "price": "0.0001"
+    },
+    "tersimpan": "0.0001",
+    "errors": null
+}
