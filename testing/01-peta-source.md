@@ -25,7 +25,7 @@ Semua rujukan `file:baris` mengacu pada tag `v2.3.19`. Path relatif terhadap `pa
 | `CartController::moveToWishlist` | 129–143 | Tidak ada validasi. `request()->input('qty')[$index]` (132). |
 | `CartController::update` | 148–164 | Tidak ada validasi. Semua Exception → `new JsonResource([...message])`, artinya **HTTP 200** (159–163). |
 | `CartController::estimateShippingMethods` | 169–207 | `country`, `state`, `postcode` = `required`; `shipping_method` = `sometimes\|required` (171–176). `$cart = Cart::getCart()` lalu `$cart->id` **tanpa cek null** (178–184). |
-| `CartController::storeCoupon` | 212–258 | `code` = `required` (214–216). `if (strlen($code))` (219), yang praktis **selalu true** setelah `required` (string kosong diubah menjadi null oleh middleware `ConvertEmptyStringsToNull` lalu gagal di `required`). Karena itu cabang else (tidak ada `return`) **tidak terjangkau**. Cabang lain: kupon tidak ada → 422 `coupon.invalid` (222–227); rule aktif dan kupon sudah terpasang → 422 `already-applied` (229–235); berhasil (237–244); jatuh ke **422 dengan teks hardcode `trans('Coupon not found.')`** (247–250); Exception → 500 (252–257). |
+| `CartController::storeCoupon` | 212–258 | `code` = `required` (214–216). `if (strlen($code))` (219), yang praktis **selalu true** setelah `required` (`TrimStrings` membuat spasi menjadi string kosong, lalu `required` menolaknya: `vendor/laravel/framework/src/Illuminate/Validation/Concerns/ValidatesAttributes.php:2030`. Catatan: `ConvertEmptyStringsToNull` dihapus Bagisto di `bootstrap/app.php:34`). Karena itu cabang else (tidak ada `return`) **tidak terjangkau**. Cabang lain: kupon tidak ada → 422 `coupon.invalid` (222–227); rule aktif dan kupon sudah terpasang → 422 `already-applied` (229–235); berhasil (237–244); jatuh ke **422 dengan teks hardcode `trans('Coupon not found.')`** (247–250); Exception → 500 (252–257). |
 | `CartController::destroyCoupon` | 263–271 | `Cart::removeCouponCode()` tanpa cek cart. |
 | `Cart::addProduct` | 256–312 | Membuat cart bila belum ada (260–262). `prepareForCart` mengembalikan string → hapus cart kosong dan lempar Exception (268–275). |
 | `Cart::removeItem` | 317–336 | `false` bila tidak ada cart (319–321). **Cek kepemilikan:** `false` bila item tidak ada di `$this->cart->items` (323–325). |
@@ -138,3 +138,11 @@ Status "Didukung kode" artinya pembacaan kode mendukung hipotesis tersebut. Stat
 | H19 | Validitas tanggal cart rule memakai `H:m:s` (m = bulan), sehingga batas jam mulai/berakhir promo meleset hingga ±59 menit | `CartRule.php:550`, `555` | Hipotesis baru (P1), cocok untuk BVA waktu |
 | H20 | `cart_rule_coupons.expired_at` tidak pernah dicek saat validasi kupon | `CartRule.php:126-185` | Hipotesis baru (P1); dampak terbatas karena `expired_at` biasanya = `ends_till` |
 | H21 | `move-to-wishlist` terbuka untuk guest (tanpa middleware `customer`); wishlist dibuat dengan `customer_id` null, dan `qty[$index]` tidak divalidasi | `api.php:71`; `CartController.php:131-134`; `Cart.php:720` | Hipotesis baru |
+
+### Hipotesis tambahan dari FASE 3
+| ID | Ringkas | Rincian |
+|---|---|---|
+| H22 | `DELETE cart` membalas `success-remove` walau tidak ada yang dihapus | `04-blackbox.md` §10 |
+| H23 | Teks alamat > 255 karakter terpotong diam-diam (`varchar(255)`, `strict=false`) | `04-blackbox.md` §10 |
+| H24 | `storeOrder` membalas 500 untuk kesalahan validasi bisnis | `04-blackbox.md` §10 |
+| H25 | Kode kupon beda huruf besar/kecil: ditemukan (collation ci) tetapi gagal `===` di `CartRule.php:140` | `05-whitebox.md` §5 |
