@@ -181,16 +181,16 @@ Semua gambar ada di folder `dokumentasi/screenshot/`.
 
 ### Pengujian API langsung dari VS Code (REST Client)
 
-Request API ditulis dalam file `dokumentasi/uji-api/pengujian-api.http` dan dijalankan di VS Code dengan ekstensi REST Client (klik *Send Request*). Sebelumnya, `node dokumentasi/uji-api/siapkan-sesi.mjs` dijalankan untuk menyiapkan cookie sesi dan token CSRF yang diwajibkan API Bagisto. Screenshot ada di `dokumentasi/screenshot-vscode/`; tiap request punya dua gambar: `x1.png` (request & kode status) dan `x2.png` (isi jawaban).
+Request API ditulis dalam file `dokumentasi/uji-api/pengujian-api.http` dan dijalankan di VS Code dengan ekstensi REST Client (klik *Send Request*). Sebelumnya, `node dokumentasi/uji-api/siapkan-sesi.mjs` dijalankan untuk menyiapkan cookie sesi dan token CSRF yang diwajibkan API Bagisto. Screenshot ada di `dokumentasi/screenshot-vscode/`; tiap request punya dua gambar: `x1.png` (request & kode status) dan `x2.png` (isi jawaban). Request 2 dan 4–6 memakai versi `rev` (diambil ulang dengan sesi baru, karena sesi pertama sudah terpakai saat putaran percobaan).
 
 | Request | Screenshot | Yang diuji | Hasil |
 |---|---|---|---|
 | 1 | `a1`, `a2` | Tambah 6 barang (stok 5) | 400, "Jumlah yang diminta tidak tersedia" (sesuai) |
-| 2 | `b1`, `b2` | Tambah 5 barang | 200 (sesuai) |
+| 2 | `b1rev`, `b2rev` | Tambah 5 barang | 200 (sesuai) |
 | 3 | `c1`, `c2` | Tambah tanpa `quantity` | 400 `Undefined array key "quantity"` (masalah no. 6) |
-| 4 | `d1`, `d2` | Keranjang sebelum | 200, berisi 2 barang |
-| 5 | `e1`, `e2` | Ubah jumlah menjadi 0 | 200 dengan pesan "Jumlah tidak boleh kurang dari satu" |
-| 6 | `f1`, `f2` | Keranjang sesudah | `data: null`, barang ikut terhapus (masalah no. 5) |
+| 4 | `d1rev`, `d2rev` | Keranjang sebelum | 200, masih berisi barang |
+| 5 | `e1rev`, `e2rev` | Ubah jumlah menjadi 0 | 200 dengan pesan "Jumlah tidak boleh kurang dari satu" |
+| 6 | `f1rev`, `f2rev` | Keranjang sesudah | `data: null`, barang ikut terhapus (masalah no. 5) |
 | 7 | `g1`, `g2` | Cek ongkir tanpa keranjang | 500 (masalah no. 7) |
 | 8 | `h1`, `h2` | Hapus kupon tanpa keranjang | 500 (masalah no. 7) |
 | 9 | `i1`, `i2` | Tambah 1 barang (persiapan) | 200 |
