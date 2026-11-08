@@ -1,0 +1,17 @@
+{
+    "id": "CO-11",
+    "waktu": "2026-11-08 12:42:31",
+    "status": 422,
+    "body": {
+        "message": "The billing.phone must be valid phone number.",
+        "errors": {
+            "billing.phone": [
+                "The billing.phone must be valid phone number."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.phone must be valid phone number.",
+    "input": {
+        "phone": "0812-3456"
+    }
+}

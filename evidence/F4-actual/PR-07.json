@@ -1,0 +1,19 @@
+{
+    "id": "PR-07",
+    "waktu": "2026-11-08 12:43:07",
+    "status": 422,
+    "body": {
+        "message": "The price field is required.",
+        "errors": {
+            "price": [
+                "The price field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The price field is required.",
+    "input": {
+        "price": ""
+    },
+    "price_sebelum": "566.3700",
+    "price_sesudah": "566.3700"
+}

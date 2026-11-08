@@ -1,0 +1,12 @@
+{
+    "id": "CT-17",
+    "waktu": "2026-11-08 12:39:09",
+    "status": 500,
+    "body": {
+        "message": "Attempt to read property \"id\" on null",
+        "exception": "ErrorException",
+        "file": "D:\\Project Apps\\pdps\\packages\\Webkul\\Shop\\src\\Http\\Controllers\\API\\CartController.php",
+        "line": 184
+    },
+    "exception": "ErrorException: Attempt to read property \"id\" on null"
+}

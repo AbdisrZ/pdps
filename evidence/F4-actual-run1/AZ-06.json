@@ -1,0 +1,10 @@
+{
+    "id": "AZ-06",
+    "waktu": "2026-11-08 12:36:38",
+    "status": 200,
+    "body": {
+        "data": null,
+        "message": "Item is successfully removed from the cart."
+    },
+    "item_A_masih_ada": true
+}

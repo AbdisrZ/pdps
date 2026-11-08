@@ -1,0 +1,9 @@
+{
+    "id": "CT-09",
+    "waktu": "2026-11-08 12:37:39",
+    "status": 400,
+    "body": {
+        "redirect_uri": "http://localhost:8000/qui-atque-repellat-atque-nemo-sit",
+        "message": "Inactive item cannot be added to cart."
+    }
+}

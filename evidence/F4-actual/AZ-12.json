@@ -1,0 +1,7 @@
+{
+    "id": "AZ-12",
+    "waktu": "2026-11-08 12:42:23",
+    "status": 302,
+    "body": "\n\n    \n        \n        \n\n        Redirecting to http://localhost:8000/customer/login\n    \n    \n        Redirecting to http://localhost:8000/customer/login.\n    \n",
+    "location": "http://localhost:8000/customer/login"
+}

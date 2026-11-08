@@ -1,0 +1,16 @@
+{
+    "id": "AZ-04",
+    "waktu": "2026-11-08 12:36:37",
+    "status": 200,
+    "body": {
+        "data": {
+            "id": 267,
+            "items_count": 1,
+            "items_qty": 1,
+            "coupon_code": null,
+            "grand_total": 940.11
+        },
+        "message": "Selected items successfully removed from cart."
+    },
+    "item_A_masih_ada": true
+}

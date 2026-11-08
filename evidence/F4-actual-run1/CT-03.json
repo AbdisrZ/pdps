@@ -1,0 +1,14 @@
+{
+    "id": "CT-03",
+    "waktu": "2026-11-08 12:37:37",
+    "status": 422,
+    "body": {
+        "message": "The product id field must be an integer.",
+        "errors": {
+            "product_id": [
+                "The product id field must be an integer."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The product id field must be an integer."
+}

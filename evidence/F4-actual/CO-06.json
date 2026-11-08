@@ -1,0 +1,17 @@
+{
+    "id": "CO-06",
+    "waktu": "2026-11-08 12:42:29",
+    "status": 422,
+    "body": {
+        "message": "The billing.address field must be an array.",
+        "errors": {
+            "billing.address": [
+                "The billing.address field must be an array."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.address field must be an array.",
+    "input": {
+        "address": "Jl. Uji"
+    }
+}

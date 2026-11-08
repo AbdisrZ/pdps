@@ -118,7 +118,7 @@ Default: flat rate = 10 per unit (`Shipping/src/Config/carriers.php`; rumus `Shi
 | SH-02 | EP-V | `flatrate_flatrate` | setelah alamat valid | 200, daftar payment method | | N/R |
 | SH-03 | EP-V | `free_free` | idem | 200 | | N/R |
 | SH-04 | EP-I | kode tidak dikenal | `"kurir_palsu"` | **403** (`:100-108`; `Shipping.php:154-169`) | | N/R |
-| SH-05 | EP-I | sebelum alamat diisi | cart tanpa alamat, `flatrate_flatrate` | 403 (rate belum ada) | | N/R |
+| SH-05 | EP-V (dikoreksi FASE 4) | sebelum alamat diisi | cart tanpa alamat, `flatrate_flatrate` | **Dikoreksi:** 200 (flat rate tersedia tanpa alamat, sesuai REQ-CO-03), tetapi order tanpa alamat tetap ditolak (REQ-CO-04). *Expected awal "403 (rate belum ada)" adalah asumsi tentang kode, bukan turunan REQ (lihat `06-hasil-eksekusi.md` §3).* | | N/R |
 | SH-06 | BVA | ongkir per unit | qty 1 → 10; qty 3 → 30 | `shipping_amount` = 10 × qty | | N/R |
 | OR-01 | EP-V | checkout lengkap | alamat + `flatrate_flatrate` + `cashondelivery` | Order dibuat, cart nonaktif | | N/R |
 | OR-02 | EP-I (H24) | tanpa payment | alamat + shipping, tanpa payment | Order **tidak** dibuat; status 4xx dengan pesan `specify-payment-method` (REQ-CO-04, REQ-CT-03) | | N/R |
@@ -126,6 +126,7 @@ Default: flat rate = 10 per unit (`Shipping/src/Config/carriers.php`; rumus `Shi
 | MO-01 | BVA | minimum order: subtotal = min − 0,01 | `enable=1`, `minimum_order_amount=100`, subtotal 99,99 | Ditolak (`MINIMUM_ORDER_AMOUNT`) | | N/R |
 | MO-02 | BVA | subtotal = min | subtotal 100,00 | Diterima (batas inklusif `>=`, `Cart.php:817`) | | N/R |
 | MO-03 | BVA | subtotal = min + 0,01 | 100,01 | Diterima | | N/R |
+| MO-05 | BVA (H26, ditambah FASE 4) | minimum pecahan | `minimum_order_amount=100.50`, subtotal 100,25 | Minimum **tidak** terpenuhi (REQ-CO-05). Config bertipe `numeric` (`Admin/src/Config/system.php:2359`) sehingga desimal sah, sedangkan `getOrderAmount(): int` (`Cart.php:789`) dan `(int)` di `:817` memotong pecahan. | | N/R |
 | MO-04 | EP (H13) | opsi `include_discount_amount=1`, pajak > 0, tanpa diskon | subtotal 100, pajak 10, min 100 | Jumlah pembanding = 100 (subtotal − diskon 0), sehingga diterima. Bila kode mengurangi pajak (`Cart.php:797-798`), pembanding = 90 dan order ditolak. | | N/R |
 
 ## 6. Authentication customer (P0) — REQ-AU-01..04
@@ -208,3 +209,5 @@ Dihitung otomatis dari kolom *Teknik* pada tabel di atas.
 | H22 | `DELETE api/checkout/cart` mengembalikan 200 + pesan `success-remove` walaupun item bukan milik pengguna dan tidak dihapus. Test bawaan `CartTest.php:858+` hanya memeriksa `assertOk()` dan bahwa data tetap ada. | `CartController.php:99-106` |
 | H23 | Field teks alamat tanpa aturan `max`, kolom `varchar(255)`, dan koneksi `strict=false`, sehingga teks > 255 karakter terpotong diam-diam. | `CartAddressRequest.php:50-58`; tabel `addresses`; `config/database.php:58` |
 | H24 | `storeOrder` membalas **500** untuk kesalahan validasi bisnis (payment/alamat belum diisi), padahal itu kesalahan klien. | `OnepageController.php:159-165` |
+| H26 | Minimum order pecahan diabaikan: `getOrderAmount(): int` dan `(int)` pada minimum (ditemukan saat menulis MO-*) | `Cart.php:789`, `:817` |
+| H27 | Harga `"0"` lolos validasi tetapi disimpan `NULL` karena `empty("0") === true` (ditemukan dari PR-02) | `Product/src/Repositories/ProductAttributeValueRepository.php:44-49` |

@@ -1,0 +1,8 @@
+{
+    "id": "SH-04",
+    "waktu": "2026-11-08 12:37:11",
+    "status": 403,
+    "body": {
+        "redirect_url": "http://localhost:8000/checkout/cart"
+    }
+}

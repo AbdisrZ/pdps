@@ -1,0 +1,15 @@
+{
+    "id": "AU-02",
+    "waktu": "2026-11-08 12:36:25",
+    "status": 422,
+    "body": {
+        "message": "The password field must be at least 6 characters.",
+        "errors": {
+            "password": [
+                "The password field must be at least 6 characters."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The password field must be at least 6 characters.",
+    "input": []
+}

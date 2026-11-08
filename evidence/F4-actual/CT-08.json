@@ -1,0 +1,10 @@
+{
+    "id": "CT-08",
+    "waktu": "2026-11-08 12:43:21",
+    "status": 400,
+    "body": {
+        "redirect_uri": "http://localhost:8000/sunt-officia-molestiae-ex-nihil",
+        "message": "Undefined array key \"quantity\""
+    },
+    "qty_item": null
+}

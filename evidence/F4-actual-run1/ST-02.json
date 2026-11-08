@@ -1,0 +1,16 @@
+{
+    "id": "ST-02",
+    "waktu": "2026-11-08 12:37:32",
+    "status": 200,
+    "body": {
+        "data": {
+            "id": 313,
+            "items_count": 1,
+            "items_qty": 4,
+            "coupon_code": null,
+            "grand_total": 3665.88
+        },
+        "message": "Item Added Successfully"
+    },
+    "qty_item": 4
+}

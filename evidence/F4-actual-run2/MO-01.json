@@ -1,0 +1,13 @@
+{
+    "id": "MO-01",
+    "waktu": "2026-11-08 12:38:45",
+    "status": 200,
+    "body": {
+        "data": {
+            "redirect": true,
+            "redirect_url": "http://localhost:8000/checkout/cart"
+        }
+    },
+    "harga": 99.99,
+    "order_dibuat": false
+}

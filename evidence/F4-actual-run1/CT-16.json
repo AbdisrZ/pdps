@@ -1,0 +1,14 @@
+{
+    "id": "CT-16",
+    "waktu": "2026-11-08 12:37:42",
+    "status": 422,
+    "body": {
+        "message": "The cart item id field is required.",
+        "errors": {
+            "cart_item_id": [
+                "The cart item id field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The cart item id field is required."
+}

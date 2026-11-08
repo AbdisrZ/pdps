@@ -1,0 +1,19 @@
+{
+    "id": "PR-03",
+    "waktu": "2026-11-08 12:38:54",
+    "status": 422,
+    "body": {
+        "message": "The price must be valid.",
+        "errors": {
+            "price": [
+                "The price must be valid."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The price must be valid.",
+    "input": {
+        "price": "-1"
+    },
+    "price_sebelum": "872.4900",
+    "price_sesudah": "872.4900"
+}

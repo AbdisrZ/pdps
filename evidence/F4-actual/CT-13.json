@@ -1,0 +1,13 @@
+{
+    "id": "CT-13",
+    "waktu": "2026-11-08 12:43:24",
+    "status": 500,
+    "body": {
+        "message": "Webkul\\Product\\Type\\Simple::haveSufficientQuantity(): Argument #1 ($qty) must be of type int, string given, called in D:\\Project Apps\\pdps\\packages\\Webkul\\Product\\src\\Type\\AbstractType.php on line 509",
+        "exception": "TypeError",
+        "file": "D:\\Project Apps\\pdps\\packages\\Webkul\\Product\\src\\Type\\Simple.php",
+        "line": 152
+    },
+    "exception": "TypeError: Webkul\\Product\\Type\\Simple::haveSufficientQuantity(): Argument #1 ($qty) must be of type int, string given, called in D:\\Project Apps\\pdps\\packages\\Webkul\\Product\\src\\Type\\AbstractType.php on line 509",
+    "qty_item_sesudah": 2
+}

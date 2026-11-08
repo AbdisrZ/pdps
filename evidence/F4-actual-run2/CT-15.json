@@ -1,0 +1,12 @@
+{
+    "id": "CT-15",
+    "waktu": "2026-11-08 12:39:09",
+    "status": 500,
+    "body": {
+        "message": "foreach() argument must be of type array|object, null given",
+        "exception": "ErrorException",
+        "file": "D:\\Project Apps\\pdps\\packages\\Webkul\\Shop\\src\\Http\\Controllers\\API\\CartController.php",
+        "line": 114
+    },
+    "exception": "ErrorException: foreach() argument must be of type array|object, null given"
+}

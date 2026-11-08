@@ -1,0 +1,12 @@
+{
+    "id": "CO-14",
+    "waktu": "2026-11-08 12:37:04",
+    "status": 200,
+    "body": {
+        "redirect": false,
+        "data": "[dipangkas]"
+    },
+    "input": {
+        "postcode": "12"
+    }
+}

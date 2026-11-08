@@ -1,0 +1,9 @@
+{
+    "id": "CT-20",
+    "waktu": "2026-11-08 12:39:10",
+    "status": 422,
+    "body": {
+        "data": null,
+        "message": "Coupon code is invalid."
+    }
+}

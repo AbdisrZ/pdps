@@ -1,0 +1,12 @@
+{
+    "id": "CO-10",
+    "waktu": "2026-11-08 12:38:28",
+    "status": 200,
+    "body": {
+        "redirect": false,
+        "data": "[dipangkas]"
+    },
+    "input": {
+        "phone": "+6281234567890"
+    }
+}

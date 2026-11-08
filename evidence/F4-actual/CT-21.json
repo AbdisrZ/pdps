@@ -1,0 +1,12 @@
+{
+    "id": "CT-21",
+    "waktu": "2026-11-08 12:43:27",
+    "status": 500,
+    "body": {
+        "message": "Attempt to assign property \"coupon_code\" on null",
+        "exception": "Error",
+        "file": "D:\\Project Apps\\pdps\\packages\\Webkul\\Checkout\\src\\Cart.php",
+        "line": 620
+    },
+    "exception": "Error: Attempt to assign property \"coupon_code\" on null"
+}

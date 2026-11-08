@@ -1,0 +1,19 @@
+{
+    "id": "PR-14",
+    "waktu": "2026-11-08 12:43:09",
+    "status": 422,
+    "body": {
+        "message": "The cost must be valid.",
+        "errors": {
+            "cost": [
+                "The cost must be valid."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The cost must be valid.",
+    "input": {
+        "cost": "-5"
+    },
+    "price_sebelum": "471.3900",
+    "price_sesudah": "471.3900"
+}

@@ -1,0 +1,21 @@
+{
+    "id": "PR-13",
+    "waktu": "2026-11-08 12:38:56",
+    "status": 422,
+    "body": {
+        "message": "The special price to field must be a date after or equal to special price from.",
+        "errors": {
+            "special_price_to": [
+                "The special price to field must be a date after or equal to special price from."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The special price to field must be a date after or equal to special price from.",
+    "input": {
+        "special_price": "90",
+        "special_price_from": "2026-12-10",
+        "special_price_to": "2026-12-09"
+    },
+    "price_sebelum": "653.4300",
+    "price_sesudah": "653.4300"
+}

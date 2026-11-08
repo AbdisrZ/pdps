@@ -1,0 +1,12 @@
+{
+    "id": "CO-19",
+    "waktu": "2026-11-08 12:38:31",
+    "status": 500,
+    "body": {
+        "message": "Undefined array key \"billing\"",
+        "exception": "ErrorException",
+        "file": "D:\\Project Apps\\pdps\\packages\\Webkul\\Checkout\\src\\Cart.php",
+        "line": 424
+    },
+    "exception": "ErrorException: Undefined array key \"billing\""
+}

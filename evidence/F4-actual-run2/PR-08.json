@@ -1,0 +1,11 @@
+{
+    "id": "PR-08",
+    "waktu": "2026-11-08 12:38:53",
+    "status": 302,
+    "body": "\n\n    \n        \n        \n\n        Redirecting to http://localhost:8000/admin/catalog/products\n    \n    \n        Redirecting to http://localhost:8000/admin/catalog/products.\n    \n",
+    "input": {
+        "price": "99999999.9999"
+    },
+    "tersimpan": "99999999.9999",
+    "errors": null
+}

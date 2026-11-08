@@ -1,0 +1,17 @@
+{
+    "id": "AZ-05",
+    "waktu": "2026-11-08 12:42:03",
+    "status": 200,
+    "body": {
+        "data": {
+            "id": 496,
+            "items_count": 1,
+            "items_qty": 1,
+            "coupon_code": null,
+            "grand_total": 804.02
+        },
+        "message": "Selected items successfully moved to wishlist."
+    },
+    "item_A_masih_ada": true,
+    "wishlist_B_untuk_produk_A": 0
+}

@@ -1,0 +1,17 @@
+{
+    "id": "AU-05",
+    "waktu": "2026-11-08 12:41:49",
+    "status": 422,
+    "body": {
+        "message": "The email field must be a valid email address.",
+        "errors": {
+            "email": [
+                "The email field must be a valid email address."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The email field must be a valid email address.",
+    "input": {
+        "email": "abc@"
+    }
+}

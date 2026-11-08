@@ -1,0 +1,17 @@
+{
+    "id": "CO-03",
+    "waktu": "2026-11-08 12:36:58",
+    "status": 422,
+    "body": {
+        "message": "The billing.email field is required.",
+        "errors": {
+            "billing.email": [
+                "The billing.email field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.email field is required.",
+    "input": {
+        "email": ""
+    }
+}

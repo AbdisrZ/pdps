@@ -1,0 +1,11 @@
+{
+    "id": "CO-18",
+    "waktu": "2026-11-08 12:37:06",
+    "status": 200,
+    "body": {
+        "redirect": false,
+        "data": "[dipangkas]"
+    },
+    "panjang_dikirim": 256,
+    "panjang_tersimpan": 255
+}

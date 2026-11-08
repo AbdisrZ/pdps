@@ -1,0 +1,17 @@
+{
+    "id": "CO-07",
+    "waktu": "2026-11-08 12:37:00",
+    "status": 422,
+    "body": {
+        "message": "The billing.country field is required.",
+        "errors": {
+            "billing.country": [
+                "The billing.country field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.country field is required.",
+    "input": {
+        "country": ""
+    }
+}

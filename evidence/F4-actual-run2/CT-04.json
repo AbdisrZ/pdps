@@ -1,0 +1,14 @@
+{
+    "id": "CT-04",
+    "waktu": "2026-11-08 12:39:04",
+    "status": 422,
+    "body": {
+        "message": "The quantity field must be at least 1.",
+        "errors": {
+            "quantity": [
+                "The quantity field must be at least 1."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The quantity field must be at least 1."
+}

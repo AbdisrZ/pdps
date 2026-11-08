@@ -1,0 +1,17 @@
+{
+    "id": "CO-15",
+    "waktu": "2026-11-08 12:42:33",
+    "status": 422,
+    "body": {
+        "message": "The billing.postcode must be valid postcode.",
+        "errors": {
+            "billing.postcode": [
+                "The billing.postcode must be valid postcode."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.postcode must be valid postcode.",
+    "input": {
+        "postcode": "1-"
+    }
+}

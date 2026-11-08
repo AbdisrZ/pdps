@@ -1,0 +1,9 @@
+{
+    "id": "CT-09",
+    "waktu": "2026-11-08 12:39:06",
+    "status": 400,
+    "body": {
+        "redirect_uri": "http://localhost:8000/illo-repudiandae-ducimus-quasi-pariatur-consequatur-reprehenderit-praesentium",
+        "message": "Inactive item cannot be added to cart."
+    }
+}
