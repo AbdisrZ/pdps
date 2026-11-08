@@ -1,0 +1,17 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Checkout\CouponUsageLimitTest
+  ✓ it should increment coupon and rule usage correctly on successful order                                      0.70s  
+  ✓ it should throw when coupon global usage limit is already exhausted                                          0.15s  
+  ✓ it should throw when per-customer coupon usage limit is already exhausted                                    0.15s  
+  ✓ it should throw when per-customer cart rule usage limit is already exhausted                                 0.15s  
+  ✓ it should not throw when coupon has no usage limits                                                          0.14s  
+  ✓ it should allow different customers to use coupon when global limit is not reached                           0.15s  
+  ✓ it should enforce sequential usage — second use by same customer fails                                       0.17s  
+  ✓ it should skip coupon processing when order has no discount amount                                           0.20s  
+  ✓ it should acquire row-level locks during coupon usage validation                                             0.15s  
+  ✓ it should roll back coupon usage when transaction fails                                                      0.15s  
+  ✓ it should increment existing per-customer coupon usage instead of creating duplicate                         0.14s  
+
+  Tests:    11 passed (24 assertions)
+  Duration: 2.59s
+

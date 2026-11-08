@@ -1,0 +1,26 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Customers\AccountTest
+  ✓ it should returns the profile page                                                                           1.16s  
+  ✓ it should returns the edit page of the customer                                                              0.72s  
+  ✓ it should fails the validations error when certain inputs are not provided when update the customer          0.15s  
+  ✓ it should update the customer                                                                                0.19s  
+  ✓ it should update the customer password and send email to the customer                                        0.17s  
+  ✓ it should fails the validation error when password is not provided when delete the customer account          0.15s  
+  ✓ it should delete the customer account                                                                        0.15s  
+  ✓ it should shows the reviews of customer                                                                      1.09s  
+  ✓ it should returns the address page of the customer                                                           0.71s  
+  ✓ it should returns the create page of address                                                                 0.87s  
+  ✓ it should fails the validation error when certain inputs not provided when store the customer address        0.19s  
+  ✓ it should store the customer address                                                                         0.17s  
+  ✓ it should edit the customer address                                                                          0.98s  
+  ✓ it should fails the validation error when certain inputs not provided update the customer address            0.23s  
+  ✓ it should update the customer address                                                                        0.22s  
+  ✓ it should set default address for the customer                                                               0.17s  
+  ✓ it should delete the customer address                                                                        0.17s  
+  ✓ it should send email for password reset                                                                      0.40s  
+  ✓ it should not send email for password reset when email is invalid                                            0.41s  
+  ✓ it should fails the validation errors certain inputs not provided                                            0.23s  
+
+  Tests:    20 passed (92 assertions)
+  Duration: 8.98s
+

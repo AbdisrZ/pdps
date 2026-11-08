@@ -30,9 +30,9 @@ Nilai aktual tersimpan di `evidence/F4-actual-run1/<ID>.json` dan `evidence/F4-a
 
 | ID | Judul | Modul | Severity | Prioritas | Kasus | Dasar kebutuhan | Status |
 |---|---|---|---|---|---|---|---|
-| DEF-01 | Harga di atas 99.999.999,9999 diterima lalu tersimpan terpotong tanpa error | Harga (Admin) | **Tinggi** | **P1** | PR-09 | REQ-PR-03 [asumsi] | Open |
+| DEF-01 | Harga di atas 99.999.999,9999 diterima lalu tersimpan terpotong tanpa error | Harga (Admin) | **Tinggi** | **P1** | PR-09 | REQ-PR-03 [asumsi] | **Fixed** v1.0.2 |
 | DEF-02 | `PUT` cart dengan qty ≤ 0 menghapus item secara diam-diam dan membalas 200 | Cart | Sedang | P2 | CT-11, CT-12 | REQ-CT-02 [asumsi], REQ-CT-03 [asumsi] | Open |
-| DEF-03 | Minimum order dengan opsi "include discount" mengurangi pajak, bukan diskon | Checkout | Sedang | P2 | MO-04 | REQ-CO-05 | Open |
+| DEF-03 | Minimum order dengan opsi "include discount" mengurangi pajak, bukan diskon | Checkout | Sedang | P2 | MO-04 | REQ-CO-05 | **Fixed** v1.0.1 |
 | DEF-04 | Minimum order pecahan diabaikan karena pembulatan ke bilangan bulat | Checkout | Rendah | P3 | MO-05 | REQ-CO-05 | Open |
 | DEF-05 | Harga "0" lolos validasi tetapi tersimpan `NULL` | Harga (Admin) | Sedang | P2 | PR-02 | REQ-PR-01, REQ-PR-03 [asumsi] | Open |
 | DEF-06 | Tambah ke cart tanpa `quantity` ditolak 400 dengan pesan PHP mentah, bukan default 1 | Cart | Rendah | P2 | CT-08 | REQ-CT-01 | Open |

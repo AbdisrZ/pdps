@@ -1,0 +1,660 @@
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest
+  ✓ it AU-01 [EP-V] registrasi valid membuat akun dan redirect ke login                                          1.20s  
+  ✓ it registrasi invalid ditolak 422 with dataset "AU-02 [BVA] password 5 karakter"                             0.31s  
+  ✓ it registrasi invalid ditolak 422 with dataset "AU-04 [EP-I] konfirmasi password berbeda"                    0.22s  
+  ✓ it registrasi invalid ditolak 422 with dataset "AU-05 [EP-I] email tidak valid"                              0.19s  
+  ✓ it registrasi invalid ditolak 422 with dataset "AU-07 [EP-I] first_name kosong"                              0.17s  
+  ✓ it AU-03 [BVA] password tepat 6 karakter diterima                                                            0.36s  
+  ✓ it AU-06 [EP-I] email yang sudah terdaftar di channel yang sama ditolak 422                                  0.22s  
+  ✓ it AU-08 [EP-V] login web valid -> terautentikasi, redirect home                                             0.23s  
+  ✓ it AU-09 [EP-I] password salah -> tidak login, flash invalid-credentials                                     0.60s  
+  ✓ it AU-10 [BVA] password login 5 karakter ditolak 422                                                         0.40s  
+  ✓ it AU-11 [EP-I] akun nonaktif (status=0) tidak dapat login                                                   0.23s  
+  ✓ it AU-12 [EP-I] akun belum terverifikasi tidak dapat login                                                   0.17s  
+  ✓ it AU-13 [EP-V] API login valid -> 200                                                                       0.18s  
+  ✓ it AU-14 [EP-I] API login password salah -> 403                                                              0.40s  
+  ⨯ it AU-15 [BVA][H15] 10 percobaan login salah berturut-turut memicu rate limit (429)                          4.75s  
+  ⨯ it AU-16 [EP-I][H16] customer channel lain ditolak login API, sama seperti login web                         0.54s  
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest
+  ✓ it AZ-01 [EP-I] B tidak dapat menghapus item cart milik A (data A tetap)                                     1.01s  
+  ⨯ it AZ-02 [EP-I][H22] respons hapus item milik A tidak menyatakan "berhasil" (REQ-CT-04)                      0.79s  
+  ✓ it AZ-03 [EP-I] B tidak dapat mengubah qty item milik A                                                      0.86s  
+  ✓ it AZ-04 [EP-I] B tidak dapat menghapus-terpilih item milik A                                                1.06s  
+  ✓ it AZ-05 [EP-I] B tidak dapat memindahkan item A ke wishlist                                                 0.94s  
+  ✓ it AZ-06 [EP-I] guest tanpa cart tidak dapat menghapus item milik A                                          0.72s  
+  ✓ it AZ-07 [EP-V kontrol] A dapat melihat order miliknya sendiri                                               4.53s  
+  ✓ it AZ-08 [EP-I] B melihat order A -> 404                                                                     3.11s  
+  ✓ it AZ-09 [EP-I] B reorder order A -> 404, cart B tidak bertambah                                             3.73s  
+  ✓ it AZ-10 [EP-I] B membatalkan order A -> 404, status order tidak berubah                                     4.27s  
+  ✓ it AZ-11 [EP-I] B mencetak invoice A -> 404                                                                  4.88s  
+  ✓ it AZ-12 [EP-I] guest membuka daftar order -> redirect ke login                                              0.24s  
+  ⨯ it AZ-13 [EP-I][H12] B tidak dapat merujuk alamat tersimpan milik A saat checkout (REQ-AZ-03)                1.01s  
+  ✓ it AZ-14 [EP-V kontrol H12] B merujuk alamat miliknya sendiri -> 200, parent_address_id = alamat B           0.88s  
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest
+  ✓ it CO-01 [EP-V] alamat valid lengkap -> 200, ada shipping methods                                            0.93s  
+  ⨯ it menolak alamat invalid dengan 422 with dataset "CO-02 [EP-I][D7] email tanpa format email"                0.88s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-03 [EP-I] email kosong"                                0.79s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-04 [EP-I] first_name kosong"                           0.69s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-05 [EP-I] address array kosong"                        0.69s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-06 [EP-I] address string bukan array"                  0.73s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-07 [EP-I] country kosong"                              0.64s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-09 [BVA] phone "+" (0 digit)"                          0.71s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-11 [EP-I] phone dengan tanda hubung"                   0.67s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-12 [EP-I] phone dengan spasi"                          0.86s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-13 [BVA] postcode 1 karakter"                          0.72s  
+  ✓ it menolak alamat invalid dengan 422 with dataset "CO-15 [EP-I] postcode diakhiri tanda hubung"              0.64s  
+  ✓ it menerima alamat valid di batas dengan 200 with dataset "CO-08 [BVA] phone "1" (1 digit)"                  0.98s  
+  ✓ it menerima alamat valid di batas dengan 200 with dataset "CO-10 [EP-V] phone +62"                           0.88s  
+  ✓ it menerima alamat valid di batas dengan 200 with dataset "CO-14 [BVA] postcode 2 karakter"                  0.96s  
+  ✓ it menerima alamat valid di batas dengan 200 with dataset "CO-16 [EP-V] postcode dengan spasi di tengah"     0.88s  
+  ✓ it CO-17 [BVA][H23] first_name 255 karakter -> 200, tersimpan utuh                                           1.11s  
+  ⨯ it CO-18 [BVA][H23] first_name 256 karakter -> 422 atau tersimpan utuh (tidak terpotong diam-diam)           0.95s  
+  ⨯ it CO-19 [EP-I][D8] tanpa key billing, hanya shipping -> 422 (bukan 500)                                     0.78s  
+  ✓ it CO-20 [EP-I kontrol] use_for_shipping=0 tanpa shipping -> 422                                             0.78s  
+  ⨯ it CO-21 [EP-I][H9] guest tanpa cart mengirim alamat -> 4xx/redirect (bukan 500)                             0.24s  
+  ✓ it SH-01 [EP-I] shipping_method kosong -> 422                                                                0.94s  
+  ✓ it SH-02 [EP-V] flatrate_flatrate -> 200 dengan payment methods                                              1.66s  
+  ✓ it SH-03 [EP-V] free_free -> 200                                                                             1.27s  
+  ✓ it SH-04 [EP-I] kode shipping tidak dikenal -> 403                                                           0.99s  
+  ✓ it SH-05 [EP-V, expected dikoreksi] shipping sebelum alamat: rate flatrate tersedia (200), tetapi order tan… 1.14s  
+  ✓ it SH-06 [BVA] ongkir flat rate per unit: qty 1 -> 10, qty 3 -> 30                                           2.51s  
+  ✓ it OR-01 [EP-V] checkout lengkap membuat order dan menonaktifkan cart                                        2.83s  
+  ⨯ it OR-02 [EP-I][H24] order tanpa payment -> tidak dibuat, status 4xx (REQ-CO-04, REQ-CT-03)                  1.52s  
+  ✓ it OR-03 [EP-I] customer suspended tidak dapat membuat order                                                 1.68s  
+  ✓ it minimum order 100 dibandingkan subtotal secara inklusif with dataset "MO-01 [BVA] subtotal = min - 0.01…  0.96s  
+  ✓ it minimum order 100 dibandingkan subtotal secara inklusif with dataset "MO-02 [BVA] subtotal = min diterim… 2.54s  
+  ✓ it minimum order 100 dibandingkan subtotal secara inklusif with dataset "MO-03 [BVA] subtotal = min + 0.01…  2.40s  
+  ✓ it MO-04 [EP][H13] include_discount_amount=1 tidak boleh mengurangi pajak dari jumlah pembanding (unit)      0.19s  
+  ⨯ it MO-05 [BVA][H26] minimum 100.50 dan subtotal 100.25 -> minimum TIDAK terpenuhi (unit)                     0.22s  
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-01 price 100000… 0.40s  
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-03 cost 1000000… 0.33s  
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-04 price 13 dig… 0.37s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-02 price tepat kapa… 0.73s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-05 price normal 150… 0.62s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-06 price terkecil 0… 0.64s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-07 cost tepat kapas… 0.62s  
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-01 diskon=1, pajak 1… 0.16s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-02 diskon=1, pajak 0… 0.17s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-03 pajak=1 + diskon=… 0.16s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-04 pajak=1 saja, paj… 0.15s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-05 tanpa opsi -> sub… 0.25s  
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\GuardDatabaseTest
+  ✓ it GUARD-01: koneksi database aktif adalah bagisto_test                                                      0.16s  
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\ProductPriceTest
+  ✓ it harga valid diterima dan tersimpan persis with dataset "PR-01 [EP-V] bilangan bulat 150000"               0.63s  
+  ⨯ it harga valid diterima dan tersimpan persis with dataset "PR-02 [BVA][H17] batas bawah 0"                   0.75s  
+  ✓ it harga valid diterima dan tersimpan persis with dataset "PR-04 [BVA] 4 desimal"                            0.87s  
+  ✓ it harga valid diterima dan tersimpan persis with dataset "PR-08 [BVA][H18] tepat kapasitas 99999999.9999"   0.74s  
+  ✓ it harga valid diterima dan tersimpan persis with dataset "PR-11 [BVA] special = price - 0.0001"             0.76s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-03 [EP-I] negatif"                0.57s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-05 [BVA] 5 desimal"               0.48s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-06 [EP-I] non-angka"              0.46s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-07 [EP-I] kosong"                 0.51s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-10 [BVA] special = price"         0.62s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-12 [EP-I] special > price"        0.54s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-13 [EP-I] special_price_to < fro… 0.49s  
+  ✓ it harga invalid ditolak 422 dan nilai lama tidak berubah with dataset "PR-14 [EP-I] cost negatif"           0.50s  
+  ✓ it PR-09 [BVA][H18] harga 100000000 (kapasitas + 0.0001) ditolak 422 atau tersimpan persis, tidak boleh ter… 0.46s  
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest
+  ✓ it ST-01 [EP-V] qty di tengah rentang (2 dari stok 5) diterima                                               0.58s  
+  ✓ it ST-02 [BVA] qty = stok-1 (4) diterima                                                                     0.52s  
+  ✓ it ST-03 [BVA] qty = stok (5) diterima                                                                       0.52s  
+  ✓ it ST-04 [BVA] qty = stok+1 (6) ditolak 400 inventory-warning, tidak ada item                                0.36s  
+  ✓ it ST-05 [BVA kumulatif] sudah 5 di cart lalu tambah 1 ditolak, qty tetap 5                                  0.50s  
+  ✓ it ST-06 [BVA kumulatif] sudah 4 di cart lalu tambah 1 diterima, qty 5                                       0.70s  
+  ✓ it ST-07 [BVA update] PUT qty menjadi stok (5) diterima                                                      0.66s  
+  ✓ it ST-08 [BVA update] PUT qty menjadi stok+1 (6) ditolak dengan pesan stok, qty tetap lama                   0.49s  
+  ✓ it ST-09 [EP-I] stok 0 ditolak 400                                                                           0.44s  
+  ✓ it ST-10 [EP-V] back-order aktif: qty stok+1 diterima (REQ-ST-02)                                            0.55s  
+  ✓ it ST-11 [EP-V] manage_stock = 0: qty 50 diterima (Simple.php:154-156)                                       0.47s  
+  ✓ it ST-12 [BVA] stok terpesan mengurangi ketersediaan: sumber 5 - terpesan 3 = 2                              0.52s  
+  ✓ it CT-01 [EP-I] product_id kosong ditolak 422                                                                0.16s  
+  ✓ it CT-02 [EP-I] product_id tidak ada ditolak 422                                                             0.16s  
+  ✓ it CT-03 [EP-I] product_id bukan integer ditolak 422                                                         0.15s  
+  ✓ it CT-04 [BVA] quantity = 0 (di bawah min:1) ditolak 422                                                     0.38s  
+  ✓ it CT-05 [BVA] quantity = 1 (batas min) diterima                                                             0.49s  
+  ✓ it CT-06 [EP-I] quantity negatif ditolak 422                                                                 0.35s  
+  ✓ it CT-07 [EP-I] quantity desimal 1.5 ditolak 422                                                             0.41s  
+  ⨯ it CT-08 [EP-V][H14] quantity tidak dikirim -> 200, qty default 1 (REQ-CT-01)                                0.42s  
+  ✓ it CT-09 [EP-I] produk nonaktif ditolak 400 inactive-add                                                     0.44s  
+  ✓ it CT-10 [EP-I] is_buy_now di luar {0,1} ditolak 422                                                         0.44s  
+  ⨯ it CT-11 [BVA][H10][D3] PUT qty = 0 -> 4xx dan item TETAP ada (REQ-CT-02/03)                                 0.62s  
+  ⨯ it CT-12 [EP-I][H10][D3] PUT qty negatif -> 4xx dan item TETAP ada                                           0.66s  
+  ⨯ it CT-13 [EP-I][H11] PUT qty non-angka -> 4xx dan qty tidak berubah                                          0.59s  
+  ⨯ it CT-14 [EP-I][D3] PUT tanpa key qty -> 4xx (bukan 200)                                                     0.66s  
+  ⨯ it CT-15 [EP-I][D2] DELETE selected tanpa ids -> 422 (bukan 500)                                             0.54s  
+  ✓ it CT-16 [EP-I kontrol] DELETE tanpa cart_item_id -> 422                                                     0.15s  
+  ⨯ it CT-17 [EP-I][D1] estimate-shipping-methods tanpa cart -> 4xx (bukan 500)                                  0.14s  
+  ✓ it CT-18 [EP-I] estimate-shipping-methods tanpa country -> 422                                               0.51s  
+  ⨯ it CT-19 [EP-I][H21] move-to-wishlist oleh guest ditolak, tidak ada wishlist tanpa pemilik                   0.54s  
+  ✓ it CT-20 [EP-I][D5] pasang kupon tanpa cart -> 4xx (bukan 500)                                               0.17s  
+  ⨯ it CT-21 [EP-I][D5] hapus kupon tanpa cart -> tanpa error server (bukan 500)                                 0.17s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest > it AU-15 [BVA][H15] 10 percobaan login salah bert…   
+  Failed asserting that an array contains 429.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest.php:189
+    185▕     }
+    186▕ 
+    187▕     $this->record('AU-15', null, ['status_web' => $statusWeb, 'status_api' => $statusApi]);
+    188▕ 
+  ➜ 189▕     expect($statusWeb)->toContain(429);
+    190▕     expect($statusApi)->toContain(429);
+    191▕ });
+    192▕ 
+    193▕ it('AU-16 [EP-I][H16] customer channel lain ditolak login API, sama seperti login web', function () {
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest.php:189
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest > it AU-16 [EP-I][H16] customer channel lain ditola…   
+  Failed asserting that true is false.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest.php:214
+    210▕         'api_login' => $apiLogin,
+    211▕     ]);
+    212▕ 
+    213▕     expect($webLogin)->toBeFalse();
+  ➜ 214▕     expect($apiLogin)->toBeFalse();
+    215▕     $api->assertForbidden();
+    216▕ });
+    217▕
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\AuthTest.php:214
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest > it AZ-02 [EP-I][H22] respons hapus item…    
+  Expecting 'Item is successfully removed … cart.' not to be 'Item is successfully removed … cart.'.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest.php:93
+     89▕         'item_A_masih_ada' => CartItem::query()->whereKey($itemA->id)->exists(),
+     90▕     ]);
+     91▕ 
+     92▕     expect(CartItem::query()->whereKey($itemA->id)->exists())->toBeTrue();
+  ➜  93▕     expect($r->json('message'))->not->toBe(trans('shop::app.checkout.cart.success-remove'));
+     94▕ });
+     95▕ 
+     96▕ it('AZ-03 [EP-I] B tidak dapat mengubah qty item milik A', function () {
+     97▕     [$a, $b, $itemA] = prkTwoCustomersWithCarts($this);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest.php:93
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest > it AZ-13 [EP-I][H12] B tidak dapat meruj…   
+  Failed asserting that false is true.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest.php:234
+    230▕     ]);
+    231▕ 
+    232▕     $ditolak = $r->status() >= 400 && $r->status() < 500;
+    233▕ 
+  ➜ 234▕     expect($ditolak || $billing?->parent_address_id !== $addressA->id)->toBeTrue();
+    235▕ });
+    236▕ 
+    237▕ it('AZ-14 [EP-V kontrol H12] B merujuk alamat miliknya sendiri -> 200, parent_address_id = alamat B', function () {
+    238▕     $b = $this->makeCustomer();
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\AuthorizationTest.php:234
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it menolak alamat invalid dengan 422 with dat…   
+  Expected response status code [422] but received 200.
+Failed asserting that 200 is identical to 422.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:69
+     65▕ 
+     66▕     $r = $this->postAddress($override);
+     67▕     $this->record($id, $r, ['input' => $override]);
+     68▕ 
+  ➜  69▕     $r->assertUnprocessable()->assertJsonValidationErrorFor($field);
+     70▕ })->with('prk_alamat_invalid');
+     71▕ 
+     72▕ dataset('prk_alamat_valid_batas', [
+     73▕     'CO-08 [BVA] phone "1" (1 digit)' => ['CO-08', ['phone' => '1']],
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it CO-18 [BVA][H23] first_name 256 karakter -…   
+  Failed asserting that false is true.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:109
+    105▕     $this->record('CO-18', $r, ['panjang_dikirim' => 256, 'panjang_tersimpan' => $stored === null ? null : mb_strlen($stored)]);
+    106▕ 
+    107▕     $ditolak = $r->status() === 422;
+    108▕ 
+  ➜ 109▕     expect($ditolak || $stored === $name)->toBeTrue();
+    110▕ });
+    111▕ 
+    112▕ it('CO-19 [EP-I][D8] tanpa key billing, hanya shipping -> 422 (bukan 500)', function () {
+    113▕     prkGuestWithCart($this);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:109
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it CO-19 [EP-I][D8] tanpa key billing, hanya…    
+  Expected response status code [422] but received 500.
+Failed asserting that 500 is identical to 422.
+
+The following exception occurred during the last request:
+
+ErrorException: Undefined array key "billing" in D:\Project Apps\pdps\packages\Webkul\Checkout\src\Cart.php:424
+Stack trace:
+#0 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(258): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'Undefined array...', 'D:\\Project Apps...', 424)
+#1 D:\Project Apps\pdps\packages\Webkul\Checkout\src\Cart.php(424): Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(2, 'Undefined array...', 'D:\\Project Apps...', 424)
+#2 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Support\Facades\Facade.php(361): Webkul\Checkout\Cart->saveAddresses(Array)
+#3 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Controllers\API\OnepageController.php(63): Illuminate\Support\Facades\Facade::__callStatic('saveAddresses', Array)
+#4 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(54): Webkul\Shop\Http\Controllers\API\OnepageController->storeAddress(Object(Webkul\Shop\Http\Requests\CartAddressRequest))
+#5 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('storeAddress', Array)
+#6 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Route.php(266): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Webkul\Shop\Http\Controllers\API\OnepageController), 'storeAddress')
+#7 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Route.php(212): Illuminate\Routing\Route->runController()
+#8 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(808): Illuminate\Routing\Route->run()
+#9 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(170): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#10 D:\Project Apps\pdps\packages\Webkul\Core\src\Http\Middleware\PreventRequestsDuringMaintenance.php(110): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Core\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Currency.php(41): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Currency->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Locale.php(41): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Locale->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Theme.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Theme->handle(Object(Illuminate\Http\Request), Object(Closure))
+#18 D:\Project Apps\pdps\vendor\barryvdh\laravel-debugbar\src\Middleware\InjectDebugbar.php(59): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Barryvdh\Debugbar\Middleware\InjectDebugbar->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(51): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(88): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#26 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(121): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#27 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Session\Middleware\StartSession->handleStatefulRequest(Object(Illuminate\Http\Request), Object(Illuminate\Session\Store), Object(Closure))
+#28 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(75): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#33 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(127): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#34 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(807): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#35 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(786): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#36 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(750): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#37 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(739): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#38 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(201): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#39 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(170): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#40 D:\Project Apps\pdps\vendor\barryvdh\laravel-debugbar\src\Middleware\InjectDebugbar.php(59): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Barryvdh\Debugbar\Middleware\InjectDebugbar->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 D:\Project Apps\pdps\packages\Webkul\Installer\src\Http\Middleware\CanInstall.php(36): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Installer\Http\Middleware\CanInstall->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 D:\Project Apps\pdps\packages\Webkul\Core\src\Http\Middleware\SecureHeaders.php(28): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#45 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Core\Http\Middleware\SecureHeaders->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#47 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#48 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(62): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#52 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#54 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#55 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#56 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#57 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(127): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#58 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(176): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#59 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(145): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#60 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#61 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('POST', 'http://localhos...', Array, Array, Array, Array, '{"shipping":{"f...')
+#62 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(411): Illuminate\Foundation\Testing\TestCase->json('POST', 'http://localhos...', Array, Array, 0)
+#63 D:\Project Apps\pdps\packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php(115): Illuminate\Foundation\Testing\TestCase->postJson('http://localhos...', Array)
+#64 D:\Project Apps\pdps\vendor\pestphp\pest\src\Factories\TestCaseMethodFactory.php(171): P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->{closure}()
+#65 [internal function]: P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->Pest\Factories\{closure}()
+#66 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(419): call_user_func_array(Object(Closure), Array)
+#67 D:\Project Apps\pdps\vendor\pestphp\pest\src\Support\ExceptionTrace.php(26): P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->Pest\Concerns\{closure}()
+#68 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(419): Pest\Support\ExceptionTrace::ensure(Object(Closure))
+#69 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(321): P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->__callClosure(Object(Closure), Array)
+#70 D:\Project Apps\pdps\vendor\pestphp\pest\src\Factories\TestCaseFactory.php(170) : eval()'d code(74): P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->__runTest(Object(Closure))
+#71 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest->__pest_evaluable_it_CO_19__EP_I__D8__tanpa_key_billing__hanya_shipping____422__bukan_500_()
+#72 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#73 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#74 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(P\Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest))
+#75 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#76 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#77 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#78 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#79 D:\Project Apps\pdps\vendor\pestphp\pest\src\Kernel.php(103): PHPUnit\TextUI\Application->run(Array)
+#80 D:\Project Apps\pdps\vendor\pestphp\pest\bin\pest(184): Pest\Kernel->handle(Array, Array)
+#81 D:\Project Apps\pdps\vendor\pestphp\pest\bin\pest(192): {closure}()
+#82 D:\Project Apps\pdps\vendor\bin\pest(119): include('D:\\Project Apps...')
+#83 {main}
+
+----------------------------------------------------------------------------------
+
+Undefined array key "billing"
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:120
+    116▕         'shipping' => $this->billing(['use_for_shipping' => 0]),
+    117▕     ]);
+    118▕     $this->record('CO-19', $r);
+    119▕ 
+  ➜ 120▕     $r->assertUnprocessable();
+    121▕ });
+    122▕ 
+    123▕ it('CO-20 [EP-I kontrol] use_for_shipping=0 tanpa shipping -> 422', function () {
+    124▕     prkGuestWithCart($this);
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it CO-21 [EP-I][H9] guest tanpa cart mengirim…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:138
+    134▕ 
+    135▕     $r = $this->postAddress();
+    136▕     $this->record('CO-21', $r);
+    137▕ 
+  ➜ 138▕     expect($r->status())->toBeLessThan(500);
+    139▕ });
+    140▕ 
+    141▕ /*
+    142▕ |--------------------------------------------------------------------------
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:138
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it OR-02 [EP-I][H24] order tanpa payment -> t…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:243
+    239▕     $r = $this->postJson(route('shop.checkout.onepage.orders.store'));
+    240▕     $this->record('OR-02', $r, ['order_bertambah' => Order::query()->count() - $before]);
+    241▕ 
+    242▕     expect(Order::query()->count())->toBe($before);
+  ➜ 243▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    244▕ });
+    245▕ 
+    246▕ it('OR-03 [EP-I] customer suspended tidak dapat membuat order', function () {
+    247▕     $c = $this->makeCustomer(['is_suspended' => 1]);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:243
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest > it MO-05 [BVA][H26] minimum 100.50 dan subtot…   
+  Failed asserting that true is false.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:316
+    312▕ 
+    313▕     $ok = cart()->haveMinimumOrderAmount();
+    314▕     $this->record('MO-05', null, ['minimum' => '100.50', 'sub_total' => 100.25, 'getOrderAmount' => cart()->getOrderAmount(), 'haveMinimumOrderAmount' => $ok]);
+    315▕ 
+  ➜ 316▕     expect($ok)->toBeFalse();
+    317▕ });
+    318▕
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\CheckoutTest.php:316
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\ProductPriceTest > it harga valid diterima dan tersimpan per…   
+  Failed asserting that null is identical to '0.0000'.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\ProductPriceTest.php:73
+     69▕     $stored = prkStoredAttr($p->id, $field);
+     70▕     $this->record($id, $r, ['input' => $override, 'tersimpan' => $stored, 'errors' => prkErrors($r)]);
+     71▕ 
+     72▕     expect(prkIsSaved($r))->toBeTrue();
+  ➜  73▕     expect($stored)->toBe($expected);
+     74▕ })->with('prk_harga_valid');
+     75▕ 
+     76▕ dataset('prk_harga_invalid', [
+     77▕     'PR-03 [EP-I] negatif' => ['PR-03', ['price' => '-1'], 'price'],
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\ProductPriceTest.php:73
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-08 [EP-V][H14] quantity tidak dikirim…    
+  Expected response status code [200] but received 400.
+Failed asserting that 400 is identical to 200.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:246
+    242▕ 
+    243▕     $r = $this->postJson(route('shop.api.checkout.cart.store'), ['product_id' => $p->id]);
+    244▕     $this->record('CT-08', $r, ['qty_item' => prkItemQty($p->id)]);
+    245▕ 
+  ➜ 246▕     $r->assertOk();
+    247▕     expect(prkItemQty($p->id))->toBe(1);
+    248▕ });
+    249▕ 
+    250▕ it('CT-09 [EP-I] produk nonaktif ditolak 400 inactive-add', function () {
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-11 [BVA][H10][D3] PUT qty = 0 -> 4xx d…   
+  Failed asserting that null is identical to 2.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:276
+    272▕ 
+    273▕     $r = $this->putJson(route('shop.api.checkout.cart.update'), ['qty' => [$item->id => 0]]);
+    274▕     $this->record('CT-11', $r, ['qty_item_sesudah' => prkItemQty($p->id)]);
+    275▕ 
+  ➜ 276▕     expect(prkItemQty($p->id))->toBe(2);
+    277▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    278▕ });
+    279▕ 
+    280▕ it('CT-12 [EP-I][H10][D3] PUT qty negatif -> 4xx dan item TETAP ada', function () {
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:276
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-12 [EP-I][H10][D3] PUT qty negatif ->…    
+  Failed asserting that null is identical to 2.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:288
+    284▕ 
+    285▕     $r = $this->putJson(route('shop.api.checkout.cart.update'), ['qty' => [$item->id => -1]]);
+    286▕     $this->record('CT-12', $r, ['qty_item_sesudah' => prkItemQty($p->id)]);
+    287▕ 
+  ➜ 288▕     expect(prkItemQty($p->id))->toBe(2);
+    289▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    290▕ });
+    291▕ 
+    292▕ it('CT-13 [EP-I][H11] PUT qty non-angka -> 4xx dan qty tidak berubah', function () {
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:288
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-13 [EP-I][H11] PUT qty non-angka -> 4x…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:301
+    297▕     $r = $this->putJson(route('shop.api.checkout.cart.update'), ['qty' => [$item->id => 'abc']]);
+    298▕     $this->record('CT-13', $r, ['qty_item_sesudah' => prkItemQty($p->id)]);
+    299▕ 
+    300▕     expect(prkItemQty($p->id))->toBe(2);
+  ➜ 301▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    302▕ });
+    303▕ 
+    304▕ it('CT-14 [EP-I][D3] PUT tanpa key qty -> 4xx (bukan 200)', function () {
+    305▕     $p = $this->makeProduct(PRK_STOK);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:301
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-14 [EP-I][D3] PUT tanpa key qty -> 4xx…   
+  Failed asserting that 200 is equal to 400 or is greater than 400.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:311
+    307▕ 
+    308▕     $r = $this->putJson(route('shop.api.checkout.cart.update'), []);
+    309▕     $this->record('CT-14', $r);
+    310▕ 
+  ➜ 311▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    312▕ });
+    313▕ 
+    314▕ it('CT-15 [EP-I][D2] DELETE selected tanpa ids -> 422 (bukan 500)', function () {
+    315▕     $p = $this->makeProduct(PRK_STOK);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:311
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-15 [EP-I][D2] DELETE selected tanpa id…   
+  Expected response status code [422] but received 500.
+Failed asserting that 500 is identical to 422.
+
+The following exception occurred during the last request:
+
+ErrorException: foreach() argument must be of type array|object, null given in D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Controllers\API\CartController.php:114
+Stack trace:
+#0 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Bootstrap\HandleExceptions.php(258): Illuminate\Foundation\Bootstrap\HandleExceptions->handleError(2, 'foreach() argum...', 'D:\\Project Apps...', 114)
+#1 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Controllers\API\CartController.php(114): Illuminate\Foundation\Bootstrap\HandleExceptions->Illuminate\Foundation\Bootstrap\{closure}(2, 'foreach() argum...', 'D:\\Project Apps...', 114)
+#2 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Controller.php(54): Webkul\Shop\Http\Controllers\API\CartController->destroySelected()
+#3 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\ControllerDispatcher.php(44): Illuminate\Routing\Controller->callAction('destroySelected', Array)
+#4 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Route.php(266): Illuminate\Routing\ControllerDispatcher->dispatch(Object(Illuminate\Routing\Route), Object(Webkul\Shop\Http\Controllers\API\CartController), 'destroySelected')
+#5 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Route.php(212): Illuminate\Routing\Route->runController()
+#6 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(808): Illuminate\Routing\Route->run()
+#7 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(170): Illuminate\Routing\Router->Illuminate\Routing\{closure}(Object(Illuminate\Http\Request))
+#8 D:\Project Apps\pdps\packages\Webkul\Core\src\Http\Middleware\PreventRequestsDuringMaintenance.php(110): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#9 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Core\Http\Middleware\PreventRequestsDuringMaintenance->handle(Object(Illuminate\Http\Request), Object(Closure))
+#10 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Currency.php(41): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#11 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Currency->handle(Object(Illuminate\Http\Request), Object(Closure))
+#12 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Locale.php(41): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#13 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Locale->handle(Object(Illuminate\Http\Request), Object(Closure))
+#14 D:\Project Apps\pdps\packages\Webkul\Shop\src\Http\Middleware\Theme.php(33): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#15 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Shop\Http\Middleware\Theme->handle(Object(Illuminate\Http\Request), Object(Closure))
+#16 D:\Project Apps\pdps\vendor\barryvdh\laravel-debugbar\src\Middleware\InjectDebugbar.php(59): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#17 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Barryvdh\Debugbar\Middleware\InjectDebugbar->handle(Object(Illuminate\Http\Request), Object(Closure))
+#18 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Middleware\SubstituteBindings.php(51): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#19 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Routing\Middleware\SubstituteBindings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#20 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken.php(88): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#21 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\VerifyCsrfToken->handle(Object(Illuminate\Http\Request), Object(Closure))
+#22 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\View\Middleware\ShareErrorsFromSession.php(49): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#23 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\View\Middleware\ShareErrorsFromSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#24 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(121): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#25 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Session\Middleware\StartSession.php(64): Illuminate\Session\Middleware\StartSession->handleStatefulRequest(Object(Illuminate\Http\Request), Object(Illuminate\Session\Store), Object(Closure))
+#26 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Session\Middleware\StartSession->handle(Object(Illuminate\Http\Request), Object(Closure))
+#27 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse.php(37): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#28 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse->handle(Object(Illuminate\Http\Request), Object(Closure))
+#29 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Cookie\Middleware\EncryptCookies.php(75): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#30 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Cookie\Middleware\EncryptCookies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#31 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(127): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#32 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(807): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#33 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(786): Illuminate\Routing\Router->runRouteWithinStack(Object(Illuminate\Routing\Route), Object(Illuminate\Http\Request))
+#34 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(750): Illuminate\Routing\Router->runRoute(Object(Illuminate\Http\Request), Object(Illuminate\Routing\Route))
+#35 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Routing\Router.php(739): Illuminate\Routing\Router->dispatchToRoute(Object(Illuminate\Http\Request))
+#36 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(201): Illuminate\Routing\Router->dispatch(Object(Illuminate\Http\Request))
+#37 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(170): Illuminate\Foundation\Http\Kernel->Illuminate\Foundation\Http\{closure}(Object(Illuminate\Http\Request))
+#38 D:\Project Apps\pdps\vendor\barryvdh\laravel-debugbar\src\Middleware\InjectDebugbar.php(59): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#39 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Barryvdh\Debugbar\Middleware\InjectDebugbar->handle(Object(Illuminate\Http\Request), Object(Closure))
+#40 D:\Project Apps\pdps\packages\Webkul\Installer\src\Http\Middleware\CanInstall.php(36): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#41 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Installer\Http\Middleware\CanInstall->handle(Object(Illuminate\Http\Request), Object(Closure))
+#42 D:\Project Apps\pdps\packages\Webkul\Core\src\Http\Middleware\SecureHeaders.php(28): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#43 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Webkul\Core\Http\Middleware\SecureHeaders->handle(Object(Illuminate\Http\Request), Object(Closure))
+#44 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TransformsRequest.php(21): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#45 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\TrimStrings.php(51): Illuminate\Foundation\Http\Middleware\TransformsRequest->handle(Object(Illuminate\Http\Request), Object(Closure))
+#46 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\TrimStrings->handle(Object(Illuminate\Http\Request), Object(Closure))
+#47 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\ValidatePostSize.php(27): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#48 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\ValidatePostSize->handle(Object(Illuminate\Http\Request), Object(Closure))
+#49 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\HandleCors.php(62): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#50 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\HandleCors->handle(Object(Illuminate\Http\Request), Object(Closure))
+#51 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Http\Middleware\TrustProxies.php(58): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#52 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Http\Middleware\TrustProxies->handle(Object(Illuminate\Http\Request), Object(Closure))
+#53 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks.php(22): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#54 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(209): Illuminate\Foundation\Http\Middleware\InvokeDeferredCallbacks->handle(Object(Illuminate\Http\Request), Object(Closure))
+#55 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Pipeline\Pipeline.php(127): Illuminate\Pipeline\Pipeline->Illuminate\Pipeline\{closure}(Object(Illuminate\Http\Request))
+#56 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(176): Illuminate\Pipeline\Pipeline->then(Object(Closure))
+#57 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Http\Kernel.php(145): Illuminate\Foundation\Http\Kernel->sendRequestThroughRouter(Object(Illuminate\Http\Request))
+#58 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(607): Illuminate\Foundation\Http\Kernel->handle(Object(Illuminate\Http\Request))
+#59 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(573): Illuminate\Foundation\Testing\TestCase->call('DELETE', 'http://localhos...', Array, Array, Array, Array, '[]')
+#60 D:\Project Apps\pdps\vendor\laravel\framework\src\Illuminate\Foundation\Testing\Concerns\MakesHttpRequests.php(501): Illuminate\Foundation\Testing\TestCase->json('DELETE', 'http://localhos...', Array, Array, 0)
+#61 D:\Project Apps\pdps\packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php(318): Illuminate\Foundation\Testing\TestCase->deleteJson('http://localhos...', Array)
+#62 D:\Project Apps\pdps\vendor\pestphp\pest\src\Factories\TestCaseMethodFactory.php(171): P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->{closure}()
+#63 [internal function]: P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->Pest\Factories\{closure}()
+#64 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(419): call_user_func_array(Object(Closure), Array)
+#65 D:\Project Apps\pdps\vendor\pestphp\pest\src\Support\ExceptionTrace.php(26): P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->Pest\Concerns\{closure}()
+#66 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(419): Pest\Support\ExceptionTrace::ensure(Object(Closure))
+#67 D:\Project Apps\pdps\vendor\pestphp\pest\src\Concerns\Testable.php(321): P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->__callClosure(Object(Closure), Array)
+#68 D:\Project Apps\pdps\vendor\pestphp\pest\src\Factories\TestCaseFactory.php(170) : eval()'d code(251): P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->__runTest(Object(Closure))
+#69 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(1667): P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest->__pest_evaluable_it_CT_15__EP_I__D2__DELETE_selected_tanpa_ids____422__bukan_500_()
+#70 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(519): PHPUnit\Framework\TestCase->runTest()
+#71 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestRunner\TestRunner.php(87): PHPUnit\Framework\TestCase->runBare()
+#72 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestCase.php(365): PHPUnit\Framework\TestRunner->run(Object(P\Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest))
+#73 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestCase->run()
+#74 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\Framework\TestSuite.php(369): PHPUnit\Framework\TestSuite->run()
+#75 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\TextUI\TestRunner.php(64): PHPUnit\Framework\TestSuite->run()
+#76 D:\Project Apps\pdps\vendor\phpunit\phpunit\src\TextUI\Application.php(211): PHPUnit\TextUI\TestRunner->run(Object(PHPUnit\TextUI\Configuration\Configuration), Object(PHPUnit\Runner\ResultCache\DefaultResultCache), Object(PHPUnit\Framework\TestSuite))
+#77 D:\Project Apps\pdps\vendor\pestphp\pest\src\Kernel.php(103): PHPUnit\TextUI\Application->run(Array)
+#78 D:\Project Apps\pdps\vendor\pestphp\pest\bin\pest(184): Pest\Kernel->handle(Array, Array)
+#79 D:\Project Apps\pdps\vendor\pestphp\pest\bin\pest(192): {closure}()
+#80 D:\Project Apps\pdps\vendor\bin\pest(119): include('D:\\Project Apps...')
+#81 {main}
+
+----------------------------------------------------------------------------------
+
+foreach() argument must be of type array|object, null given
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:321
+    317▕ 
+    318▕     $r = $this->deleteJson(route('shop.api.checkout.cart.destroy_selected'), []);
+    319▕     $this->record('CT-15', $r);
+    320▕ 
+  ➜ 321▕     $r->assertUnprocessable();
+    322▕ });
+    323▕ 
+    324▕ it('CT-16 [EP-I kontrol] DELETE tanpa cart_item_id -> 422', function () {
+    325▕     $r = $this->deleteJson(route('shop.api.checkout.cart.destroy'), []);
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-17 [EP-I][D1] estimate-shipping-method…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:341
+    337▕         'postcode' => '40115',
+    338▕     ]);
+    339▕     $this->record('CT-17', $r);
+    340▕ 
+  ➜ 341▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    342▕ });
+    343▕ 
+    344▕ it('CT-18 [EP-I] estimate-shipping-methods tanpa country -> 422', function () {
+    345▕     $p = $this->makeProduct(PRK_STOK);
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:341
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-19 [EP-I][H21] move-to-wishlist oleh g…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:372
+    368▕         'item_masih_di_cart' => CartItem::query()->whereKey($item->id)->exists(),
+    369▕     ]);
+    370▕ 
+    371▕     expect(Wishlist::query()->whereNull('customer_id')->count())->toBe(0);
+  ➜ 372▕     expect($r->status())->toBeGreaterThanOrEqual(400)->toBeLessThan(500);
+    373▕ });
+    374▕ 
+    375▕ it('CT-20 [EP-I][D5] pasang kupon tanpa cart -> 4xx (bukan 500)', function () {
+    376▕     $this->actAsGuest();
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:372
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest > it CT-21 [EP-I][D5] hapus kupon tanpa cart -…   
+  Failed asserting that 500 is less than 500.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:390
+    386▕ 
+    387▕     $r = $this->deleteJson(route('shop.api.checkout.cart.coupon.remove'));
+    388▕     $this->record('CT-21', $r);
+    389▕ 
+  ➜ 390▕     expect($r->status())->toBeLessThan(500);
+    391▕ });
+    392▕
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\StockCartTest.php:390
+
+
+  Tests:    20 failed, 105 passed (364 assertions)
+  Duration: 104.04s
+

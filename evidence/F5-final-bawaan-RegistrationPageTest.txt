@@ -1,0 +1,13 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\RegistrationPageTest
+  ✓ it returns a successful response                                                                             0.94s  
+  ✓ it should fails validation error when certain inputs are invalid when register                               0.18s  
+  ✓ it should fails validation error when email is not valid when register                                       0.17s  
+  ✓ it should fails validation error when password length is not valid when register                             0.18s  
+  ✓ it successfully registers a customer                                                                         0.36s  
+  ✓ it successfully registers a customer and send mail to the customer verify the account                        0.23s  
+  ✓ it registers a customer successfully and sends a registration email to customer and admin along with a succ… 0.23s  
+
+  Tests:    7 passed (31 assertions)
+  Duration: 2.58s
+
