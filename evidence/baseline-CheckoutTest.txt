@@ -1,0 +1,44 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Checkout\CheckoutTest
+  ✓ it should handle certain validation errors when storing the guest user address for cart billing and shippin… 1.20s  
+  ✓ it should handle certain validation errors when storing the customer address for cart billing and shipping   0.38s  
+  ✓ it should store the shipping address as the billing address when use_for_shipping key is set to true in bil… 0.59s  
+  ✓ it should store the billing and shipping address for guest user                                              0.57s  
+  ✓ it should store the billing address for non stockable items for guest user                                   0.72s  
+  ✓ it should store the shipping address as the billing address when use_for_shipping key is set to true in bil… 0.62s  
+  ✓ it should store the billing and shipping address for customer                                                0.58s  
+  ✓ it should store the billing address for non stockable items for customer                                     0.59s  
+  ✓ it should fails the certain validation errors when use for shipping is set to false in billing address and…  0.44s  
+  ✓ it should fails the certain validation errors when use for shipping is set to false in billing address and…  0.39s  
+  ✓ it should fails the validation error when shipping method not providing when store the shipping method for…  0.29s  
+  ✓ it should fails the validation error when shipping method not providing when store the shipping method for…  0.38s  
+  ✓ it should store the shipping method for guest user                                                           0.72s  
+  ✓ it should store the shipping method for customer                                                             0.71s  
+  ✓ it should fails the validation error when store the payment method for guest user                            0.30s  
+  ✓ it should store the payment method for guest user                                                            0.52s  
+  ✓ it should store the payment method for customer                                                              0.56s  
+  ✓ it should place a simple product order for a guest user                                                      2.29s  
+  ✓ it should place a simple product order for a guest user and send mail to guest and admin                     0.59s  
+  ✓ it should place a simple product order for a customer                                                        1.12s  
+  ✓ it should place a simple product order for a customer and send email to the customer                         0.68s  
+  ✓ it should place a configurable product order for a guest user                                                3.20s  
+  ✓ it should place a configurable product order for a guest user and send email to the guest user               2.68s  
+  ✓ it should place a configurable product order for a customer                                                  3.24s  
+  ✓ it should place a configurable product order for a customer and send email to the user                       2.60s  
+  ✓ it should place a virtual product order for a guest user                                                     1.01s  
+  ✓ it should place a virtual product order for a guest user and send email to the guest user                    0.62s  
+  ✓ it should place a virtual product order for a customer                                                       1.04s  
+  ✓ it should place a virtual product order for a customer and send email to the user                            0.60s  
+  ✓ it should place a downloadable product order for a customer                                                  1.17s  
+  ✓ it should place a downloadable product order for a customer and send email to the user                       0.78s  
+  ✓ it should not return the cash on delivery payment method if product is downloadable                          0.92s  
+  ✓ it should not return the shipping methods if product is downloadable                                         0.86s  
+  ✓ it should not return the cash on delivery payment method if product is virtual                               0.65s  
+  ✓ it should not return the shipping methods if product is virtual                                              0.79s  
+  ✓ it should place order with two products with simple and configurable product type                            3.52s  
+  ✓ it should place order with two products with simple and grouped product type                                 2.56s  
+  ✓ it should place order with two products with simple and downloadable product type                            1.59s  
+
+  Tests:    38 passed (609 assertions)
+  Duration: 42.45s
+

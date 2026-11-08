@@ -1,0 +1,13 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\LoginPageTest
+  ✓ it returns a successful response                                                                             2.35s  
+  ✓ it should fails validation errors when email and password not provided when login                            0.28s  
+  ✓ it should fails validation errors when email is not valid                                                    0.47s  
+  ✓ it should fails validation errors when password length not valid                                             0.17s  
+  ✓ it successfully logins a customer                                                                            0.34s  
+  ✓ it fails to log in a customer if the email is invalid                                                        0.48s  
+  ✓ it fails to log in a customer if the password is invalid                                                     0.41s  
+
+  Tests:    7 passed (20 assertions)
+  Duration: 4.83s
+

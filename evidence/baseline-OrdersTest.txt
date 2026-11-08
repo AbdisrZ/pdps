@@ -1,0 +1,10 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Customers\OrdersTest
+  ✓ it should returns the index page customers orders                                                            3.32s  
+  ✓ it should view the order                                                                                     5.91s  
+  ✓ it should cancel the customer order                                                                          3.08s  
+  ✓ it should print the order invoice                                                                            5.00s  
+
+  Tests:    4 passed (40 assertions)
+  Duration: 17.68s
+

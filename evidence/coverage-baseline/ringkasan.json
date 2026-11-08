@@ -1,0 +1,2156 @@
+{
+    "dirs": {
+        "CartRule/src/Helpers": {
+            "st": 238,
+            "cst": 23,
+            "me": 12,
+            "cme": 3,
+            "n": 1
+        },
+        "Checkout/src": {
+            "st": 885,
+            "cst": 454,
+            "me": 81,
+            "cme": 48,
+            "n": 42
+        },
+        "Product/src/Type": {
+            "st": 1625,
+            "cst": 458,
+            "me": 158,
+            "cme": 36,
+            "n": 8
+        },
+        "Shop/src/Http/Controllers/API": {
+            "st": 669,
+            "cst": 156,
+            "me": 54,
+            "cme": 7,
+            "n": 11
+        },
+        "Shop/src/Http/Requests": {
+            "st": 79,
+            "cst": 71,
+            "me": 21,
+            "cme": 18,
+            "n": 7
+        }
+    },
+    "files": {
+        "CartRule/src/Helpers/CartRule.php": {
+            "st": 238,
+            "cst": 23,
+            "me": 12,
+            "cme": 3,
+            "dir": "CartRule/src/Helpers"
+        },
+        "Checkout/src/Cart.php": {
+            "st": 544,
+            "cst": 355,
+            "me": 36,
+            "cme": 13,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Contracts/Cart.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Contracts/CartAddress.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Contracts/CartItem.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Contracts/CartPayment.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Contracts/CartShippingRate.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Factories/CartAddressFactory.php": {
+            "st": 13,
+            "cst": 13,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Factories/CartFactory.php": {
+            "st": 12,
+            "cst": 12,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Factories/CartItemFactory.php": {
+            "st": 18,
+            "cst": 5,
+            "me": 2,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Factories/CartPaymentFactory.php": {
+            "st": 4,
+            "cst": 4,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Factories/CartShippingRateFactory.php": {
+            "st": 7,
+            "cst": 7,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2018_09_05_150444_create_cart_table.php": {
+            "st": 37,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2018_09_05_150915_create_cart_items_table.php": {
+            "st": 37,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2018_09_19_093453_create_cart_payment.php": {
+            "st": 12,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2018_09_19_093508_create_cart_shipping_rates_table.php": {
+            "st": 19,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2018_11_21_144411_create_cart_item_inventories_table.php": {
+            "st": 11,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2024_04_16_144400_add_cart_id_column_in_cart_shipping_rates_table.php": {
+            "st": 11,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2024_04_19_135405_add_incl_tax_columns_in_cart_items_table.php": {
+            "st": 23,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2024_04_23_133154_add_incl_tax_columns_in_cart_table.php": {
+            "st": 23,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2024_04_23_150945_add_incl_tax_columns_in_cart_shipping_rates_table.php": {
+            "st": 23,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Database/Migrations/2026_04_09_120000_change_tax_category_id_fk_on_cart_items_to_null_on_delete.php": {
+            "st": 16,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Exceptions/BillingAddressNotFoundException.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Facades/Cart.php": {
+            "st": 1,
+            "cst": 1,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Http/helpers.php": {
+            "st": 2,
+            "cst": 2,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Listeners/CustomerEventsHandler.php": {
+            "st": 2,
+            "cst": 2,
+            "me": 2,
+            "cme": 2,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/Cart.php": {
+            "st": 32,
+            "cst": 26,
+            "me": 16,
+            "cme": 13,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartAddress.php": {
+            "st": 10,
+            "cst": 8,
+            "me": 4,
+            "cme": 2,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartAddressProxy.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartItem.php": {
+            "st": 12,
+            "cst": 10,
+            "me": 7,
+            "cme": 5,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartItemProxy.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartPayment.php": {
+            "st": 1,
+            "cst": 1,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartPaymentProxy.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartProxy.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartShippingRate.php": {
+            "st": 3,
+            "cst": 1,
+            "me": 2,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Models/CartShippingRateProxy.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Providers/CheckoutServiceProvider.php": {
+            "st": 4,
+            "cst": 4,
+            "me": 2,
+            "cme": 2,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Providers/EventServiceProvider.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Providers/ModuleServiceProvider.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Repositories/CartAddressRepository.php": {
+            "st": 1,
+            "cst": 1,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Repositories/CartItemRepository.php": {
+            "st": 2,
+            "cst": 1,
+            "me": 2,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Repositories/CartRepository.php": {
+            "st": 1,
+            "cst": 1,
+            "me": 1,
+            "cme": 1,
+            "dir": "Checkout/src"
+        },
+        "Checkout/src/Resources/manifest.php": {
+            "st": 4,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Checkout/src"
+        },
+        "Product/src/Type/AbstractType.php": {
+            "st": 329,
+            "cst": 95,
+            "me": 50,
+            "cme": 19,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Booking.php": {
+            "st": 268,
+            "cst": 0,
+            "me": 20,
+            "cme": 0,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Bundle.php": {
+            "st": 213,
+            "cst": 107,
+            "me": 18,
+            "cme": 4,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Configurable.php": {
+            "st": 211,
+            "cst": 59,
+            "me": 21,
+            "cme": 3,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Downloadable.php": {
+            "st": 89,
+            "cst": 45,
+            "me": 10,
+            "cme": 3,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Grouped.php": {
+            "st": 71,
+            "cst": 28,
+            "me": 11,
+            "cme": 3,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Simple.php": {
+            "st": 221,
+            "cst": 69,
+            "me": 14,
+            "cme": 2,
+            "dir": "Product/src/Type"
+        },
+        "Product/src/Type/Virtual.php": {
+            "st": 223,
+            "cst": 55,
+            "me": 14,
+            "cme": 2,
+            "dir": "Product/src/Type"
+        },
+        "Shop/src/Http/Controllers/API/APIController.php": {
+            "st": 0,
+            "cst": 0,
+            "me": 0,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/AddressController.php": {
+            "st": 59,
+            "cst": 0,
+            "me": 4,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/CartController.php": {
+            "st": 145,
+            "cst": 68,
+            "me": 11,
+            "cme": 3,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php": {
+            "st": 43,
+            "cst": 0,
+            "me": 6,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php": {
+            "st": 66,
+            "cst": 0,
+            "me": 5,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/CoreController.php": {
+            "st": 10,
+            "cst": 0,
+            "me": 2,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/CustomerController.php": {
+            "st": 18,
+            "cst": 0,
+            "me": 1,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php": {
+            "st": 110,
+            "cst": 65,
+            "me": 7,
+            "cme": 2,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php": {
+            "st": 45,
+            "cst": 23,
+            "me": 6,
+            "cme": 2,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php": {
+            "st": 61,
+            "cst": 0,
+            "me": 5,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php": {
+            "st": 112,
+            "cst": 0,
+            "me": 7,
+            "cme": 0,
+            "dir": "Shop/src/Http/Controllers/API"
+        },
+        "Shop/src/Http/Requests/CartAddressRequest.php": {
+            "st": 23,
+            "cst": 23,
+            "me": 4,
+            "cme": 4,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/ContactRequest.php": {
+            "st": 8,
+            "cst": 0,
+            "me": 3,
+            "cme": 0,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/Customer/AddressRequest.php": {
+            "st": 17,
+            "cst": 17,
+            "me": 3,
+            "cme": 3,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/Customer/ForgotPasswordRequest.php": {
+            "st": 3,
+            "cst": 3,
+            "me": 3,
+            "cme": 3,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/Customer/LoginRequest.php": {
+            "st": 3,
+            "cst": 3,
+            "me": 3,
+            "cme": 3,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/Customer/ProfileRequest.php": {
+            "st": 16,
+            "cst": 16,
+            "me": 2,
+            "cme": 2,
+            "dir": "Shop/src/Http/Requests"
+        },
+        "Shop/src/Http/Requests/Customer/RegistrationRequest.php": {
+            "st": 9,
+            "cst": 9,
+            "me": 3,
+            "cme": 3,
+            "dir": "Shop/src/Http/Requests"
+        }
+    },
+    "methods": {
+        "CartRule/src/Helpers/CartRule.php::__construct()": {
+            "line": 40,
+            "st": 1,
+            "cst": 1
+        },
+        "CartRule/src/Helpers/CartRule.php::collect()": {
+            "line": 55,
+            "st": 19,
+            "cst": 4
+        },
+        "CartRule/src/Helpers/CartRule.php::getCartRules()": {
+            "line": 104,
+            "st": 10,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::canProcessRule()": {
+            "line": 126,
+            "st": 28,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::process()": {
+            "line": 190,
+            "st": 63,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::processShippingDiscount()": {
+            "line": 313,
+            "st": 41,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::processFreeShippingDiscount()": {
+            "line": 396,
+            "st": 28,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::calculateCartItemTotals()": {
+            "line": 460,
+            "st": 16,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::checkCouponCode()": {
+            "line": 495,
+            "st": 7,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::divideDiscount()": {
+            "line": 518,
+            "st": 7,
+            "cst": 0
+        },
+        "CartRule/src/Helpers/CartRule.php::getCartRuleQuery()": {
+            "line": 538,
+            "st": 17,
+            "cst": 17
+        },
+        "CartRule/src/Helpers/CartRule.php::haveCartRules()": {
+            "line": 565,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::__construct()": {
+            "line": 52,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::initCart()": {
+            "line": 67,
+            "st": 9,
+            "cst": 8
+        },
+        "Checkout/src/Cart.php::refreshCart()": {
+            "line": 86,
+            "st": 3,
+            "cst": 3
+        },
+        "Checkout/src/Cart.php::setCart()": {
+            "line": 98,
+            "st": 6,
+            "cst": 6
+        },
+        "Checkout/src/Cart.php::getCart()": {
+            "line": 115,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::createCart()": {
+            "line": 123,
+            "st": 20,
+            "cst": 20
+        },
+        "Checkout/src/Cart.php::removeCart()": {
+            "line": 156,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Cart.php::resetCart()": {
+            "line": 170,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::activateCart()": {
+            "line": 178,
+            "st": 4,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::deActivateCart()": {
+            "line": 190,
+            "st": 6,
+            "cst": 5
+        },
+        "Checkout/src/Cart.php::mergeCart()": {
+            "line": 208,
+            "st": 23,
+            "cst": 2
+        },
+        "Checkout/src/Cart.php::addProduct()": {
+            "line": 256,
+            "st": 29,
+            "cst": 19
+        },
+        "Checkout/src/Cart.php::removeItem()": {
+            "line": 317,
+            "st": 9,
+            "cst": 8
+        },
+        "Checkout/src/Cart.php::updateItems()": {
+            "line": 341,
+            "st": 31,
+            "cst": 25
+        },
+        "Checkout/src/Cart.php::getItemByProduct()": {
+            "line": 397,
+            "st": 9,
+            "cst": 3
+        },
+        "Checkout/src/Cart.php::saveAddresses()": {
+            "line": 422,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Cart.php::updateOrCreateBillingAddress()": {
+            "line": 436,
+            "st": 30,
+            "cst": 30
+        },
+        "Checkout/src/Cart.php::updateOrCreateShippingAddress()": {
+            "line": 478,
+            "st": 43,
+            "cst": 40
+        },
+        "Checkout/src/Cart.php::setCustomerPersonnelDetails()": {
+            "line": 547,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Cart.php::saveShippingMethod()": {
+            "line": 559,
+            "st": 7,
+            "cst": 5
+        },
+        "Checkout/src/Cart.php::resetShippingMethod()": {
+            "line": 578,
+            "st": 6,
+            "cst": 5
+        },
+        "Checkout/src/Cart.php::savePaymentMethod()": {
+            "line": 595,
+            "st": 10,
+            "cst": 8
+        },
+        "Checkout/src/Cart.php::setCouponCode()": {
+            "line": 618,
+            "st": 3,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::removeCouponCode()": {
+            "line": 630,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::moveToCart()": {
+            "line": 638,
+            "st": 15,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::moveToWishlist()": {
+            "line": 671,
+            "st": 44,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::hasError()": {
+            "line": 749,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::getErrors()": {
+            "line": 757,
+            "st": 18,
+            "cst": 4
+        },
+        "Checkout/src/Cart.php::getOrderAmount()": {
+            "line": 789,
+            "st": 8,
+            "cst": 0
+        },
+        "Checkout/src/Cart.php::haveMinimumOrderAmount()": {
+            "line": 811,
+            "st": 3,
+            "cst": 2
+        },
+        "Checkout/src/Cart.php::isItemsHaveSufficientQuantity()": {
+            "line": 823,
+            "st": 6,
+            "cst": 4
+        },
+        "Checkout/src/Cart.php::isItemHaveQuantity()": {
+            "line": 841,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Cart.php::collectTotals()": {
+            "line": 849,
+            "st": 53,
+            "cst": 53
+        },
+        "Checkout/src/Cart.php::validateItems()": {
+            "line": 948,
+            "st": 31,
+            "cst": 28
+        },
+        "Checkout/src/Cart.php::calculateItemsTax()": {
+            "line": 1011,
+            "st": 59,
+            "cst": 54
+        },
+        "Checkout/src/Cart.php::calculateShippingTax()": {
+            "line": 1126,
+            "st": 41,
+            "cst": 6
+        },
+        "Checkout/src/Database/Factories/CartAddressFactory.php::definition()": {
+            "line": 20,
+            "st": 13,
+            "cst": 13
+        },
+        "Checkout/src/Database/Factories/CartFactory.php::definition()": {
+            "line": 20,
+            "st": 12,
+            "cst": 12
+        },
+        "Checkout/src/Database/Factories/CartItemFactory.php::definition()": {
+            "line": 20,
+            "st": 5,
+            "cst": 5
+        },
+        "Checkout/src/Database/Factories/CartItemFactory.php::adjustProduct()": {
+            "line": 32,
+            "st": 13,
+            "cst": 0
+        },
+        "Checkout/src/Database/Factories/CartPaymentFactory.php::definition()": {
+            "line": 20,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Database/Factories/CartShippingRateFactory.php::definition()": {
+            "line": 20,
+            "st": 7,
+            "cst": 7
+        },
+        "Checkout/src/Facades/Cart.php::getFacadeAccessor()": {
+            "line": 15,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Listeners/CustomerEventsHandler.php::onCustomerLogin()": {
+            "line": 13,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Listeners/CustomerEventsHandler.php::subscribe()": {
+            "line": 30,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::customer()": {
+            "line": 50,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::channel()": {
+            "line": 58,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::items()": {
+            "line": 66,
+            "st": 3,
+            "cst": 3
+        },
+        "Checkout/src/Models/Cart.php::all_items()": {
+            "line": 76,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::billing_address()": {
+            "line": 84,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::shipping_address()": {
+            "line": 92,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::shipping_rates()": {
+            "line": 100,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::selected_shipping_rate()": {
+            "line": 108,
+            "st": 2,
+            "cst": 2
+        },
+        "Checkout/src/Models/Cart.php::getSelectedShippingRateAttribute()": {
+            "line": 117,
+            "st": 2,
+            "cst": 2
+        },
+        "Checkout/src/Models/Cart.php::payment()": {
+            "line": 126,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/Cart.php::haveStockableItems()": {
+            "line": 134,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Models/Cart.php::hasOnlyStockableItems()": {
+            "line": 148,
+            "st": 4,
+            "cst": 4
+        },
+        "Checkout/src/Models/Cart.php::hasDownloadableItems()": {
+            "line": 162,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Models/Cart.php::hasProductsWithQuantityBox()": {
+            "line": 172,
+            "st": 4,
+            "cst": 0
+        },
+        "Checkout/src/Models/Cart.php::hasGuestCheckoutItems()": {
+            "line": 186,
+            "st": 4,
+            "cst": 3
+        },
+        "Checkout/src/Models/Cart.php::newFactory()": {
+            "line": 200,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartAddress.php::boot()": {
+            "line": 45,
+            "st": 7,
+            "cst": 7
+        },
+        "Checkout/src/Models/CartAddress.php::shipping_rates()": {
+            "line": 60,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Models/CartAddress.php::cart()": {
+            "line": 68,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Models/CartAddress.php::newFactory()": {
+            "line": 76,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartItem.php::getTypeInstance()": {
+            "line": 44,
+            "st": 6,
+            "cst": 6
+        },
+        "Checkout/src/Models/CartItem.php::product()": {
+            "line": 62,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartItem.php::cart()": {
+            "line": 70,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Models/CartItem.php::parent()": {
+            "line": 78,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Models/CartItem.php::child()": {
+            "line": 86,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartItem.php::children()": {
+            "line": 94,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartItem.php::newFactory()": {
+            "line": 102,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartPayment.php::newFactory()": {
+            "line": 20,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Models/CartShippingRate.php::shipping_address()": {
+            "line": 41,
+            "st": 2,
+            "cst": 0
+        },
+        "Checkout/src/Models/CartShippingRate.php::newFactory()": {
+            "line": 50,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Providers/CheckoutServiceProvider.php::register()": {
+            "line": 12,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Providers/CheckoutServiceProvider.php::boot()": {
+            "line": 20,
+            "st": 3,
+            "cst": 3
+        },
+        "Checkout/src/Repositories/CartAddressRepository.php::model()": {
+            "line": 12,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Repositories/CartItemRepository.php::model()": {
+            "line": 12,
+            "st": 1,
+            "cst": 1
+        },
+        "Checkout/src/Repositories/CartItemRepository.php::getProduct()": {
+            "line": 21,
+            "st": 1,
+            "cst": 0
+        },
+        "Checkout/src/Repositories/CartRepository.php::model()": {
+            "line": 12,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::__construct()": {
+            "line": 130,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::create()": {
+            "line": 146,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::update()": {
+            "line": 162,
+            "st": 21,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getAttributeByCode()": {
+            "line": 214,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::copy()": {
+            "line": 230,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::copyAttributeValues()": {
+            "line": 254,
+            "st": 24,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::copyRelationships()": {
+            "line": 298,
+            "st": 33,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::copyMedia()": {
+            "line": 361,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::setProduct()": {
+            "line": 380,
+            "st": 2,
+            "cst": 2
+        },
+        "Product/src/Type/AbstractType.php::getChildrenIds()": {
+            "line": 392,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::priceRuleCanBeApplied()": {
+            "line": 402,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::isCustomizable()": {
+            "line": 412,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::isSaleable()": {
+            "line": 422,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::isStockable()": {
+            "line": 440,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::isComposite()": {
+            "line": 450,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::hasVariants()": {
+            "line": 460,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::isChildrenCalculated()": {
+            "line": 470,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::canBeCopied()": {
+            "line": 478,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::haveSufficientQuantity()": {
+            "line": 486,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::showQuantityBox()": {
+            "line": 496,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::isItemHaveQuantity()": {
+            "line": 507,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::totalQuantity()": {
+            "line": 517,
+            "st": 3,
+            "cst": 3
+        },
+        "Product/src/Type/AbstractType.php::canBeMovedFromWishlistToCart()": {
+            "line": 532,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::canBeAddedToCartWithoutOptions()": {
+            "line": 542,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getEditableAttributes()": {
+            "line": 554,
+            "st": 22,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getAdditionalViews()": {
+            "line": 589,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getTypeValidationRules()": {
+            "line": 599,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getMinimalPrice()": {
+            "line": 610,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/AbstractType.php::getRegularMinimalPrice()": {
+            "line": 624,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getMaximumPrice()": {
+            "line": 638,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getRegularMaximumPrice()": {
+            "line": 652,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getFinalPrice()": {
+            "line": 667,
+            "st": 9,
+            "cst": 9
+        },
+        "Product/src/Type/AbstractType.php::getPriceIndex()": {
+            "line": 691,
+            "st": 7,
+            "cst": 7
+        },
+        "Product/src/Type/AbstractType.php::getInventoryIndex()": {
+            "line": 709,
+            "st": 5,
+            "cst": 5
+        },
+        "Product/src/Type/AbstractType.php::haveDiscount()": {
+            "line": 725,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/AbstractType.php::getProductPrices()": {
+            "line": 739,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/AbstractType.php::getPriceHtml()": {
+            "line": 759,
+            "st": 4,
+            "cst": 4
+        },
+        "Product/src/Type/AbstractType.php::getTaxCategory()": {
+            "line": 772,
+            "st": 2,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::prepareForCart()": {
+            "line": 787,
+            "st": 27,
+            "cst": 26
+        },
+        "Product/src/Type/AbstractType.php::handleQuantity()": {
+            "line": 827,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::getQtyRequest()": {
+            "line": 838,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/AbstractType.php::compareOptions()": {
+            "line": 854,
+            "st": 12,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getAdditionalOptions()": {
+            "line": 886,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getOrderedItem()": {
+            "line": 897,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::getBaseImage()": {
+            "line": 908,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/AbstractType.php::validateCartItem()": {
+            "line": 916,
+            "st": 17,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::isCartItemInactive()": {
+            "line": 952,
+            "st": 14,
+            "cst": 11
+        },
+        "Product/src/Type/AbstractType.php::getCustomerGroupPricingOffers()": {
+            "line": 987,
+            "st": 16,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getOfferLines()": {
+            "line": 1022,
+            "st": 8,
+            "cst": 0
+        },
+        "Product/src/Type/AbstractType.php::getCustomerGroupPrice()": {
+            "line": 1042,
+            "st": 30,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::__construct()": {
+            "line": 67,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::update()": {
+            "line": 87,
+            "st": 15,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getBookingProduct()": {
+            "line": 122,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::showQuantityBox()": {
+            "line": 136,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::isItemHaveQuantity()": {
+            "line": 146,
+            "st": 2,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::haveSufficientQuantity()": {
+            "line": 153,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::isSaleable()": {
+            "line": 161,
+            "st": 16,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::isComposite()": {
+            "line": 202,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::prepareForCart()": {
+            "line": 215,
+            "st": 54,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::compareOptions()": {
+            "line": 316,
+            "st": 20,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getAdditionalOptions()": {
+            "line": 360,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::validateCartItem()": {
+            "line": 368,
+            "st": 8,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getPriceIndexer()": {
+            "line": 392,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::haveDiscount()": {
+            "line": 402,
+            "st": 11,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getPriceHtml()": {
+            "line": 435,
+            "st": 28,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getCheapestBookingExtras()": {
+            "line": 488,
+            "st": 35,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::getTypeValidationRules()": {
+            "line": 558,
+            "st": 26,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::validateSlotWindowDurations()": {
+            "line": 604,
+            "st": 25,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::flattenSlotWindows()": {
+            "line": 666,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Booking.php::slotWindowMeetsDuration()": {
+            "line": 692,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::__construct()": {
+            "line": 77,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Bundle.php::update()": {
+            "line": 109,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::copyRelationships()": {
+            "line": 128,
+            "st": 6,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::getChildrenIds()": {
+            "line": 148,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::priceRuleCanBeApplied()": {
+            "line": 158,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Bundle.php::getFinalPrice()": {
+            "line": 169,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Bundle.php::getProductPrices()": {
+            "line": 179,
+            "st": 22,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::getPriceHtml()": {
+            "line": 213,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::prepareForCart()": {
+            "line": 229,
+            "st": 38,
+            "cst": 30
+        },
+        "Product/src/Type/Bundle.php::getCartChildProducts()": {
+            "line": 305,
+            "st": 21,
+            "cst": 16
+        },
+        "Product/src/Type/Bundle.php::compareOptions()": {
+            "line": 349,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::validateBundleOptionForCart()": {
+            "line": 368,
+            "st": 7,
+            "cst": 6
+        },
+        "Product/src/Type/Bundle.php::getAdditionalOptions()": {
+            "line": 389,
+            "st": 28,
+            "cst": 26
+        },
+        "Product/src/Type/Bundle.php::getOptionQuantities()": {
+            "line": 447,
+            "st": 11,
+            "cst": 0
+        },
+        "Product/src/Type/Bundle.php::validateCartItem()": {
+            "line": 475,
+            "st": 29,
+            "cst": 13
+        },
+        "Product/src/Type/Bundle.php::haveSufficientQuantity()": {
+            "line": 535,
+            "st": 7,
+            "cst": 3
+        },
+        "Product/src/Type/Bundle.php::getPriceIndexer()": {
+            "line": 560,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Bundle.php::getTypeValidationRules()": {
+            "line": 570,
+            "st": 16,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::create()": {
+            "line": 98,
+            "st": 16,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::update()": {
+            "line": 140,
+            "st": 25,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::createVariant()": {
+            "line": 197,
+            "st": 25,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::updateVariant()": {
+            "line": 240,
+            "st": 7,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::copyRelationships()": {
+            "line": 263,
+            "st": 11,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getChildrenIds()": {
+            "line": 294,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Configurable.php::isItemHaveQuantity()": {
+            "line": 305,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getTypeValidationRules()": {
+            "line": 315,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::canBeMovedFromWishlistToCart()": {
+            "line": 334,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getProductPrices()": {
+            "line": 344,
+            "st": 12,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getPriceHtml()": {
+            "line": 368,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::prepareForCart()": {
+            "line": 384,
+            "st": 39,
+            "cst": 37
+        },
+        "Product/src/Type/Configurable.php::compareOptions()": {
+            "line": 442,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getAdditionalOptions()": {
+            "line": 470,
+            "st": 9,
+            "cst": 9
+        },
+        "Product/src/Type/Configurable.php::getOrderedItem()": {
+            "line": 493,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getBaseImage()": {
+            "line": 504,
+            "st": 7,
+            "cst": 4
+        },
+        "Product/src/Type/Configurable.php::validateCartItem()": {
+            "line": 526,
+            "st": 20,
+            "cst": 7
+        },
+        "Product/src/Type/Configurable.php::haveSufficientQuantity()": {
+            "line": 568,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::isSaleable()": {
+            "line": 584,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::totalQuantity()": {
+            "line": 600,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Configurable.php::getPriceIndexer()": {
+            "line": 618,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Downloadable.php::__construct()": {
+            "line": 57,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Downloadable.php::update()": {
+            "line": 88,
+            "st": 6,
+            "cst": 0
+        },
+        "Product/src/Type/Downloadable.php::isSaleable()": {
+            "line": 108,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Downloadable.php::getTypeValidationRules()": {
+            "line": 126,
+            "st": 8,
+            "cst": 0
+        },
+        "Product/src/Type/Downloadable.php::prepareForCart()": {
+            "line": 144,
+            "st": 14,
+            "cst": 12
+        },
+        "Product/src/Type/Downloadable.php::compareOptions()": {
+            "line": 176,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Downloadable.php::getAdditionalOptions()": {
+            "line": 204,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Downloadable.php::validateCartItem()": {
+            "line": 226,
+            "st": 25,
+            "cst": 12
+        },
+        "Product/src/Type/Downloadable.php::getMaximumPrice()": {
+            "line": 280,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Downloadable.php::getPriceIndexer()": {
+            "line": 290,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Grouped.php::__construct()": {
+            "line": 57,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Grouped.php::update()": {
+            "line": 87,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::copyRelationships()": {
+            "line": 106,
+            "st": 6,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::getChildrenIds()": {
+            "line": 126,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::priceRuleCanBeApplied()": {
+            "line": 136,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Grouped.php::isSaleable()": {
+            "line": 146,
+            "st": 6,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::haveSufficientQuantity()": {
+            "line": 164,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::getPriceHtml()": {
+            "line": 180,
+            "st": 4,
+            "cst": 0
+        },
+        "Product/src/Type/Grouped.php::prepareForCart()": {
+            "line": 194,
+            "st": 21,
+            "cst": 16
+        },
+        "Product/src/Type/Grouped.php::getPriceIndexer()": {
+            "line": 242,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Grouped.php::getTypeValidationRules()": {
+            "line": 252,
+            "st": 12,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::__construct()": {
+            "line": 39,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Simple.php::update()": {
+            "line": 72,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::canBeAddedToCartWithoutOptions()": {
+            "line": 90,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::isCustomizable()": {
+            "line": 104,
+            "st": 9,
+            "cst": 8
+        },
+        "Product/src/Type/Simple.php::isSaleable()": {
+            "line": 140,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/Simple.php::haveSufficientQuantity()": {
+            "line": 152,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/Simple.php::getMaximumPrice()": {
+            "line": 166,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::getPriceIndexer()": {
+            "line": 176,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Simple.php::prepareForCart()": {
+            "line": 189,
+            "st": 52,
+            "cst": 28
+        },
+        "Product/src/Type/Simple.php::validateCartItem()": {
+            "line": 286,
+            "st": 27,
+            "cst": 16
+        },
+        "Product/src/Type/Simple.php::getTypeValidationRules()": {
+            "line": 353,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::getAdditionalOptions()": {
+            "line": 373,
+            "st": 15,
+            "cst": 2
+        },
+        "Product/src/Type/Simple.php::compareOptions()": {
+            "line": 405,
+            "st": 12,
+            "cst": 0
+        },
+        "Product/src/Type/Simple.php::formatRequestedCustomizableOptions()": {
+            "line": 441,
+            "st": 71,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::__construct()": {
+            "line": 59,
+            "st": 10,
+            "cst": 10
+        },
+        "Product/src/Type/Virtual.php::update()": {
+            "line": 92,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::canBeAddedToCartWithoutOptions()": {
+            "line": 110,
+            "st": 3,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::isCustomizable()": {
+            "line": 124,
+            "st": 9,
+            "cst": 6
+        },
+        "Product/src/Type/Virtual.php::isSaleable()": {
+            "line": 159,
+            "st": 5,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::haveSufficientQuantity()": {
+            "line": 175,
+            "st": 3,
+            "cst": 2
+        },
+        "Product/src/Type/Virtual.php::getMaximumPrice()": {
+            "line": 189,
+            "st": 1,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::getPriceIndexer()": {
+            "line": 199,
+            "st": 1,
+            "cst": 1
+        },
+        "Product/src/Type/Virtual.php::prepareForCart()": {
+            "line": 212,
+            "st": 52,
+            "cst": 28
+        },
+        "Product/src/Type/Virtual.php::validateCartItem()": {
+            "line": 309,
+            "st": 27,
+            "cst": 6
+        },
+        "Product/src/Type/Virtual.php::getTypeValidationRules()": {
+            "line": 376,
+            "st": 9,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::getAdditionalOptions()": {
+            "line": 396,
+            "st": 15,
+            "cst": 2
+        },
+        "Product/src/Type/Virtual.php::compareOptions()": {
+            "line": 428,
+            "st": 12,
+            "cst": 0
+        },
+        "Product/src/Type/Virtual.php::formatRequestedCustomizableOptions()": {
+            "line": 464,
+            "st": 71,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/AddressController.php::__construct()": {
+            "line": 18,
+            "st": 0,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/AddressController.php::index()": {
+            "line": 23,
+            "st": 2,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/AddressController.php::store()": {
+            "line": 33,
+            "st": 29,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/AddressController.php::update()": {
+            "line": 76,
+            "st": 27,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::__construct()": {
+            "line": 23,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::index()": {
+            "line": 31,
+            "st": 7,
+            "cst": 6
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::store()": {
+            "line": 49,
+            "st": 26,
+            "cst": 14
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::destroy()": {
+            "line": 93,
+            "st": 9,
+            "cst": 9
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::destroySelected()": {
+            "line": 112,
+            "st": 7,
+            "cst": 7
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::moveToWishlist()": {
+            "line": 129,
+            "st": 8,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::update()": {
+            "line": 148,
+            "st": 10,
+            "cst": 6
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::estimateShippingMethods()": {
+            "line": 169,
+            "st": 26,
+            "cst": 25
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::storeCoupon()": {
+            "line": 212,
+            "st": 31,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::destroyCoupon()": {
+            "line": 263,
+            "st": 5,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CartController.php::crossSellProducts()": {
+            "line": 278,
+            "st": 15,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::__construct()": {
+            "line": 23,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::index()": {
+            "line": 32,
+            "st": 6,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::tree()": {
+            "line": 51,
+            "st": 2,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::getAttributes()": {
+            "line": 61,
+            "st": 7,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::getAttributeOptions()": {
+            "line": 81,
+            "st": 16,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CategoryController.php::getProductMaxPrice()": {
+            "line": 111,
+            "st": 11,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php::__construct()": {
+            "line": 19,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php::index()": {
+            "line": 27,
+            "st": 10,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php::store()": {
+            "line": 53,
+            "st": 20,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php::destroy()": {
+            "line": 87,
+            "st": 23,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CompareController.php::destroyAll()": {
+            "line": 126,
+            "st": 12,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CoreController.php::getCountries()": {
+            "line": 14,
+            "st": 7,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CoreController.php::getStates()": {
+            "line": 30,
+            "st": 3,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/CustomerController.php::login()": {
+            "line": 18,
+            "st": 18,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::__construct()": {
+            "line": 24,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::summary()": {
+            "line": 32,
+            "st": 2,
+            "cst": 2
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::storeAddress()": {
+            "line": 42,
+            "st": 29,
+            "cst": 17
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::storeShippingMethod()": {
+            "line": 94,
+            "st": 11,
+            "cst": 8
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::storePaymentMethod()": {
+            "line": 120,
+            "st": 14,
+            "cst": 11
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::storeOrder()": {
+            "line": 148,
+            "st": 32,
+            "cst": 13
+        },
+        "Shop/src/Http/Controllers/API/OnepageController.php::validateOrder()": {
+            "line": 206,
+            "st": 21,
+            "cst": 13
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::__construct()": {
+            "line": 18,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::index()": {
+            "line": 26,
+            "st": 22,
+            "cst": 14
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::resolveSearchQueryData()": {
+            "line": 68,
+            "st": 10,
+            "cst": 6
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::getEffectiveQuery()": {
+            "line": 88,
+            "st": 2,
+            "cst": 2
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::relatedProducts()": {
+            "line": 100,
+            "st": 5,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ProductController.php::upSellProducts()": {
+            "line": 116,
+            "st": 5,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php::__construct()": {
+            "line": 21,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php::index()": {
+            "line": 40,
+            "st": 11,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php::store()": {
+            "line": 62,
+            "st": 25,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php::translate()": {
+            "line": 101,
+            "st": 21,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/ReviewController.php::censorReviewerName()": {
+            "line": 144,
+            "st": 3,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::__construct()": {
+            "line": 20,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::index()": {
+            "line": 28,
+            "st": 8,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::store()": {
+            "line": 45,
+            "st": 28,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::moveToCart()": {
+            "line": 94,
+            "st": 34,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::destroy()": {
+            "line": 149,
+            "st": 20,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::destroyAll()": {
+            "line": 182,
+            "st": 12,
+            "cst": 0
+        },
+        "Shop/src/Http/Controllers/API/WishlistController.php::removeInactiveItems()": {
+            "line": 208,
+            "st": 9,
+            "cst": 0
+        },
+        "Shop/src/Http/Requests/CartAddressRequest.php::authorize()": {
+            "line": 22,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/CartAddressRequest.php::rules()": {
+            "line": 30,
+            "st": 5,
+            "cst": 5
+        },
+        "Shop/src/Http/Requests/CartAddressRequest.php::mergeAddressRules()": {
+            "line": 46,
+            "st": 16,
+            "cst": 16
+        },
+        "Shop/src/Http/Requests/CartAddressRequest.php::mergeWithRules()": {
+            "line": 71,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/ContactRequest.php::authorize()": {
+            "line": 16,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Requests/ContactRequest.php::rules()": {
+            "line": 26,
+            "st": 6,
+            "cst": 0
+        },
+        "Shop/src/Http/Requests/ContactRequest.php::messages()": {
+            "line": 41,
+            "st": 1,
+            "cst": 0
+        },
+        "Shop/src/Http/Requests/Customer/AddressRequest.php::authorize()": {
+            "line": 17,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/AddressRequest.php::rules()": {
+            "line": 27,
+            "st": 13,
+            "cst": 13
+        },
+        "Shop/src/Http/Requests/Customer/AddressRequest.php::attributes()": {
+            "line": 49,
+            "st": 3,
+            "cst": 3
+        },
+        "Shop/src/Http/Requests/Customer/ForgotPasswordRequest.php::authorize()": {
+            "line": 24,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/ForgotPasswordRequest.php::rules()": {
+            "line": 34,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/ForgotPasswordRequest.php::messages()": {
+            "line": 44,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/LoginRequest.php::authorize()": {
+            "line": 25,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/LoginRequest.php::rules()": {
+            "line": 33,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/LoginRequest.php::messages()": {
+            "line": 41,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/ProfileRequest.php::authorize()": {
+            "line": 15,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/ProfileRequest.php::rules()": {
+            "line": 25,
+            "st": 15,
+            "cst": 15
+        },
+        "Shop/src/Http/Requests/Customer/RegistrationRequest.php::authorize()": {
+            "line": 15,
+            "st": 1,
+            "cst": 1
+        },
+        "Shop/src/Http/Requests/Customer/RegistrationRequest.php::rules()": {
+            "line": 25,
+            "st": 7,
+            "cst": 7
+        },
+        "Shop/src/Http/Requests/Customer/RegistrationRequest.php::messages()": {
+            "line": 42,
+            "st": 1,
+            "cst": 1
+        }
+    }
+}

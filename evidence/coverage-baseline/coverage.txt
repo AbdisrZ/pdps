@@ -1,0 +1,78 @@
+
+
+Code Coverage Report:
+  2026-11-08 12:11:00
+
+ Summary:
+  Classes: 37.21% (16/43)
+  Methods: 34.36% (112/326)
+  Lines:   33.24% (1162/3496)
+
+Webkul\CartRule\Helpers\CartRule
+  Methods:  25.00% ( 3/12)   Lines:   9.66% ( 23/238)
+Webkul\Checkout\Cart
+  Methods:  36.11% (13/36)   Lines:  65.26% (355/544)
+Webkul\Checkout\Database\Factories\CartAddressFactory
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 13/ 13)
+Webkul\Checkout\Database\Factories\CartFactory
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% ( 12/ 12)
+Webkul\Checkout\Database\Factories\CartItemFactory
+  Methods:  50.00% ( 1/ 2)   Lines:  27.78% (  5/ 18)
+Webkul\Checkout\Database\Factories\CartPaymentFactory
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  4/  4)
+Webkul\Checkout\Database\Factories\CartShippingRateFactory
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  7/  7)
+Webkul\Checkout\Facades\Cart
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Webkul\Checkout\Listeners\CustomerEventsHandler
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  2/  2)
+Webkul\Checkout\Models\Cart
+  Methods:  81.25% (13/16)   Lines:  81.25% ( 26/ 32)
+Webkul\Checkout\Models\CartAddress
+  Methods:  50.00% ( 2/ 4)   Lines:  80.00% (  8/ 10)
+Webkul\Checkout\Models\CartItem
+  Methods:  71.43% ( 5/ 7)   Lines:  83.33% ( 10/ 12)
+Webkul\Checkout\Models\CartPayment
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Webkul\Checkout\Models\CartShippingRate
+  Methods:  50.00% ( 1/ 2)   Lines:  33.33% (  1/  3)
+Webkul\Checkout\Providers\CheckoutServiceProvider
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  4/  4)
+Webkul\Checkout\Repositories\CartAddressRepository
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Webkul\Checkout\Repositories\CartItemRepository
+  Methods:  50.00% ( 1/ 2)   Lines:  50.00% (  1/  2)
+Webkul\Checkout\Repositories\CartRepository
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+Webkul\Product\Type\AbstractType
+  Methods:  38.00% (19/50)   Lines:  28.88% ( 95/329)
+Webkul\Product\Type\Bundle
+  Methods:  22.22% ( 4/18)   Lines:  50.23% (107/213)
+Webkul\Product\Type\Configurable
+  Methods:  14.29% ( 3/21)   Lines:  27.96% ( 59/211)
+Webkul\Product\Type\Downloadable
+  Methods:  30.00% ( 3/10)   Lines:  50.56% ( 45/ 89)
+Webkul\Product\Type\Grouped
+  Methods:  27.27% ( 3/11)   Lines:  39.44% ( 28/ 71)
+Webkul\Product\Type\Simple
+  Methods:  14.29% ( 2/14)   Lines:  31.22% ( 69/221)
+Webkul\Product\Type\Virtual
+  Methods:  14.29% ( 2/14)   Lines:  24.66% ( 55/223)
+Webkul\Shop\Http\Controllers\API\CartController
+  Methods:  27.27% ( 3/11)   Lines:  46.90% ( 68/145)
+Webkul\Shop\Http\Controllers\API\OnepageController
+  Methods:  28.57% ( 2/ 7)   Lines:  59.09% ( 65/110)
+Webkul\Shop\Http\Controllers\API\ProductController
+  Methods:  33.33% ( 2/ 6)   Lines:  51.11% ( 23/ 45)
+Webkul\Shop\Http\Requests\CartAddressRequest
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 23/ 23)
+Webkul\Shop\Http\Requests\Customer\AddressRequest
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% ( 17/ 17)
+Webkul\Shop\Http\Requests\Customer\ForgotPasswordRequest
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+Webkul\Shop\Http\Requests\Customer\LoginRequest
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  3/  3)
+Webkul\Shop\Http\Requests\Customer\ProfileRequest
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 16/ 16)
+Webkul\Shop\Http\Requests\Customer\RegistrationRequest
+  Methods: 100.00% ( 3/ 3)   Lines: 100.00% (  9/  9)

@@ -1,0 +1,1 @@
+bagisto_test products=0 customers=0 cart=0 orders=0

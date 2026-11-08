@@ -1,0 +1,7 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\GuardDatabaseTest
+  ✓ it GUARD-01: koneksi database aktif adalah bagisto_test                                                      2.53s  
+
+  Tests:    1 passed (4 assertions)
+  Duration: 10.44s
+
