@@ -154,3 +154,32 @@ Semua pekerjaan ada di branch `praktikum`. Perubahan kode Bagisto secara total s
 ## Lampiran
 
 Semua file teknis (dokumen rinci, hasil per kasus, laporan coverage, dan skrip bantu) ada di folder `lampiran-teknis/`. File test ada di `packages/Webkul/Shop/tests/Feature/Praktikum/`.
+
+## Bukti screenshot pengujian
+
+Screenshot diambil otomatis dengan browser Chrome yang dijalankan oleh skrip (`lampiran-teknis/testing/tools/screenshot/skenario.mjs`), supaya langkahnya bisa diulang persis sama.
+
+Untuk pengujian lewat browser, toko dijalankan di `http://127.0.0.1:8001` dengan **database salinan** `bagisto_uji`. Database ini disalin dari backup database asli, sehingga datanya sama, tetapi semua perubahan saat pengujian tidak menyentuh database asli. Kami sempat memastikan server benar-benar memakai database salinan dengan membuat akun khusus yang hanya ada di `bagisto_uji`, lalu mencoba login dengan akun itu. Di database salinan, stok produk *Red Nail Polish* kami ubah menjadi 5.
+
+Semua gambar ada di folder `dokumentasi/screenshot/`.
+
+| No | File | Yang diuji | Hasil |
+|---|---|---|---|
+| 01 | `01-beranda-toko.png` | Halaman kategori toko dengan data salinan | Berjalan normal |
+| 02 | `02-login-gagal.png` | Login dengan password salah | Ditolak (sesuai) |
+| 03 | `03-login-berhasil.png` | Login dengan password benar | Masuk ke akun (sesuai) |
+| 04 | `04-pesanan-sendiri.png` | Membuka pesanan sendiri (#8) | Tampil (sesuai) |
+| 05 | `05-pesanan-orang-lain.png` | Membuka pesanan milik orang lain (#1) | 404 tidak ditemukan (sesuai) |
+| 06 | `06-stok-melebihi.png` | Beli 6 barang, stok 5 | "Jumlah yang diminta tidak tersedia" (sesuai) |
+| 07 | `07-stok-cukup.png` | Beli 5 barang, stok 5 | Berhasil masuk keranjang (sesuai) |
+| 08 | `08-harga-rolex-terpotong.png` | Harga Rolex (data lama, sebelum perbaikan) | Tampil Rp 100.000.000,00, padahal harga asli sekitar Rp 224 juta (masalah no. 1) |
+| 09 | `09-admin-harga-terlalu-besar.png` | Admin isi harga 100.000.000 | Ditolak dengan pesan jelas (sudah diperbaiki v1.0.2) |
+| 10 | `10-api-stok.png` | API tambah 6 / 5 barang | 400 / 200 (sesuai) |
+| 11 | `11-api-tanpa-quantity.png` | API tambah tanpa jumlah | 400 (masalah no. 6) |
+| 12 | `12-api-qty-nol-hapus-item.png` | API ubah jumlah menjadi 0 | 200, tetapi keranjang jadi kosong (masalah no. 5) |
+| 13 | `13-api-ongkir-tanpa-keranjang.png` | API cek ongkir & hapus kupon tanpa keranjang | 500 error server (masalah no. 7) |
+| 14 | `14-api-email-tidak-valid.png` | API alamat dengan email "bukan-email" | Diterima 200 (masalah no. 11); pembanding kode pos 1 karakter ditolak 422 |
+| 15 | `15-pest-hasil-pengujian.png` | Hasil 112 kasus uji otomatis | 91 lolos (termasuk test pengaman), 22 gagal |
+| 16–17 | `16-…sebelum.png`, `17-…sesudah.png` | Perbaikan 1 (minimum order) | Sebelum: 2 gagal; sesudah: semua lolos |
+| 18–19 | `18-…sebelum.png`, `19-…sesudah.png` | Perbaikan 2 (batas harga) | Sebelum: 3 gagal; sesudah: semua lolos |
+| 20 | `20-pest-regresi-akhir.png` | Pengecekan ulang setelah kedua perbaikan | Test bawaan tetap lolos semua |

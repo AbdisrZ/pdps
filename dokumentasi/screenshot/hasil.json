@@ -1,0 +1,142 @@
+[
+  {
+    "id": "01-beranda-toko",
+    "judul": "Halaman depan toko (database salinan bagisto_uji)",
+    "file": "01-beranda-toko.png",
+    "ok": true,
+    "catatan": ""
+  },
+  {
+    "id": "02-login-gagal",
+    "judul": "Login dengan password salah ditolak",
+    "file": "02-login-gagal.png",
+    "ok": true,
+    "catatan": "/customer/login"
+  },
+  {
+    "id": "03-login-berhasil",
+    "judul": "Login pelanggan dengan password benar",
+    "file": "03-login-berhasil.png",
+    "ok": true,
+    "catatan": "/customer/account/profile"
+  },
+  {
+    "id": "04-pesanan-sendiri",
+    "judul": "Pelanggan membuka pesanan miliknya sendiri (#8)",
+    "file": "04-pesanan-sendiri.png",
+    "ok": true,
+    "catatan": "Pesanan #8"
+  },
+  {
+    "id": "05-pesanan-orang-lain",
+    "judul": "Pelanggan mencoba membuka pesanan milik orang lain (#1) -> tidak ditemukan",
+    "file": "05-pesanan-orang-lain.png",
+    "ok": true,
+    "catatan": "404 Halaman Tidak Ditemukan"
+  },
+  {
+    "id": "06-stok-melebihi",
+    "judul": "Beli 6 barang padahal stok 5 -> ditolak",
+    "file": "06-stok-melebihi.png",
+    "ok": true,
+    "catatan": "Jumlah yang diminta tidak tersedia, silakan coba lagi nanti."
+  },
+  {
+    "id": "07-stok-cukup",
+    "judul": "Beli 5 barang (tepat sama dengan stok) -> berhasil",
+    "file": "07-stok-cukup.png",
+    "ok": true,
+    "catatan": "berhasil ditambahkan ke keranjang."
+  },
+  {
+    "id": "08-harga-rolex-terpotong",
+    "judul": "Bukti masalah harga: Rolex tampil Rp 100.000.000,00 (tersimpan 99.999.999,9999; harga asli sekitar Rp 224 juta)",
+    "file": "08-harga-rolex-terpotong.png",
+    "ok": true,
+    "catatan": ""
+  },
+  {
+    "id": "09-admin-harga-terlalu-besar",
+    "judul": "Admin mengisi harga 100.000.000 -> ditolak (setelah perbaikan v1.0.2)",
+    "file": "09-admin-harga-terlalu-besar.png",
+    "ok": true,
+    "catatan": "The price field must not be greater than 99999999.9999."
+  },
+  {
+    "id": "10-api-stok",
+    "judul": "API: tambah ke keranjang melebihi stok",
+    "file": "10-api-stok.png",
+    "ok": true,
+    "catatan": "POST /api/checkout/cart -> 400; POST /api/checkout/cart -> 200"
+  },
+  {
+    "id": "11-api-tanpa-quantity",
+    "judul": "API: tambah ke keranjang tanpa jumlah (masalah no. 6)",
+    "file": "11-api-tanpa-quantity.png",
+    "ok": true,
+    "catatan": "POST /api/checkout/cart -> 400"
+  },
+  {
+    "id": "12-api-qty-nol-hapus-item",
+    "judul": "API: ubah jumlah menjadi 0 menghapus barang (masalah no. 5)",
+    "file": "12-api-qty-nol-hapus-item.png",
+    "ok": true,
+    "catatan": "GET /api/checkout/cart -> 200; PUT /api/checkout/cart -> 200; GET /api/checkout/cart -> 200"
+  },
+  {
+    "id": "13-api-ongkir-tanpa-keranjang",
+    "judul": "API: cek ongkir tanpa keranjang -> error server (masalah no. 7)",
+    "file": "13-api-ongkir-tanpa-keranjang.png",
+    "ok": true,
+    "catatan": "POST /api/checkout/cart/estimate-shipping-methods -> 500; DELETE /api/checkout/cart/coupon -> 500"
+  },
+  {
+    "id": "14-api-email-tidak-valid",
+    "judul": "API: alamat checkout dengan email tidak valid diterima (masalah no. 11)",
+    "file": "14-api-email-tidak-valid.png",
+    "ok": true,
+    "catatan": "POST /api/checkout/cart -> 200; POST /api/checkout/onepage/addresses -> 200; POST /api/checkout/onepage/addresses -> 422"
+  },
+  {
+    "id": "15-pest-hasil-pengujian",
+    "judul": "Hasil 112 kasus uji otomatis (FASE pengujian, run 1)",
+    "file": "15-pest-hasil-pengujian.png",
+    "ok": true,
+    "catatan": "sumber: F4-run1-output.txt"
+  },
+  {
+    "id": "16-pest-minorder-sebelum",
+    "judul": "Perbaikan 1 (minimum order): test SEBELUM diperbaiki -> gagal",
+    "file": "16-pest-minorder-sebelum.png",
+    "ok": true,
+    "catatan": "sumber: F5-DEF-03-merah-run1.txt"
+  },
+  {
+    "id": "17-pest-minorder-sesudah",
+    "judul": "Perbaikan 1 (minimum order): test SESUDAH diperbaiki -> lolos",
+    "file": "17-pest-minorder-sesudah.png",
+    "ok": true,
+    "catatan": "sumber: F5-DEF-03-hijau-run1.txt"
+  },
+  {
+    "id": "18-pest-harga-sebelum",
+    "judul": "Perbaikan 2 (batas harga): test SEBELUM diperbaiki -> gagal",
+    "file": "18-pest-harga-sebelum.png",
+    "ok": true,
+    "catatan": "sumber: F5-DEF-01-merah-run1.txt"
+  },
+  {
+    "id": "19-pest-harga-sesudah",
+    "judul": "Perbaikan 2 (batas harga): test SESUDAH diperbaiki -> lolos",
+    "file": "19-pest-harga-sesudah.png",
+    "ok": true,
+    "catatan": "sumber: F5-DEF-01-hijau-run1.txt"
+  },
+  {
+    "id": "20-pest-regresi-akhir",
+    "judul": "Pengecekan ulang setelah kedua perbaikan (test bawaan tetap lolos)",
+    "file": "20-pest-regresi-akhir.png",
+    "ok": true,
+    "catatan": ""
+  }
+]

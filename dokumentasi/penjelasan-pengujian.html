@@ -82,6 +82,12 @@
   .timeline div { position: relative; margin-bottom: 12px; }
   .timeline div::before { content: ""; position: absolute; left: -25px; top: 7px; width: 12px; height: 12px;
     border-radius: 50%; background: var(--accent); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 10px 0 18px; }
+  .shots.one { grid-template-columns: 1fr; }
+  figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); display: flex; flex-direction: column; }
+  figure img { width: 100%; display: block; border-bottom: 1px solid var(--line); background: #fff; max-height: 520px; object-fit: cover; object-position: top; }
+  .shots.one figure img { max-height: none; }
+  figcaption { padding: 10px 12px; font-size: 14px; line-height: 1.5; }
   footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }
   @media (max-width: 640px) {
     h1 { font-size: 24px; } section, header.hero { padding: 18px; }
@@ -106,6 +112,7 @@
     <div class="stat"><b>90</b><span>lolos</span></div>
     <div class="stat"><b>15</b><span>masalah ditemukan</span></div>
     <div class="stat"><b>2</b><span>masalah diperbaiki</span></div>
+    <div class="stat"><b>20</b><span>screenshot bukti</span></div>
   </div>
 </header>
 
@@ -121,6 +128,7 @@
     <li><a href="#s7">Perbaikan pertama (v1.0.1)</a></li>
     <li><a href="#s8">Perbaikan kedua (v1.0.2)</a></li>
     <li><a href="#s9">Pengecekan ulang</a></li>
+    <li><a href="#sbukti">Bukti screenshot pengujian</a></li>
     <li><a href="#s10">Riwayat Git</a></li>
     <li><a href="#s11">Kesimpulan</a></li>
   </ol>
@@ -267,8 +275,71 @@
   </ul>
 </section>
 
+<section id="sbukti">
+  <h2><span class="num">10</span> Bukti screenshot pengujian</h2>
+  <p>Screenshot diambil otomatis dengan browser Chrome yang dijalankan oleh skrip, supaya langkahnya bisa diulang persis sama. Untuk pengujian lewat browser, kami menjalankan toko di alamat <code>http://127.0.0.1:8001</code> yang memakai <b>database salinan</b> <code>bagisto_uji</code>. Database ini disalin dari backup database asli, sehingga produk, pelanggan, dan pesanannya sama persis, tetapi semua perubahan saat pengujian tidak menyentuh database asli. Kami sempat memastikan server benar-benar memakai database salinan dengan membuat akun khusus yang hanya ada di <code>bagisto_uji</code>, lalu mencoba login dengan akun itu.</p>
+  <p>Di database salinan, stok produk <i>Red Nail Polish</i> kami ubah menjadi 5 supaya batas stok mudah diuji. Semua screenshot ada di folder <code>dokumentasi/screenshot/</code>.</p>
+
+  <h3>A. Pengujian lewat halaman toko</h3>
+  <div class="shots">
+    <figure><a href="screenshot/01-beranda-toko.png"><img src="screenshot/01-beranda-toko.png" alt="Halaman kategori toko" loading="lazy"></a>
+      <figcaption><b>01 · Halaman kategori Smartphone.</b> Toko berjalan dengan data salinan: produk, harga Rupiah, dan label diskon tampil. (Foto produk belum termuat saat screenshot otomatis diambil.)</figcaption></figure>
+    <figure><a href="screenshot/02-login-gagal.png"><img src="screenshot/02-login-gagal.png" alt="Login gagal" loading="lazy"></a>
+      <figcaption><b>02 · Login dengan password salah.</b> Login ditolak dan pengguna tetap di halaman login. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/03-login-berhasil.png"><img src="screenshot/03-login-berhasil.png" alt="Login berhasil" loading="lazy"></a>
+      <figcaption><b>03 · Login dengan password benar.</b> Pelanggan masuk ke halaman akun. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/04-pesanan-sendiri.png"><img src="screenshot/04-pesanan-sendiri.png" alt="Pesanan sendiri" loading="lazy"></a>
+      <figcaption><b>04 · Membuka pesanan milik sendiri (#8).</b> Detail pesanan tampil. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/05-pesanan-orang-lain.png"><img src="screenshot/05-pesanan-orang-lain.png" alt="Pesanan orang lain 404" loading="lazy"></a>
+      <figcaption><b>05 · Membuka pesanan milik pelanggan lain (#1).</b> Sistem menjawab "Halaman Tidak Ditemukan" (404), jadi data orang lain aman. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/06-stok-melebihi.png"><img src="screenshot/06-stok-melebihi.png" alt="Stok melebihi" loading="lazy"></a>
+      <figcaption><b>06 · Membeli 6 barang padahal stok 5.</b> Muncul pesan "Jumlah yang diminta tidak tersedia". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/07-stok-cukup.png"><img src="screenshot/07-stok-cukup.png" alt="Stok cukup" loading="lazy"></a>
+      <figcaption><b>07 · Membeli 5 barang (tepat sama dengan stok).</b> Barang berhasil masuk keranjang. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/08-harga-rolex-terpotong.png"><img src="screenshot/08-harga-rolex-terpotong.png" alt="Harga Rolex terpotong" loading="lazy"></a>
+      <figcaption><b>08 · Bukti masalah no. 1 (harga terpotong).</b> Harga Rolex seharusnya sekitar Rp 224 juta, tetapi tersimpan 99.999.999,9999 dan tampil <b>Rp 100.000.000,00</b>. Data ini masuk sebelum perbaikan v1.0.2, jadi tetap terpotong. <span class="pill bad">Masalah</span></figcaption></figure>
+  </div>
+
+  <h3>B. Pengujian di halaman admin (setelah perbaikan v1.0.2)</h3>
+  <div class="shots one">
+    <figure><a href="screenshot/09-admin-harga-terlalu-besar.png"><img src="screenshot/09-admin-harga-terlalu-besar.png" alt="Admin harga terlalu besar" loading="lazy"></a>
+      <figcaption><b>09 · Admin mengisi harga 100.000.000 lalu menekan Save Product.</b> Setelah perbaikan, harga ditolak dengan pesan "The price field must not be greater than 99999999.9999." Sebelum perbaikan, harga ini diterima lalu terpotong diam-diam (lihat screenshot 08 dan 18). <span class="pill fix">Sudah diperbaiki</span></figcaption></figure>
+  </div>
+
+  <h3>C. Pengujian API (POST / PUT / GET / DELETE)</h3>
+  <p>Permintaan dikirim dari dalam browser ke API toko, lalu permintaan dan jawabannya ditampilkan dalam satu panel. Label hijau berarti jawaban berhasil (2xx), kuning berarti ditolak (4xx), dan merah berarti error server (5xx).</p>
+  <div class="shots">
+    <figure><a href="screenshot/10-api-stok.png"><img src="screenshot/10-api-stok.png" alt="API stok" loading="lazy"></a>
+      <figcaption><b>10 · Tambah ke keranjang lewat API.</b> 6 barang ditolak (400), 5 barang diterima (200). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/11-api-tanpa-quantity.png"><img src="screenshot/11-api-tanpa-quantity.png" alt="API tanpa quantity" loading="lazy"></a>
+      <figcaption><b>11 · Tambah ke keranjang tanpa jumlah (masalah no. 6).</b> Ditolak 400, padahal seharusnya otomatis 1 barang. <span class="pill bad">Masalah</span></figcaption></figure>
+    <figure><a href="screenshot/12-api-qty-nol-hapus-item.png"><img src="screenshot/12-api-qty-nol-hapus-item.png" alt="API qty nol" loading="lazy"></a>
+      <figcaption><b>12 · Ubah jumlah menjadi 0 (masalah no. 5).</b> Jawaban 200 dengan pesan "Jumlah tidak boleh kurang dari satu", tetapi keranjang setelahnya <b>kosong</b>: barangnya terhapus. <span class="pill bad">Masalah</span></figcaption></figure>
+    <figure><a href="screenshot/13-api-ongkir-tanpa-keranjang.png"><img src="screenshot/13-api-ongkir-tanpa-keranjang.png" alt="API tanpa keranjang" loading="lazy"></a>
+      <figcaption><b>13 · Cek ongkir dan hapus kupon tanpa keranjang (masalah no. 7).</b> Keduanya membuat error server (500). <span class="pill bad">Masalah</span></figcaption></figure>
+    <figure><a href="screenshot/14-api-email-tidak-valid.png"><img src="screenshot/14-api-email-tidak-valid.png" alt="API email tidak valid" loading="lazy"></a>
+      <figcaption><b>14 · Alamat checkout dengan email "bukan-email" (masalah no. 11).</b> Diterima (200). Sebagai pembanding, kode pos 1 karakter ditolak (422), artinya validasi lain berjalan. <span class="pill bad">Masalah</span></figcaption></figure>
+  </div>
+
+  <h3>D. Hasil test otomatis (Pest)</h3>
+  <div class="shots">
+    <figure><a href="screenshot/15-pest-hasil-pengujian.png"><img src="screenshot/15-pest-hasil-pengujian.png" alt="Hasil Pest" loading="lazy"></a>
+      <figcaption><b>15 · Hasil 112 kasus uji otomatis.</b> Centang hijau = lolos, silang merah = gagal. Total 91 lolos (termasuk 1 test pengaman database) dan 22 gagal.</figcaption></figure>
+    <figure><a href="screenshot/20-pest-regresi-akhir.png"><img src="screenshot/20-pest-regresi-akhir.png" alt="Regresi akhir" loading="lazy"></a>
+      <figcaption><b>20 · Pengecekan ulang setelah kedua perbaikan.</b> Semua test bawaan Bagisto tetap lolos; test kami tinggal 20 gagal (dari 22).</figcaption></figure>
+    <figure><a href="screenshot/16-pest-minorder-sebelum.png"><img src="screenshot/16-pest-minorder-sebelum.png" alt="Min order sebelum" loading="lazy"></a>
+      <figcaption><b>16 · Perbaikan 1, sebelum.</b> 2 dari 5 test minimum order gagal. <span class="pill bad">Gagal</span></figcaption></figure>
+    <figure><a href="screenshot/17-pest-minorder-sesudah.png"><img src="screenshot/17-pest-minorder-sesudah.png" alt="Min order sesudah" loading="lazy"></a>
+      <figcaption><b>17 · Perbaikan 1, sesudah (v1.0.1).</b> Kelima test lolos. <span class="pill good">Lolos</span></figcaption></figure>
+    <figure><a href="screenshot/18-pest-harga-sebelum.png"><img src="screenshot/18-pest-harga-sebelum.png" alt="Harga sebelum" loading="lazy"></a>
+      <figcaption><b>18 · Perbaikan 2, sebelum.</b> 3 dari 7 test batas harga gagal. <span class="pill bad">Gagal</span></figcaption></figure>
+    <figure><a href="screenshot/19-pest-harga-sesudah.png"><img src="screenshot/19-pest-harga-sesudah.png" alt="Harga sesudah" loading="lazy"></a>
+      <figcaption><b>19 · Perbaikan 2, sesudah (v1.0.2).</b> Ketujuh test lolos. <span class="pill good">Lolos</span></figcaption></figure>
+  </div>
+</section>
+
 <section id="s10">
-  <h2><span class="num">10</span> Riwayat Git</h2>
+  <h2><span class="num">11</span> Riwayat Git</h2>
   <div class="timeline">
     <div><b>v1.0.0-baseline</b>: kondisi awal Bagisto 2.3.19 tanpa perubahan kode, plus dokumen awal.</div>
     <div><b>v1.0.1</b>: perbaikan minimum order (masalah nomor 2).</div>
@@ -279,7 +350,7 @@
 </section>
 
 <section id="s11">
-  <h2><span class="num">11</span> Kesimpulan</h2>
+  <h2><span class="num">12</span> Kesimpulan</h2>
   <ul>
     <li>Bagian paling penting toko, yaitu stok dan hak akses pesanan, ternyata <b>aman</b>.</li>
     <li>Masalah yang paling banyak berkaitan dengan <b>penanganan input yang tidak lengkap atau tidak wajar</b>: sistem sering menjawab dengan error server, bukan pesan yang jelas.</li>
