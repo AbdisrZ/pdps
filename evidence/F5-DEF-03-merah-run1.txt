@@ -1,0 +1,41 @@
+
+   FAIL  Packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest
+  ⨯ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-01 diskon=1, pajak 1… 0.47s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-02 diskon=1, pajak 0… 0.12s  
+  ⨯ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-03 pajak=1 + diskon=… 0.10s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-04 pajak=1 saja, paj… 0.11s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-05 tanpa opsi -> sub… 0.10s  
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest > it getOrderAmount sesuai REQ-CO-05 untuk k…   
+  Failed asserting that 90 is identical to 100.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest.php:52
+     48▕         'expected' => $expected,
+     49▕         'getOrderAmount' => $actual,
+     50▕     ]);
+     51▕ 
+  ➜  52▕     expect($actual)->toBe($expected);
+     53▕ })->with('fx1_min_order');
+     54▕
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest.php:52
+
+  ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────  
+   FAILED  Packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest > it getOrderAmount sesuai REQ-CO-05 untuk k…   
+  Failed asserting that 85 is identical to 95.
+
+  at packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest.php:52
+     48▕         'expected' => $expected,
+     49▕         'getOrderAmount' => $actual,
+     50▕     ]);
+     51▕ 
+  ➜  52▕     expect($actual)->toBe($expected);
+     53▕ })->with('fx1_min_order');
+     54▕
+
+  1   packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest.php:52
+
+
+  Tests:    2 failed, 3 passed (5 assertions)
+  Duration: 1.24s
+

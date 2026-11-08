@@ -1,0 +1,48 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Checkout\CartTest
+  ✓ it should display the cart items for a guest user                                                            1.18s  
+  ✓ it should display the cart items for a customer                                                              0.54s  
+  ✓ it should fails the validation error when the cart item id not provided when remove product items into the…  0.34s  
+  ✓ it should fails the validation error when the cart item id not provided when remove product items into the…  0.32s  
+  ✓ it should fails the validation error when the wrong cart item id provided when remove product items to the…  0.33s  
+  ✓ it should fails the validation error when the wrong cart item id provided when remove product items to the…  0.32s  
+  ✓ it should remove only one product item from the cart for the guest user                                      0.34s  
+  ✓ it should remove only one product item from the cart for the customer                                        0.31s  
+  ✓ it should only remove one product from the cart for now the cart will contains two products for a guest use… 0.52s  
+  ✓ it should only remove one product from the cart for now the cart will contains two products for a customer   0.68s  
+  ✓ it should not allow a user to remove another user's cart item                                                0.38s  
+  ✓ it should not allow a guest user to remove another guest user's cart item                                    0.36s  
+  ✓ it should not allow a guest user to remove a customer's cart item                                            0.33s  
+  ✓ it should not allow a customer to remove a guest user's cart item                                            0.34s  
+  ✓ it should remove all products from the cart for a guest user                                                 0.50s  
+  ✓ it should remove all products from the cart for a customer                                                   0.51s  
+  ✓ it should update cart quantities for guest user                                                              0.65s  
+  ✓ it should update cart quantities for customer                                                                0.81s  
+  ✓ it should fails the validation error when the product id not provided when add a simple product to the cart  0.40s  
+  ✓ it should add a simple product to the cart for guest user                                                    0.54s  
+  ✓ it should add a simple product to the cart for customer                                                      0.46s  
+  ✓ it should fails the validation error when the product id not provided add a bundle product to the cart       1.22s  
+  ✓ it should add a bundle product to the cart for guest user                                                    2.05s  
+  ✓ it should add a bundle product to the cart for customer                                                      2.08s  
+  ✓ it should fails the validation when the product id not provided when add a configurable product to the cart  2.36s  
+  ✓ it should add a configurable product to the cart for guest user                                              3.13s  
+  ✓ it should add a configurable product to the cart for customer                                                3.29s  
+  ✓ it should fails the validation error when the product id not provided when add a downloadable product to th… 0.58s  
+  ✓ it should add a downloadable product to the cart for guest user                                              0.74s  
+  ✓ it should add a downloadable product to the cart for customer                                                0.70s  
+  ✓ it should fails the validation error when the product id not provided when add a grouped product to the car… 0.99s  
+  ✓ it should add a grouped product to the cart for guest user                                                   1.80s  
+  ✓ it should add a grouped product to the cart for customer                                                     1.33s  
+  ✓ it should fails the validation error when the product id not provided when add a virtual product to the car… 0.36s  
+  ✓ it should add a virtual product to the cart for guest user                                                   0.53s  
+  ✓ it should add a virtual product to the cart for customer                                                     0.53s  
+  ✓ it should check including tax rate when add a product to the cart based on shipping address                  0.76s  
+  ✓ it should check including tax rate when add a product to the cart based on billing address                   0.62s  
+  ✓ it should check including tax rate when add a product to the cart based on shipping origin                   0.73s  
+  ✓ it should check excluding tax rate when add a product to the cart based on billing address                   0.60s  
+  ✓ it should check excluding tax rate when add a product to the cart based on shipping address                  0.73s  
+  ✓ it should check excluding tax rate when add a product to the cart based on shipping origin                   0.72s  
+
+  Tests:    42 passed (508 assertions)
+  Duration: 36.33s
+
