@@ -1,0 +1,212 @@
+############################################################################
+# PENGUJIAN API TOKO BAGISTO (VS Code + ekstensi REST Client)
+#
+# Server  : http://127.0.0.1:8001  (memakai database salinan bagisto_uji)
+# Produk  : #16 "Red Nail Polish", stok = 5
+#
+# Persiapan (sekali sebelum mulai, di terminal VS Code):
+#   node dokumentasi/uji-api/siapkan-sesi.mjs
+# Skrip itu membuat sesi tamu baru + token CSRF dan menyimpannya di file .env
+# di folder ini. Request di bawah membaca nilainya lewat {{$dotenv ...}}.
+#
+# Cara menguji: klik tulisan "Send Request" di atas tiap request, BERURUTAN
+# dari nomor 1. Hasil (status + isi jawaban) muncul di panel kanan.
+############################################################################
+
+@base = {{$dotenv BASE}}
+@produk = {{$dotenv PRODUK}}
+
+
+############################################################################
+# BAGIAN A - STOK BARANG (sesi A)
+############################################################################
+
+### 1. Tambah 6 barang padahal stok hanya 5  ->  diharapkan DITOLAK (400)
+# @no-cookie-jar
+POST {{base}}/api/checkout/cart
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_A}}
+Cookie: {{$dotenv COOKIE_A}}
+
+{
+  "product_id": {{produk}},
+  "quantity": 6
+}
+
+
+### 2. Tambah 5 barang (tepat sama dengan stok)  ->  diharapkan BERHASIL (200)
+# @no-cookie-jar
+POST {{base}}/api/checkout/cart
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_A}}
+Cookie: {{$dotenv COOKIE_A}}
+
+{
+  "product_id": {{produk}},
+  "quantity": 5
+}
+
+
+############################################################################
+# BAGIAN B - TAMBAH KE KERANJANG TANPA JUMLAH (masalah no. 6)
+############################################################################
+
+### 3. Tambah barang tanpa field "quantity"  ->  seharusnya otomatis 1 (200)
+# @no-cookie-jar
+POST {{base}}/api/checkout/cart
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_A}}
+Cookie: {{$dotenv COOKIE_A}}
+
+{
+  "product_id": {{produk}}
+}
+
+
+############################################################################
+# BAGIAN C - UBAH JUMLAH MENJADI 0 (masalah no. 5, sesi D sudah berisi 2 barang)
+############################################################################
+
+### 4. Lihat isi keranjang SEBELUM  ->  items_qty = 2
+# @no-cookie-jar
+GET {{base}}/api/checkout/cart
+Accept: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_D}}
+Cookie: {{$dotenv COOKIE_D}}
+
+
+### 5. Ubah jumlah barang menjadi 0  ->  seharusnya ditolak dan barang TETAP ada
+# @no-cookie-jar
+PUT {{base}}/api/checkout/cart
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_D}}
+Cookie: {{$dotenv COOKIE_D}}
+
+{
+  "qty": {
+    "{{$dotenv ITEM_D}}": 0
+  }
+}
+
+
+### 6. Lihat isi keranjang SESUDAH  ->  apakah barang masih ada?
+# @no-cookie-jar
+GET {{base}}/api/checkout/cart
+Accept: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_D}}
+Cookie: {{$dotenv COOKIE_D}}
+
+
+############################################################################
+# BAGIAN D - REQUEST SAAT BELUM PUNYA KERANJANG (masalah no. 7, sesi B)
+############################################################################
+
+### 7. Cek ongkir tanpa keranjang  ->  seharusnya 4xx, bukan error server 500
+# @no-cookie-jar
+POST {{base}}/api/checkout/cart/estimate-shipping-methods
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_B}}
+Cookie: {{$dotenv COOKIE_B}}
+
+{
+  "country": "ID",
+  "state": "Jawa Barat",
+  "postcode": "40115"
+}
+
+
+### 8. Hapus kupon tanpa keranjang  ->  seharusnya bukan error server 500
+# @no-cookie-jar
+DELETE {{base}}/api/checkout/cart/coupon
+Accept: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_B}}
+Cookie: {{$dotenv COOKIE_B}}
+
+
+############################################################################
+# BAGIAN E - ALAMAT CHECKOUT (masalah no. 11, sesi C)
+############################################################################
+
+### 9. Masukkan 1 barang ke keranjang (persiapan)
+# @no-cookie-jar
+POST {{base}}/api/checkout/cart
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_C}}
+Cookie: {{$dotenv COOKIE_C}}
+
+{
+  "product_id": {{produk}},
+  "quantity": 1
+}
+
+
+### 10. Isi alamat dengan email "bukan-email"  ->  seharusnya DITOLAK (422)
+# @no-cookie-jar
+POST {{base}}/api/checkout/onepage/addresses
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_C}}
+Cookie: {{$dotenv COOKIE_C}}
+
+{
+  "billing": {
+    "first_name": "Budi",
+    "last_name": "Santoso",
+    "email": "bukan-email",
+    "address": ["Jl. Uji Coba No. 1"],
+    "city": "Bandung",
+    "country": "ID",
+    "state": "Jawa Barat",
+    "postcode": "40115",
+    "phone": "081234567890",
+    "use_for_shipping": 1
+  }
+}
+
+
+### 11. Pembanding: kode pos hanya 1 karakter  ->  diharapkan DITOLAK (422)
+# @no-cookie-jar
+POST {{base}}/api/checkout/onepage/addresses
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_C}}
+Cookie: {{$dotenv COOKIE_C}}
+
+{
+  "billing": {
+    "first_name": "Budi",
+    "last_name": "Santoso",
+    "email": "budi@example.com",
+    "address": ["Jl. Uji Coba No. 1"],
+    "city": "Bandung",
+    "country": "ID",
+    "state": "Jawa Barat",
+    "postcode": "1",
+    "phone": "081234567890",
+    "use_for_shipping": 1
+  }
+}
+
+
+############################################################################
+# BAGIAN F - LOGIN LEWAT API (sesi B)
+############################################################################
+
+### 12. Login API dengan password salah  ->  diharapkan DITOLAK (403)
+# @no-cookie-jar
+POST {{base}}/api/customer/login
+Accept: application/json
+Content-Type: application/json
+X-CSRF-TOKEN: {{$dotenv TOKEN_B}}
+Cookie: {{$dotenv COOKIE_B}}
+
+{
+  "email": "customer@example.com",
+  "password": "passwordsalah"
+}
