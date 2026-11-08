@@ -1,0 +1,572 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laporan Pengujian Bagisto</title>
+<meta name="description" content="Laporan pengujian dan pemeliharaan sistem toko online Bagisto 2.3.19 oleh Abdi Soleh R, Yunita Yasman, dan Bagus Fahrezi.">
+<style>
+  :root {
+    --bg: #f7f7f5; --paper: #ffffff; --ink: #1f2328; --muted: #5b6470;
+    --line: #e3e5e8; --accent: #2f6f5e; --accent-soft: #e6f2ee;
+    --warn: #9a5b00; --warn-soft: #fff4e0; --bad: #a2342b; --bad-soft: #fdecea;
+    --good: #2f6f3e; --good-soft: #e8f5ea; --code: #f1f3f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a; --paper: #1d2024; --ink: #e6e8eb; --muted: #a2a9b3;
+      --line: #30353b; --accent: #6fc2a8; --accent-soft: #1f3a33;
+      --warn: #f0b45a; --warn-soft: #3a2e1a; --bad: #f08a80; --bad-soft: #3d2220;
+      --good: #82cf92; --good-soft: #1f3524; --code: #262a2f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  }
+  a { color: var(--accent); }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  header.hero {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 28px 28px 22px; margin-bottom: 20px;
+  }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 6px 0 10px; }
+  .lead { color: var(--muted); margin: 0; }
+  .meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; margin-top: 18px; }
+  .meta-box { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px; }
+  .meta-box h4 { margin: 0 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+  .meta-box ol, .meta-box ul { margin: 0; padding-left: 20px; }
+  .meta-box li { margin: 2px 0; }
+  .authors li { font-weight: 600; letter-spacing: .02em; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 16px; }
+  .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 24px; line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  nav.toc {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 22px; margin-bottom: 20px;
+  }
+  nav.toc ol { margin: 6px 0 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+  nav.toc a { text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  section {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px 28px; margin-bottom: 16px;
+  }
+  h2 { font-size: 21px; margin: 0 0 12px; display: flex; gap: 10px; align-items: baseline; }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; }
+  h3 { font-size: 17px; margin: 20px 0 8px; }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin: 4px 0; }
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: .9em;
+    font-family: "Cascadia Code", Consolas, monospace; word-break: break-word; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { background: var(--bg); font-weight: 600; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  .note { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .note.warn { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+  .note.info { background: var(--accent-soft); border-left: 4px solid var(--accent); }
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.fix { background: var(--accent-soft); color: var(--accent); }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: var(--bg); }
+  .card h4 { margin: 0 0 6px; font-size: 15px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 38px; margin: 10px 0; }
+  .steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px;
+    border-radius: 50%; background: var(--accent); color: var(--paper);
+    font-size: 13px; font-weight: 700; display: grid; place-items: center;
+  }
+  .timeline { border-left: 2px solid var(--line); margin-left: 6px; padding-left: 18px; }
+  .timeline div { position: relative; margin-bottom: 12px; }
+  .timeline div::before { content: ""; position: absolute; left: -25px; top: 7px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--accent); }
+  .shots { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; margin: 10px 0 18px; }
+  .shots.one { grid-template-columns: 1fr; }
+  figure { margin: 0; border: 1px solid var(--line); border-radius: 10px; overflow: hidden; background: var(--bg); display: flex; flex-direction: column; }
+  figure img { width: 100%; display: block; border-bottom: 1px solid var(--line); background: #fff; max-height: 520px; object-fit: cover; object-position: top; }
+  .shots.one figure img { max-height: none; }
+  figcaption { padding: 10px 12px; font-size: 14px; line-height: 1.5; }
+  .shots.two { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); margin: 8px 0 6px; }
+  .shots.two figure img { max-height: 340px; object-fit: contain; background: #1e1e1e; }
+  .apicase { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 12px 0; }
+  .apihead { font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .apiresult { margin: 4px 0 0; font-size: 14.5px; }
+  .repo { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .repo a.link { display: block; border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; text-decoration: none; background: var(--bg); }
+  .repo a.link b { display: block; color: var(--ink); font-size: 14.5px; }
+  .repo a.link span { font-size: 13px; color: var(--accent); word-break: break-all; }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }
+  @media (max-width: 640px) {
+    h1 { font-size: 24px; } section, header.hero { padding: 18px; }
+    nav.toc ol { columns: 1; }
+    .shots.two { grid-template-columns: 1fr; }
+  }
+  @media print {
+    body { background: #fff; color: #000; } .wrap { max-width: none; padding: 0; }
+    section, header.hero, nav.toc { border: 0; padding: 8px 0; break-inside: avoid-page; }
+    nav.toc { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Laporan Tugas · Pengujian dan Pemeliharaan Sistem · Teknik Informatika UNDIRA</div>
+  <h1>Laporan Pengujian dan Pemeliharaan Sistem Toko Online Bagisto 2.3.19</h1>
+  <p class="lead">Kepada Yth. Bapak/Ibu Dosen Penguji. Laporan ini menguraikan pengujian yang kami lakukan terhadap aplikasi toko online open source Bagisto: persiapan lingkungan uji yang aman, penyusunan kasus uji, pelaksanaan pengujian otomatis, pengujian API, dan pengujian lewat halaman web, temuan defect, serta perbaikan dua defect beserta uji regresinya. Seluruh hasil dapat diperiksa langsung pada repositori GitHub yang kami cantumkan.</p>
+  <div class="meta">
+    <div class="meta-box">
+      <h4>Disusun oleh</h4>
+      <ol class="authors">
+        <li>ABDI SOLEH R</li>
+        <li>YUNITA YASMAN</li>
+        <li>BAGUS FAHREZI</li>
+      </ol>
+    </div>
+    <div class="meta-box">
+      <h4>Repositori</h4>
+      <ul>
+        <li><a href="https://github.com/AbdisrZ/pdps">github.com/AbdisrZ/pdps</a> (publik, branch <code>praktikum</code>)</li>
+        <li>Rilis: <a href="https://github.com/AbdisrZ/pdps/tags">v1.0.0-baseline, v1.0.1, v1.0.2</a></li>
+        <li>Laporan daring: <a href="https://abdisrz.github.io/pdps/">abdisrz.github.io/pdps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>112</b><span>kasus uji otomatis</span></div>
+    <div class="stat"><b>90</b><span>lolos</span></div>
+    <div class="stat"><b>15</b><span>defect ditemukan</span></div>
+    <div class="stat"><b>2</b><span>defect diperbaiki</span></div>
+    <div class="stat"><b>59</b><span>screenshot bukti</span></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>Daftar Isi</strong>
+  <ol>
+    <li><a href="#s0">Repositori dan cara memeriksa</a></li>
+    <li><a href="#s1">Objek pengujian dan alasan pemilihan</a></li>
+    <li><a href="#s2">Persiapan lingkungan uji</a></li>
+    <li><a href="#s3">Mempelajari alur sistem</a></li>
+    <li><a href="#s4">Penentuan area yang diuji</a></li>
+    <li><a href="#s5">Metode pengujian</a></li>
+    <li><a href="#s6">Hasil pengujian</a></li>
+    <li><a href="#s7">Perbaikan pertama (v1.0.1)</a></li>
+    <li><a href="#s8">Perbaikan kedua (v1.0.2)</a></li>
+    <li><a href="#s9">Uji regresi</a></li>
+    <li><a href="#sbukti">Bukti screenshot pengujian</a></li>
+    <li><a href="#s10">Riwayat versi di Git</a></li>
+    <li><a href="#s11">Kesimpulan dan saran</a></li>
+  </ol>
+</nav>
+
+<section id="s0">
+  <h2><span class="num">0</span> Repositori dan cara memeriksa</h2>
+  <p>Seluruh kode, file pengujian, bukti, dan laporan ini tersimpan di repositori publik berikut. Bapak/Ibu dapat membuka setiap tautan tanpa perlu masuk ke akun GitHub.</p>
+  <div class="repo">
+    <a class="link" href="https://github.com/AbdisrZ/pdps"><b>Repositori utama</b><span>github.com/AbdisrZ/pdps</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/tags"><b>Daftar rilis (tag)</b><span>v1.0.0-baseline · v1.0.1 · v1.0.2</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/commit/141dcdd2110258a9e8738b2d5177513f9ba32732"><b>Perbaikan 1 (v1.0.1): minimum order</b><span>commit 141dcdd</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/commit/4dad89565fa36063d4fb4852ca4e86e52cfcf523"><b>Perbaikan 2 (v1.0.2): batas harga</b><span>commit 4dad895</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/compare/v1.0.0-baseline...v1.0.2"><b>Seluruh perubahan sejak baseline</b><span>compare v1.0.0-baseline...v1.0.2</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/tree/praktikum/packages/Webkul/Shop/tests/Feature/Praktikum"><b>File test otomatis (Pest)</b><span>packages/Webkul/Shop/tests/Feature/Praktikum</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/blob/praktikum/dokumentasi/uji-api/pengujian-api.http"><b>File pengujian API (VS Code REST Client)</b><span>dokumentasi/uji-api/pengujian-api.http</span></a>
+    <a class="link" href="https://github.com/AbdisrZ/pdps/tree/praktikum/lampiran-teknis"><b>Lampiran teknis</b><span>dokumen rinci, hasil per kasus, laporan coverage</span></a>
+  </div>
+  <p style="margin-top:12px">Pada halaman commit perbaikan, baris berwarna merah adalah kode yang dihapus dan baris hijau adalah kode yang ditambahkan. Halaman <i>compare</i> menampilkan seluruh perubahan kami dibandingkan dengan Bagisto asli.</p>
+</section>
+
+<section id="s1">
+  <h2><span class="num">1</span> Objek pengujian dan alasan pemilihan</h2>
+  <p>Objek pengujian kami adalah <b>Bagisto</b>, aplikasi toko online open source berbasis Laravel. Aplikasi kami instal langsung dari repositori resminya (<a href="https://github.com/bagisto/bagisto">github.com/bagisto/bagisto</a>) dan dijalankan secara lokal menggunakan XAMPP (PHP 8.2, MySQL 8.0).</p>
+  <p>Kami memilih Bagisto karena fiturnya menyerupai toko online sungguhan: pendaftaran dan login pelanggan, keranjang belanja, pengelolaan stok, checkout dengan ongkos kirim dan metode pembayaran, kupon, serta halaman admin untuk mengelola produk dan pesanan. Kelengkapan ini memberi banyak bahan untuk menyusun kasus uji yang bermakna.</p>
+  <p>Versi yang diuji adalah <b>Bagisto 2.3.19</b>. Versi terbaru (2.5) memerlukan PHP 8.4, sedangkan lingkungan kami menggunakan PHP 8.2, dan 2.3.19 adalah rilis terakhir yang mendukung PHP 8.2. Agar toko menyerupai kondisi nyata, kami mengisinya dengan data contoh: 195 produk lengkap dengan gambar dan harga dalam Rupiah, 25 pelanggan, dan 40 pesanan.</p>
+</section>
+
+<section id="s2">
+  <h2><span class="num">2</span> Persiapan lingkungan uji</h2>
+  <p>Prinsip utama kami adalah pengujian tidak boleh merusak data toko yang asli. Untuk itu kami menyiapkan lingkungan uji sebagai berikut.</p>
+  <ol class="steps">
+    <li><b>Mencadangkan database asli.</b> Database toko (<code>bagisto</code>) dicadangkan terlebih dahulu ke file SQL sebelum pengujian dimulai.</li>
+    <li><b>Database khusus test otomatis.</b> Kami membuat database terpisah <code>bagisto_test</code> yang diisi dari awal dengan data bawaan Bagisto (kategori, bahasa, mata uang, akun admin). Dengan demikian setiap pengujian otomatis berangkat dari kondisi yang sama.</li>
+    <li><b>Database salinan untuk pengujian manual.</b> Untuk pengujian lewat halaman web dan API, kami membuat database ketiga, <code>bagisto_uji</code>, yang disalin dari cadangan database asli. Isinya sama persis dengan toko asli, tetapi seluruh perubahan selama pengujian hanya terjadi di salinan ini.</li>
+    <li><b>Memastikan aplikasi mengarah ke database yang benar.</b> Kami membuat file pengaturan terpisah (<code>.env.testing</code> dan <code>.env.uji</code>) lalu memverifikasinya. Untuk test otomatis, kami menulis satu test penjaga yang memeriksa nama database aktif. Untuk server uji, kami membuat satu akun yang hanya ada di database salinan dan memastikan akun tersebut dapat login.</li>
+    <li><b>Menghindari perintah yang berisiko.</b> Panduan instalasi Bagisto menyarankan perintah <code>bagisto:install</code>. Setelah membaca kodenya, kami mendapati perintah tersebut selalu membaca pengaturan database utama lalu mengosongkannya. Karena itu perintah ini tidak kami gunakan; database uji disiapkan dengan perintah migrasi biasa.</li>
+    <li><b>Membuktikan data asli tetap utuh.</b> Jumlah produk, pesanan, dan pelanggan di database asli dicatat sebelum dan sesudah setiap tahap pengujian. Hasilnya selalu sama: 195 produk, 40 pesanan, dan 26 pelanggan.</li>
+  </ol>
+  <div class="note info">Setiap test otomatis berjalan di dalam transaksi database yang dibatalkan di akhir test, sehingga <code>bagisto_test</code> selalu kembali bersih setelah pengujian.</div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">3</span> Mempelajari alur sistem</h2>
+  <p>Sebelum menyusun kasus uji, kami mempelajari cara kerja Bagisto pada bagian-bagian berikut, baik dari tampilan maupun dari kode programnya:</p>
+  <div class="table-wrap"><table>
+    <tr><th>Bagian</th><th>Hal yang dipelajari</th></tr>
+    <tr><td>Pendaftaran &amp; login</td><td>Password minimal 6 karakter, email harus unik, akun nonaktif atau belum terverifikasi tidak dapat masuk</td></tr>
+    <tr><td>Keranjang</td><td>Menambah, mengubah jumlah, dan menghapus barang, termasuk melalui API (<code>POST</code>, <code>PUT</code>, <code>DELETE</code> ke <code>api/checkout/cart</code>)</td></tr>
+    <tr><td>Stok barang</td><td>Jumlah pembelian tidak boleh melebihi stok; stok yang sudah dipesan pelanggan lain ikut diperhitungkan</td></tr>
+    <tr><td>Checkout</td><td>Urutan alamat → ongkos kirim → pembayaran → pesanan, serta aturan nomor telepon dan kode pos</td></tr>
+    <tr><td>Hak akses</td><td>Pelanggan A tidak boleh melihat atau mengubah keranjang dan pesanan milik pelanggan B</td></tr>
+    <tr><td>Harga produk (admin)</td><td>Aturan pengisian harga, misalnya harga diskon harus lebih kecil dari harga normal</td></tr>
+  </table></div>
+  <p>Kami juga menjalankan 132 test bawaan Bagisto yang relevan, dan <b>seluruhnya lolos</b>. Hasil ini menjadi titik awal (baseline) bahwa sistem dalam kondisi stabil sebelum kami menambahkan pengujian sendiri.</p>
+</section>
+
+<section id="s4">
+  <h2><span class="num">4</span> Penentuan area yang diuji</h2>
+  <p>Area pengujian kami tentukan berdasarkan risiko, yaitu seberapa besar kemungkinan terjadi kesalahan dan seberapa besar dampaknya bagi toko. Celah untuk diuji kami temukan dengan empat cara:</p>
+  <div class="grid2">
+    <div class="card"><h4>1. Membaca aturan validasi</h4><p>Contohnya, pada alamat checkout field email hanya diwajibkan terisi tanpa diperiksa formatnya. Dari sini kami menguji apa yang terjadi bila diisi <code>bukan-email</code>.</p></div>
+    <div class="card"><h4>2. Analisis nilai batas</h4><p>Untuk stok 5, kami menguji pembelian 4, 5, dan 6. Untuk kode pos minimal 2 karakter, kami menguji 1 dan 2. Untuk kapasitas harga 99.999.999,9999, kami menguji tepat di batas dan sedikit di atasnya.</p></div>
+    <div class="card"><h4>3. Pengujian hak akses</h4><p>Kami login sebagai pelanggan B, lalu mencoba menghapus isi keranjang, membuka pesanan, dan mencetak invoice milik pelanggan A.</p></div>
+    <div class="card"><h4>4. Mencari bagian yang belum teruji</h4><p>Kami mendapati bagian penolakan stok ("stok tidak cukup") sama sekali belum dijalankan oleh test bawaan Bagisto, sehingga bagian ini kami prioritaskan.</p></div>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="num">5</span> Metode pengujian</h2>
+  <p>Pengujian dilakukan dengan tiga cara yang saling melengkapi:</p>
+  <div class="table-wrap"><table>
+    <tr><th>Cara</th><th>Alat</th><th>Kegunaan</th></tr>
+    <tr><td>Test otomatis</td><td>Pest (framework testing Laravel)</td><td>112 kasus uji yang dapat dijalankan ulang kapan saja dengan hasil yang sama</td></tr>
+    <tr><td>Pengujian API manual</td><td>VS Code + ekstensi REST Client</td><td>Mengirim request <code>POST</code>, <code>PUT</code>, <code>GET</code>, <code>DELETE</code> dan melihat respons server secara langsung</td></tr>
+    <tr><td>Pengujian lewat halaman web</td><td>Browser Chrome yang dijalankan skrip</td><td>Menguji alur seperti yang dialami pengguna: registrasi, checkout, halaman admin</td></tr>
+  </table></div>
+  <p>Untuk setiap kasus uji kami mencatat tiga hal:</p>
+  <ul>
+    <li><b>Hasil yang diharapkan</b>, diturunkan dari aturan sistem, bukan dari perilaku sistem.</li>
+    <li><b>Hasil aktual</b>: kode respons, pesan, dan isi database.</li>
+    <li><b>Status</b>: lolos atau gagal.</li>
+  </ul>
+  <p>Setiap hasil disimpan sebagai file bukti. Seluruh test otomatis dijalankan <b>dua kali</b>. Sebuah kegagalan baru kami nyatakan sebagai <i>defect</i> apabila terjadi pada kedua percobaan dengan perilaku yang sama dan bertentangan dengan aturan yang seharusnya berlaku.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Area</th><th>Jumlah kasus</th></tr>
+    <tr><td>Hak akses</td><td>14</td></tr>
+    <tr><td>Stok</td><td>12</td></tr>
+    <tr><td>Keranjang</td><td>21</td></tr>
+    <tr><td>Alamat checkout</td><td>21</td></tr>
+    <tr><td>Ongkos kirim, pesanan, minimum order</td><td>14</td></tr>
+    <tr><td>Pendaftaran &amp; login</td><td>16</td></tr>
+    <tr><td>Harga produk</td><td>14</td></tr>
+    <tr><th>Total</th><th>112</th></tr>
+  </table></div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">6</span> Hasil pengujian</h2>
+  <p>Dari 112 kasus uji, <b>90 lolos</b> dan <b>22 gagal</b>. Ke-22 kegagalan tersebut berasal dari <b>15 defect</b>, karena satu defect dapat muncul pada beberapa kasus uji.</p>
+
+  <h3>6.1 Bagian yang terbukti aman</h3>
+  <div class="grid2">
+    <div class="card"><h4><span class="pill good">Aman</span> Stok barang</h4><p>Seluruh 12 kasus lolos. Pembelian melebihi stok selalu ditolak, termasuk saat barang ditambahkan bertahap atau jumlahnya diubah di keranjang.</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Pesanan pelanggan lain</h4><p>Pelanggan B tidak dapat membuka, membatalkan, memesan ulang, atau mencetak invoice pesanan milik A; sistem menjawab "tidak ditemukan" (404).</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Keranjang pelanggan lain</h4><p>Pelanggan B tidak dapat menghapus atau mengubah barang di keranjang milik A.</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Pendaftaran &amp; login</h4><p>Password kurang dari 6 karakter, email ganda, dan akun nonaktif semuanya ditolak dengan benar.</p></div>
+  </div>
+
+  <h3>6.2 Defect yang ditemukan</h3>
+  <div class="table-wrap"><table>
+    <tr><th>No</th><th>Area</th><th>Temuan</th><th>Cara pengujian</th><th>Status</th></tr>
+    <tr><td>1</td><td>Harga (admin)</td><td>Harga di atas Rp99.999.999 diterima, tetapi tersimpan terpotong menjadi 99.999.999,9999 tanpa peringatan</td><td>Mengubah harga menjadi 100.000.000 lewat <code>PUT</code>, lalu memeriksa database</td><td><span class="pill fix">Diperbaiki v1.0.2</span></td></tr>
+    <tr><td>2</td><td>Minimum order</td><td>Opsi "hitung dengan diskon" justru mengurangi pajak: subtotal 100 + pajak 10 dihitung 90</td><td>Menjalankan fungsi perhitungan dengan angka contoh</td><td><span class="pill fix">Diperbaiki v1.0.1</span></td></tr>
+    <tr><td>3</td><td>Minimum order</td><td>Minimum 100,50 dianggap terpenuhi oleh belanja 100,25 karena angka desimal dibuang</td><td>Sama seperti nomor 2</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>4</td><td>Harga (admin)</td><td>Harga "0" diterima, tetapi tersimpan kosong (NULL)</td><td>Mengubah harga menjadi 0, lalu memeriksa database</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>5</td><td>Keranjang</td><td>Mengubah jumlah menjadi 0 atau −1 <b>menghapus barang</b>, padahal pesan sistem menyatakan permintaan ditolak</td><td><code>PUT</code> jumlah 0, lalu memeriksa isi keranjang</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>6</td><td>Keranjang</td><td>Menambah barang tanpa menyebut jumlah ditolak dengan pesan error PHP, padahal seharusnya otomatis 1</td><td><code>POST</code> tanpa field <code>quantity</code></td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>7</td><td>Keranjang &amp; checkout</td><td>Tujuh permintaan menimbulkan error server (500), misalnya cek ongkos kirim atau hapus kupon tanpa keranjang, dan alamat tanpa data billing</td><td>Mengirim permintaan dalam kondisi tidak lengkap</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>8</td><td>Keranjang</td><td>Perubahan jumlah yang gagal tetap dibalas "OK" (200)</td><td><code>PUT</code> tanpa data jumlah</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>9</td><td>Checkout</td><td>Membuat pesanan tanpa memilih pembayaran dibalas error server (500); pesanan memang tidak dibuat</td><td>Checkout sampai akhir tanpa memilih pembayaran</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>10</td><td>Hak akses</td><td>Menghapus barang milik pelanggan lain dibalas "berhasil dihapus", padahal barangnya tidak terhapus</td><td>Login sebagai B, menghapus barang milik A</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>11</td><td>Checkout</td><td>Format email pada alamat checkout tidak diperiksa oleh server; <code>bukan-email</code> diterima lewat API</td><td>Mengisi alamat dengan email tidak valid</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>12</td><td>Checkout</td><td>Nama lebih dari 255 karakter terpotong tanpa peringatan</td><td>Mengisi nama 256 karakter</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>13</td><td>Hak akses</td><td>Checkout menerima nomor alamat milik pelanggan lain. Isi alamatnya <b>tidak</b> bocor; hanya nomornya yang tercatat</td><td>Login sebagai B, mengirim nomor alamat milik A</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>14</td><td>Login</td><td>Akun dari toko (channel) lain ditolak lewat web, tetapi <b>berhasil masuk lewat API</b></td><td>Membuat channel kedua, lalu login lewat web dan API</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>15</td><td>Login</td><td>Tidak ada pembatasan percobaan login; 10 kali salah berturut-turut tidak diblokir</td><td>Login dengan password salah 10 kali</td><td><span class="pill bad">Terbuka</span></td></tr>
+  </table></div>
+  <div class="note warn"><b>Catatan.</b> Bagisto tidak memiliki dokumen kebutuhan resmi. Beberapa defect (antara lain nomor 10, 11, 14, dan 15) didasarkan pada aturan yang kami rumuskan sendiri dari praktik umum toko online dan standar keamanan (OWASP), dan kami ajukan untuk dikonfirmasi. Selama pengujian kami juga mencatat secara terbuka dua kegagalan awal yang ternyata berasal dari kesalahan test kami sendiri serta satu hasil yang diharapkan yang perlu dikoreksi. Ketiganya telah diperbaiki dan tidak dihitung sebagai defect.</div>
+</section>
+
+<section id="s7">
+  <h2><span class="num">7</span> Perbaikan pertama — v1.0.1 (minimum order)</h2>
+  <p>Defect pertama yang kami perbaiki adalah <b>defect nomor 2</b>.</p>
+  <ul>
+    <li><b>Penyebab:</b> pada file <code>Cart.php</code>, bagian yang seharusnya hanya mengurangi <i>diskon</i> juga mengurangi <i>pajak</i>. Baris tersebut tampaknya tersalin dari bagian perhitungan pajak.</li>
+    <li><b>Perbaikan:</b> menghapus satu baris yang keliru tersebut.</li>
+    <li><b>Bukti sebelum:</b> kami menulis test yang gagal terlebih dahulu. Subtotal 100 + pajak 10 seharusnya dihitung 100, tetapi sistem menghasilkan 90.</li>
+    <li><b>Bukti sesudah:</b> test yang sama lolos, dan test bawaan Bagisto untuk keranjang serta checkout tetap lolos seluruhnya (42/42, 38/38, 11/11).</li>
+    <li><b>Git:</b> branch <code>fix/min-order-include-discount</code>, tag <b>v1.0.1</b>, <a href="https://github.com/AbdisrZ/pdps/commit/141dcdd2110258a9e8738b2d5177513f9ba32732">lihat perubahan di GitHub</a>.</li>
+  </ul>
+</section>
+
+<section id="s8">
+  <h2><span class="num">8</span> Perbaikan kedua — v1.0.2 (harga produk)</h2>
+  <p>Defect kedua yang kami perbaiki adalah <b>defect nomor 1</b>. Defect ini kami prioritaskan karena dampaknya paling besar untuk toko berbasis Rupiah: harga di atas Rp100 juta sangat mungkin terjadi, misalnya untuk jam tangan mewah atau laptop.</p>
+  <ul>
+    <li><b>Penyebab:</b> aturan harga di halaman admin hanya memeriksa format angka tanpa batas maksimum. Kolom harga di database hanya mampu menampung hingga 99.999.999,9999, dan database dikonfigurasi untuk memotong angka yang terlalu besar tanpa memberi error.</li>
+    <li><b>Perbaikan:</b> menambahkan aturan "harga maksimal 99.999.999,9999" pada form produk admin. Harga yang terlalu besar kini ditolak dengan pesan <i>"The price field must not be greater than 99999999.9999."</i></li>
+    <li><b>Bukti sebelum dan sesudah:</b> harga 100.000.000 sebelumnya tersimpan terpotong; kini ditolak dan harga lama tetap. Harga normal (150.000), harga terkecil (0,0001), dan harga tepat di batas tetap dapat disimpan.</li>
+    <li><b>Tidak menimbulkan kerusakan baru:</b> 52 test bawaan halaman produk admin lolos seluruhnya, baik <i>sebelum</i> maupun <i>sesudah</i> perbaikan.</li>
+    <li><b>Git:</b> branch <code>fix/harga-batas-maksimum</code>, tag <b>v1.0.2</b>, <a href="https://github.com/AbdisrZ/pdps/commit/4dad89565fa36063d4fb4852ca4e86e52cfcf523">lihat perubahan di GitHub</a>.</li>
+  </ul>
+</section>
+
+<section id="s9">
+  <h2><span class="num">9</span> Uji regresi setelah kedua perbaikan</h2>
+  <p>Setelah kedua perbaikan digabungkan, seluruh pengujian dijalankan ulang untuk memastikan tidak ada fungsi lain yang rusak:</p>
+  <ul>
+    <li>Test kami: jumlah kegagalan turun dari 22 menjadi <b>20</b>. Hanya dua kasus yang berubah dari gagal menjadi lolos, yaitu kasus yang memang diperbaiki. Tidak ada test yang sebelumnya lolos lalu menjadi gagal.</li>
+    <li>Test bawaan Bagisto yang terkait tetap lolos seluruhnya: 132/132, ditambah 52/52 test halaman produk admin.</li>
+  </ul>
+</section>
+
+<section id="sbukti">
+  <h2><span class="num">10</span> Bukti screenshot pengujian</h2>
+  <p>Bagian ini memuat bukti visual pengujian. Screenshot halaman toko, halaman admin, dan hasil test otomatis diambil menggunakan browser Chrome yang dijalankan oleh skrip, sehingga langkahnya dapat diulang persis sama. Screenshot pengujian API diambil langsung dari VS Code (bagian C). Seluruh pengujian lewat browser dan API dilakukan pada server uji <code>http://127.0.0.1:8001</code> yang menggunakan <b>database salinan</b> <code>bagisto_uji</code> (lihat bagian 2), sehingga database toko asli tidak tersentuh.</p>
+  <p>Di database salinan, stok produk <i>Red Nail Polish</i> kami ubah menjadi 5 supaya batas stok mudah diuji, dan kami menambahkan satu akun pelanggan yang dinonaktifkan untuk menguji login akun nonaktif. Klik gambar untuk melihat ukuran penuh.</p>
+
+  <h3>A1. Pengujian lewat halaman toko</h3>
+  <div class="shots">
+    <figure><a href="screenshot/01-beranda-toko.png"><img src="screenshot/01-beranda-toko.png" alt="Halaman kategori toko" loading="lazy"></a>
+      <figcaption><b>01 · Halaman kategori Smartphone.</b> Toko berjalan dengan data salinan: produk, harga Rupiah, dan label diskon tampil. (Foto produk belum termuat saat screenshot otomatis diambil.)</figcaption></figure>
+    <figure><a href="screenshot/02-login-gagal.png"><img src="screenshot/02-login-gagal.png" alt="Login gagal" loading="lazy"></a>
+      <figcaption><b>02 · Login dengan password salah.</b> Login ditolak dan pengguna tetap di halaman login. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/03-login-berhasil.png"><img src="screenshot/03-login-berhasil.png" alt="Login berhasil" loading="lazy"></a>
+      <figcaption><b>03 · Login dengan password benar.</b> Pelanggan masuk ke halaman akun. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/04-pesanan-sendiri.png"><img src="screenshot/04-pesanan-sendiri.png" alt="Pesanan sendiri" loading="lazy"></a>
+      <figcaption><b>04 · Membuka pesanan milik sendiri (#8).</b> Detail pesanan tampil. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/05-pesanan-orang-lain.png"><img src="screenshot/05-pesanan-orang-lain.png" alt="Pesanan orang lain 404" loading="lazy"></a>
+      <figcaption><b>05 · Membuka pesanan milik pelanggan lain (#1).</b> Sistem menjawab "Halaman Tidak Ditemukan" (404), jadi data orang lain aman. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/06-stok-melebihi.png"><img src="screenshot/06-stok-melebihi.png" alt="Stok melebihi" loading="lazy"></a>
+      <figcaption><b>06 · Membeli 6 barang padahal stok 5.</b> Muncul pesan "Jumlah yang diminta tidak tersedia". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/07-stok-cukup.png"><img src="screenshot/07-stok-cukup.png" alt="Stok cukup" loading="lazy"></a>
+      <figcaption><b>07 · Membeli 5 barang (tepat sama dengan stok).</b> Barang berhasil masuk keranjang. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/08-harga-rolex-terpotong.png"><img src="screenshot/08-harga-rolex-terpotong.png" alt="Harga Rolex terpotong" loading="lazy"></a>
+      <figcaption><b>08 · Bukti masalah no. 1 (harga terpotong).</b> Harga Rolex seharusnya sekitar Rp 224 juta, tetapi tersimpan 99.999.999,9999 dan tampil <b>Rp 100.000.000,00</b>. Data ini masuk sebelum perbaikan v1.0.2, jadi tetap terpotong. <span class="pill bad">Masalah</span></figcaption></figure>
+  </div>
+
+  <h3>A2. Registrasi dan login pelanggan</h3>
+  <div class="shots">
+    <figure><a href="screenshot/21-registrasi-password-pendek.png"><img src="screenshot/21-registrasi-password-pendek.png" alt="21 · Registrasi dengan password 5 karakter" loading="lazy"></a>
+      <figcaption><b>21 · Registrasi dengan password 5 karakter.</b> Muncul pesan "Kata Sandi minimal mengandung 6 karakter". Batas minimal 6 karakter berjalan. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/22-registrasi-email-terdaftar.png"><img src="screenshot/22-registrasi-email-terdaftar.png" alt="22 · Registrasi dengan email yang sudah terdaftar" loading="lazy"></a>
+      <figcaption><b>22 · Registrasi dengan email yang sudah terdaftar.</b> Ditolak: "email sudah digunakan". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/23-registrasi-berhasil.png"><img src="screenshot/23-registrasi-berhasil.png" alt="23 · Registrasi dengan data valid" loading="lazy"></a>
+      <figcaption><b>23 · Registrasi dengan data valid.</b> Akun berhasil dibuat dan pengguna diarahkan ke halaman login. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/24-login-akun-nonaktif.png"><img src="screenshot/24-login-akun-nonaktif.png" alt="24 · Login dengan akun yang dinonaktifkan" loading="lazy"></a>
+      <figcaption><b>24 · Login dengan akun yang dinonaktifkan.</b> Ditolak: "Akun Anda memerlukan persetujuan admin untuk aktivasi". <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A3. Pencarian dan keranjang</h3>
+  <div class="shots">
+    <figure><a href="screenshot/25-pencarian-produk.png"><img src="screenshot/25-pencarian-produk.png" alt="25 · Mencari produk &quot;iphone&quot;" loading="lazy"></a>
+      <figcaption><b>25 · Mencari produk "iphone".</b> Hasil pencarian tampil beserta harga. Rentang filter harga maksimum menunjukkan Rp 100.000.000,00, ikut terpengaruh harga Rolex yang terpotong (masalah no. 1). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/26-halaman-keranjang.png"><img src="screenshot/26-halaman-keranjang.png" alt="26 · Halaman keranjang" loading="lazy"></a>
+      <figcaption><b>26 · Halaman keranjang.</b> Barang yang dimasukkan tampil lengkap dengan subtotal. <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A4. Checkout sampai pesanan berhasil</h3>
+  <div class="shots">
+    <figure><a href="screenshot/27-checkout-email-tidak-valid.png"><img src="screenshot/27-checkout-email-tidak-valid.png" alt="27 · Form checkout dengan email &quot;bukan-email&quot;" loading="lazy"></a>
+      <figcaption><b>27 · Form checkout dengan email "bukan-email".</b> Di halaman web, email ini <b>ditolak</b> oleh pengecekan di browser ("Email harus berupa alamat surel yang benar"). Bandingkan dengan pengujian API (Request 10, bagian C): lewat API email yang sama <b>diterima</b>. Artinya pengecekan email hanya ada di tampilan, tidak di server (masalah no. 11). <span class="pill bad">Masalah (lewat API)</span></figcaption></figure>
+    <figure><a href="screenshot/28-checkout-kodepos-salah.png"><img src="screenshot/28-checkout-kodepos-salah.png" alt="28 · Form checkout dengan kode pos 1 karakter" loading="lazy"></a>
+      <figcaption><b>28 · Form checkout dengan kode pos 1 karakter.</b> Ditolak dengan pesan kode pos tidak valid. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/29-checkout-pilih-ongkir.png"><img src="screenshot/29-checkout-pilih-ongkir.png" alt="29 · Alamat valid, lalu klik Lanjut" loading="lazy"></a>
+      <figcaption><b>29 · Alamat valid, lalu klik Lanjut.</b> Pilihan ongkir muncul (Reguler / Flat Rate dan Gratis Ongkir). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/30-checkout-pilih-pembayaran.png"><img src="screenshot/30-checkout-pilih-pembayaran.png" alt="30 · Memilih ongkir Reguler" loading="lazy"></a>
+      <figcaption><b>30 · Memilih ongkir Reguler.</b> Pilihan pembayaran muncul (Cash On Delivery dan Money Transfer). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/31-checkout-pesanan-berhasil.png"><img src="screenshot/31-checkout-pesanan-berhasil.png" alt="31 · Memilih COD lalu membuat pesanan" loading="lazy"></a>
+      <figcaption><b>31 · Memilih COD lalu membuat pesanan.</b> Pesanan berhasil: "ID pesanan Anda adalah #41, Terima kasih atas pesanan Anda!" <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A5. Akun pelanggan</h3>
+  <div class="shots">
+    <figure><a href="screenshot/32-riwayat-pesanan.png"><img src="screenshot/32-riwayat-pesanan.png" alt="32 · Riwayat pesanan pelanggan" loading="lazy"></a>
+      <figcaption><b>32 · Riwayat pesanan pelanggan.</b> Pelanggan melihat daftar pesanan miliknya sendiri. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/33-invoice-orang-lain.png"><img src="screenshot/33-invoice-orang-lain.png" alt="33 · Mencetak invoice milik pelanggan lain (#1)" loading="lazy"></a>
+      <figcaption><b>33 · Mencetak invoice milik pelanggan lain (#1).</b> Sistem menjawab "404 Halaman Tidak Ditemukan". Invoice orang lain tidak bisa dibuka. <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>B. Pengujian di halaman admin</h3>
+  <div class="shots">
+    <figure><a href="screenshot/09-admin-harga-terlalu-besar.png"><img src="screenshot/09-admin-harga-terlalu-besar.png" alt="Admin harga terlalu besar" loading="lazy"></a>
+      <figcaption><b>09 · Admin mengisi harga 100.000.000 lalu menekan Save Product.</b> Setelah perbaikan, harga ditolak dengan pesan "The price field must not be greater than 99999999.9999." Sebelum perbaikan, harga ini diterima lalu terpotong diam-diam (lihat screenshot 08 dan 18). <span class="pill fix">Sudah diperbaiki</span></figcaption></figure>
+    <figure><a href="screenshot/34-admin-login-gagal.png"><img src="screenshot/34-admin-login-gagal.png" alt="34 · Admin login dengan password salah" loading="lazy"></a>
+      <figcaption><b>34 · Admin login dengan password salah.</b> Ditolak: "Please check your credentials and try again." <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/35-admin-dashboard.png"><img src="screenshot/35-admin-dashboard.png" alt="35 · Dashboard admin" loading="lazy"></a>
+      <figcaption><b>35 · Dashboard admin.</b> Ringkasan penjualan tampil, termasuk pesanan #41 dari uji checkout (screenshot 31). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/36-admin-harga-diskon-tidak-valid.png"><img src="screenshot/36-admin-harga-diskon-tidak-valid.png" alt="36 · Harga diskon sama dengan harga normal" loading="lazy"></a>
+      <figcaption><b>36 · Harga diskon sama dengan harga normal.</b> Ditolak: "The special price field must be less than 143900." Harga diskon harus lebih kecil. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/37-admin-harga-negatif.png"><img src="screenshot/37-admin-harga-negatif.png" alt="37 · Harga negatif (−5000)" loading="lazy"></a>
+      <figcaption><b>37 · Harga negatif (−5000).</b> Ditolak: "The price must be valid." <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/38-admin-harga-valid.png"><img src="screenshot/38-admin-harga-valid.png" alt="38 · Harga normal disimpan" loading="lazy"></a>
+      <figcaption><b>38 · Harga normal disimpan.</b> Berhasil: "Product updated successfully". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/39-admin-daftar-pesanan.png"><img src="screenshot/39-admin-daftar-pesanan.png" alt="39 · Daftar pesanan di admin" loading="lazy"></a>
+      <figcaption><b>39 · Daftar pesanan di admin.</b> Pesanan #41 dari uji checkout muncul paling atas. Terlihat juga pesanan #36 dengan total tepat <b>IDR 100,000,000.00</b>: total pesanan juga ikut terpotong di batas yang sama (masalah no. 1). <span class="pill bad">Bukti masalah</span></figcaption></figure>
+    <figure><a href="screenshot/40-admin-detail-pesanan.png"><img src="screenshot/40-admin-detail-pesanan.png" alt="40 · Detail pesanan #1" loading="lazy"></a>
+      <figcaption><b>40 · Detail pesanan #1.</b> Admin dapat membuka rincian pesanan. <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>C. Pengujian API langsung dari VS Code (ekstensi REST Client)</h3>
+  <p>Pengujian API dilakukan di <b>VS Code</b> menggunakan ekstensi <b>REST Client</b>. Seluruh request ditulis dalam satu file <a href="https://github.com/AbdisrZ/pdps/blob/praktikum/dokumentasi/uji-api/pengujian-api.http"><code>pengujian-api.http</code></a>, lalu dijalankan satu per satu dengan menekan <i>Send Request</i>. Hasilnya muncul di panel kanan: kode status di baris pertama dan isi jawaban di bawahnya.</p>
+  <p>API toko Bagisto mewajibkan cookie sesi dan token keamanan (CSRF). Karena itu, sebelum menguji kami menjalankan skrip <a href="https://github.com/AbdisrZ/pdps/blob/praktikum/dokumentasi/uji-api/siapkan-sesi.mjs"><code>siapkan-sesi.mjs</code></a> di terminal VS Code. Skrip ini membuat beberapa sesi tamu baru dan menyimpan token serta cookie-nya ke file <code>.env</code> yang dibaca oleh file <code>.http</code>. Semua request dikirim ke server uji <code>127.0.0.1:8001</code> yang memakai database salinan.</p>
+  <p>Setiap request punya dua screenshot: <b>kiri</b> menampilkan request dan kode status, <b>kanan</b> menampilkan isi jawaban.</p>
+  <div class="apicase">
+    <div class="apihead"><b>Request 1</b> &middot; Tambah 6 barang padahal stok 5 <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/a1.png"><img src="screenshot-vscode/a1.png" alt="Request 1 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/a2.png"><img src="screenshot-vscode/a2.png" alt="Request 1 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>400 Bad Request</b>, pesan "Jumlah yang diminta tidak tersedia".</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 2</b> &middot; Tambah 5 barang (tepat sama dengan stok) <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/b1rev.png"><img src="screenshot-vscode/b1rev.png" alt="Request 2 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/b2rev.png"><img src="screenshot-vscode/b2rev.png" alt="Request 2 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>, barang berhasil ditambahkan.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 3</b> &middot; Tambah barang tanpa field <code>quantity</code> <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/c1.png"><img src="screenshot-vscode/c1.png" alt="Request 3 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/c2.png"><img src="screenshot-vscode/c2.png" alt="Request 3 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>400</b> dengan pesan error PHP <code>Undefined array key "quantity"</code>. Seharusnya otomatis 1 barang (masalah no. 6).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 4</b> &middot; Lihat isi keranjang sebelum diubah <span class="pill good">Kondisi awal</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/d1rev.png"><img src="screenshot-vscode/d1rev.png" alt="Request 4 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/d2rev.png"><img src="screenshot-vscode/d2rev.png" alt="Request 4 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200</b>, keranjang masih berisi barang (daftar item <i>Red Nail Polish</i> tampil).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 5</b> &middot; Ubah jumlah barang menjadi 0 <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/e1rev.png"><img src="screenshot-vscode/e1rev.png" alt="Request 5 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/e2rev.png"><img src="screenshot-vscode/e2rev.png" alt="Request 5 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b> dengan pesan "Jumlah tidak boleh kurang dari satu", seolah-olah ditolak.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 6</b> &middot; Lihat isi keranjang sesudah diubah <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/f1rev.png"><img src="screenshot-vscode/f1rev.png" alt="Request 6 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/f2rev.png"><img src="screenshot-vscode/f2rev.png" alt="Request 6 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200</b>, tetapi isinya <code>"data": null</code>: barangnya ikut terhapus padahal pesannya menolak (masalah no. 5).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 7</b> &middot; Cek ongkir saat belum punya keranjang <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/g1.png"><img src="screenshot-vscode/g1.png" alt="Request 7 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/g2.png"><img src="screenshot-vscode/g2.png" alt="Request 7 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>500 Internal Server Error</b>. Seharusnya pesan 4xx yang jelas (masalah no. 7).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 8</b> &middot; Hapus kupon saat belum punya keranjang <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/h1.png"><img src="screenshot-vscode/h1.png" alt="Request 8 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/h2.png"><img src="screenshot-vscode/h2.png" alt="Request 8 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>500 Internal Server Error</b> (masalah no. 7).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 9</b> &middot; Masukkan 1 barang ke keranjang (persiapan) <span class="pill good">Persiapan</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/i1.png"><img src="screenshot-vscode/i1.png" alt="Request 9 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/i2.png"><img src="screenshot-vscode/i2.png" alt="Request 9 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 10</b> &middot; Isi alamat checkout dengan email <code>bukan-email</code> <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/j1.png"><img src="screenshot-vscode/j1.png" alt="Request 10 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/j2.png"><img src="screenshot-vscode/j2.png" alt="Request 10 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>, alamat diterima dan sistem langsung menawarkan ongkir. Email tidak dicek formatnya (masalah no. 11).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 11</b> &middot; Pembanding: kode pos hanya 1 karakter <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/k1.png"><img src="screenshot-vscode/k1.png" alt="Request 11 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/k2.png"><img src="screenshot-vscode/k2.png" alt="Request 11 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>422</b>, ditolak dengan pesan "kode pos yang valid". Artinya validasi lain berjalan; hanya email yang lolos.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 12</b> &middot; Login API dengan password salah <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/l1.png"><img src="screenshot-vscode/l1.png" alt="Request 12 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/l2.png"><img src="screenshot-vscode/l2.png" alt="Request 12 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>403 Forbidden</b>, login ditolak.</p>
+  </div>
+
+  <h3>D. Hasil test otomatis (Pest)</h3>
+  <div class="shots">
+    <figure><a href="screenshot/15-pest-hasil-pengujian.png"><img src="screenshot/15-pest-hasil-pengujian.png" alt="Hasil Pest" loading="lazy"></a>
+      <figcaption><b>15 · Hasil 112 kasus uji otomatis.</b> Centang hijau = lolos, silang merah = gagal. Total 91 lolos (termasuk 1 test pengaman database) dan 22 gagal.</figcaption></figure>
+    <figure><a href="screenshot/20-pest-regresi-akhir.png"><img src="screenshot/20-pest-regresi-akhir.png" alt="Regresi akhir" loading="lazy"></a>
+      <figcaption><b>20 · Pengecekan ulang setelah kedua perbaikan.</b> Semua test bawaan Bagisto tetap lolos; test kami tinggal 20 gagal (dari 22).</figcaption></figure>
+    <figure><a href="screenshot/16-pest-minorder-sebelum.png"><img src="screenshot/16-pest-minorder-sebelum.png" alt="Min order sebelum" loading="lazy"></a>
+      <figcaption><b>16 · Perbaikan 1, sebelum.</b> 2 dari 5 test minimum order gagal. <span class="pill bad">Gagal</span></figcaption></figure>
+    <figure><a href="screenshot/17-pest-minorder-sesudah.png"><img src="screenshot/17-pest-minorder-sesudah.png" alt="Min order sesudah" loading="lazy"></a>
+      <figcaption><b>17 · Perbaikan 1, sesudah (v1.0.1).</b> Kelima test lolos. <span class="pill good">Lolos</span></figcaption></figure>
+    <figure><a href="screenshot/18-pest-harga-sebelum.png"><img src="screenshot/18-pest-harga-sebelum.png" alt="Harga sebelum" loading="lazy"></a>
+      <figcaption><b>18 · Perbaikan 2, sebelum.</b> 3 dari 7 test batas harga gagal. <span class="pill bad">Gagal</span></figcaption></figure>
+    <figure><a href="screenshot/19-pest-harga-sesudah.png"><img src="screenshot/19-pest-harga-sesudah.png" alt="Harga sesudah" loading="lazy"></a>
+      <figcaption><b>19 · Perbaikan 2, sesudah (v1.0.2).</b> Ketujuh test lolos. <span class="pill good">Lolos</span></figcaption></figure>
+  </div>
+</section>
+
+<section id="s10">
+  <h2><span class="num">11</span> Riwayat versi di Git</h2>
+  <p>Setiap tahap pekerjaan dicatat sebagai commit di branch <code>praktikum</code>, dan setiap perbaikan dikerjakan di branch tersendiri sebelum digabungkan. Tiga titik penting ditandai dengan tag:</p>
+  <div class="timeline">
+    <div><a href="https://github.com/AbdisrZ/pdps/tree/v1.0.0-baseline"><b>v1.0.0-baseline</b></a>: kondisi awal Bagisto 2.3.19 tanpa perubahan kode program, ditambah dokumen persiapan pengujian.</div>
+    <div><a href="https://github.com/AbdisrZ/pdps/tree/v1.0.1"><b>v1.0.1</b></a>: perbaikan perhitungan minimum order (defect nomor 2).</div>
+    <div><a href="https://github.com/AbdisrZ/pdps/tree/v1.0.2"><b>v1.0.2</b></a>: perbaikan batas maksimum harga produk (defect nomor 1).</div>
+  </div>
+  <p>Perubahan terhadap kode program Bagisto sangat kecil dan terlokalisasi: hanya <b>2 file</b>, dengan 11 baris ditambahkan dan 2 baris dihapus (<a href="https://github.com/AbdisrZ/pdps/compare/v1.0.0-baseline...v1.0.2">lihat perbandingan</a>). Sisanya berupa file test, dokumentasi, dan bukti pengujian.</p>
+</section>
+
+<section id="s11">
+  <h2><span class="num">12</span> Kesimpulan dan saran</h2>
+  <h3>Kesimpulan</h3>
+  <ul>
+    <li>Fungsi yang paling kritis bagi toko, yaitu <b>pengelolaan stok</b> dan <b>hak akses terhadap pesanan</b>, terbukti bekerja dengan benar.</li>
+    <li>Defect yang paling banyak ditemukan berkaitan dengan <b>penanganan input yang tidak lengkap atau tidak wajar</b>. Pada kondisi tersebut sistem kerap menjawab dengan error server (500), bukan pesan kesalahan yang jelas.</li>
+    <li>Defect yang paling berdampak terdapat pada <b>penyimpanan nilai angka</b>: harga di atas kapasitas kolom tersimpan terpotong tanpa peringatan, dan efeknya juga terlihat pada total pesanan. Defect ini telah kami perbaiki pada v1.0.2.</li>
+    <li>Pengujian lewat halaman web dan lewat API memberi hasil yang berbeda untuk validasi email checkout: halaman web menolak, tetapi API menerima. Hal ini menunjukkan pentingnya menguji sistem dari kedua sisi.</li>
+  </ul>
+  <h3>Saran dan pekerjaan lanjutan</h3>
+  <ul>
+    <li>Memperbaiki 13 defect yang masih terbuka, dimulai dari defect nomor 5 (barang terhapus saat jumlah diubah menjadi 0) dan nomor 7 (error server pada input tidak lengkap).</li>
+    <li>Menerapkan batas harga yang sama pada jalur selain form admin, misalnya fitur impor produk.</li>
+    <li>Melanjutkan pengujian pada area yang belum tercakup: kupon dan promo, pengujian tampilan otomatis lintas browser, serta pengujian performa.</li>
+  </ul>
+  <p><b>Lampiran:</b> dokumen rinci (rencana uji, desain kasus uji, hasil per kasus, laporan defect, coverage) tersedia di folder <a href="https://github.com/AbdisrZ/pdps/tree/praktikum/lampiran-teknis"><code>lampiran-teknis/</code></a>, dan file test otomatis di <a href="https://github.com/AbdisrZ/pdps/tree/praktikum/packages/Webkul/Shop/tests/Feature/Praktikum"><code>packages/Webkul/Shop/tests/Feature/Praktikum/</code></a>.</p>
+  <p>Demikian laporan ini kami susun. Atas perhatian Bapak/Ibu Dosen Penguji, kami ucapkan terima kasih.</p>
+  <p><b>Penyusun:</b> Abdi Soleh R · Yunita Yasman · Bagus Fahrezi</p>
+</section>
+
+<footer>Laporan Pengujian dan Pemeliharaan Sistem · Bagisto 2.3.19 · XAMPP (PHP 8.2, MySQL 8.0) · Pest · <a href="https://github.com/AbdisrZ/pdps">github.com/AbdisrZ/pdps</a> · 2026</footer>
+</div>
+</body>
+</html>
