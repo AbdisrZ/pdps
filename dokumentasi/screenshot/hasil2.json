@@ -1,0 +1,142 @@
+[
+  {
+    "id": "21-registrasi-password-pendek",
+    "judul": "Registrasi dengan password 5 karakter -> ditolak",
+    "file": "21-registrasi-password-pendek.png",
+    "ok": true,
+    "catatan": "Kata Sandi minimal mengandung 6 karakter"
+  },
+  {
+    "id": "22-registrasi-email-terdaftar",
+    "judul": "Registrasi dengan email yang sudah terdaftar -> ditolak",
+    "file": "22-registrasi-email-terdaftar.png",
+    "ok": true,
+    "catatan": "email sudah digunakan."
+  },
+  {
+    "id": "23-registrasi-berhasil",
+    "judul": "Registrasi dengan data valid -> akun dibuat",
+    "file": "23-registrasi-berhasil.png",
+    "ok": true,
+    "catatan": "/customer/login | Akun berhasil dibuat."
+  },
+  {
+    "id": "24-login-akun-nonaktif",
+    "judul": "Login dengan akun yang dinonaktifkan admin -> ditolak",
+    "file": "24-login-akun-nonaktif.png",
+    "ok": true,
+    "catatan": "/customer/login | (tidak terbaca)"
+  },
+  {
+    "id": "25-pencarian-produk",
+    "judul": "Mencari produk \"iphone\"",
+    "file": "25-pencarian-produk.png",
+    "ok": true,
+    "catatan": "Ini adalah hasil untuk : iphone"
+  },
+  {
+    "id": "26-halaman-keranjang",
+    "judul": "Halaman keranjang berisi barang beserta subtotal",
+    "file": "26-halaman-keranjang.png",
+    "ok": true,
+    "catatan": "Subtotal"
+  },
+  {
+    "id": "27-checkout-email-tidak-valid",
+    "judul": "Form checkout: email \"bukan-email\"",
+    "file": "27-checkout-email-tidak-valid.png",
+    "ok": true,
+    "catatan": "Email harus berupa alamat surel yang benar"
+  },
+  {
+    "id": "28-checkout-kodepos-salah",
+    "judul": "Form checkout: kode pos 1 karakter -> ditolak",
+    "file": "28-checkout-kodepos-salah.png",
+    "ok": true,
+    "catatan": "Kode Pos is not valid"
+  },
+  {
+    "id": "29-checkout-pilih-ongkir",
+    "judul": "Checkout: alamat valid -> pilihan ongkir muncul",
+    "file": "29-checkout-pilih-ongkir.png",
+    "ok": true,
+    "catatan": "Reguler (Flat Rate) - Flat Rate Shipping"
+  },
+  {
+    "id": "30-checkout-pilih-pembayaran",
+    "judul": "Checkout: pilih ongkir -> pilihan pembayaran muncul",
+    "file": "30-checkout-pilih-pembayaran.png",
+    "ok": true,
+    "catatan": "Cash On Delivery"
+  },
+  {
+    "id": "31-checkout-pesanan-berhasil",
+    "judul": "Checkout: pilih pembayaran lalu buat pesanan -> berhasil",
+    "file": "31-checkout-pesanan-berhasil.png",
+    "ok": true,
+    "catatan": "/checkout/onepage/success | ID pesanan Anda adalah #41"
+  },
+  {
+    "id": "32-riwayat-pesanan",
+    "judul": "Pelanggan melihat riwayat pesanannya",
+    "file": "32-riwayat-pesanan.png",
+    "ok": true,
+    "catatan": "Pesanan"
+  },
+  {
+    "id": "33-invoice-orang-lain",
+    "judul": "Pelanggan mencoba mencetak invoice milik orang lain (#1) -> tidak ditemukan",
+    "file": "33-invoice-orang-lain.png",
+    "ok": true,
+    "catatan": "404 Halaman Tidak Ditemukan"
+  },
+  {
+    "id": "34-admin-login-gagal",
+    "judul": "Admin login dengan password salah -> ditolak",
+    "file": "34-admin-login-gagal.png",
+    "ok": true,
+    "catatan": "/admin/login | Please check your credentials and try again."
+  },
+  {
+    "id": "35-admin-dashboard",
+    "judul": "Dashboard admin setelah login",
+    "file": "35-admin-dashboard.png",
+    "ok": true,
+    "catatan": "/admin/dashboard"
+  },
+  {
+    "id": "36-admin-harga-diskon-tidak-valid",
+    "judul": "Admin: harga diskon sama dengan harga normal -> ditolak",
+    "file": "36-admin-harga-diskon-tidak-valid.png",
+    "ok": true,
+    "catatan": "The special price field must be less than 143900."
+  },
+  {
+    "id": "37-admin-harga-negatif",
+    "judul": "Admin: harga negatif -> ditolak",
+    "file": "37-admin-harga-negatif.png",
+    "ok": true,
+    "catatan": "The price must be valid."
+  },
+  {
+    "id": "38-admin-harga-valid",
+    "judul": "Admin: harga normal disimpan -> berhasil",
+    "file": "38-admin-harga-valid.png",
+    "ok": true,
+    "catatan": "/admin/catalog/products | Product updated successfully"
+  },
+  {
+    "id": "39-admin-daftar-pesanan",
+    "judul": "Admin melihat daftar pesanan",
+    "file": "39-admin-daftar-pesanan.png",
+    "ok": true,
+    "catatan": "/admin/sales/orders"
+  },
+  {
+    "id": "40-admin-detail-pesanan",
+    "judul": "Admin membuka detail pesanan #1",
+    "file": "40-admin-detail-pesanan.png",
+    "ok": true,
+    "catatan": "Order #1"
+  }
+]

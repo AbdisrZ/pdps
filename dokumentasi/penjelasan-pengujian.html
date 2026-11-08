@@ -117,7 +117,7 @@
     <div class="stat"><b>90</b><span>lolos</span></div>
     <div class="stat"><b>15</b><span>masalah ditemukan</span></div>
     <div class="stat"><b>2</b><span>masalah diperbaiki</span></div>
-    <div class="stat"><b>39</b><span>screenshot bukti</span></div>
+    <div class="stat"><b>59</b><span>screenshot bukti</span></div>
   </div>
 </header>
 
@@ -284,9 +284,9 @@
 <section id="sbukti">
   <h2><span class="num">10</span> Bukti screenshot pengujian</h2>
   <p>Screenshot halaman toko, halaman admin, dan hasil test otomatis diambil dengan browser Chrome yang dijalankan oleh skrip, supaya langkahnya bisa diulang persis sama. Screenshot pengujian API diambil langsung dari VS Code (bagian C). Untuk pengujian lewat browser, kami menjalankan toko di alamat <code>http://127.0.0.1:8001</code> yang memakai <b>database salinan</b> <code>bagisto_uji</code>. Database ini disalin dari backup database asli, sehingga produk, pelanggan, dan pesanannya sama persis, tetapi semua perubahan saat pengujian tidak menyentuh database asli. Kami sempat memastikan server benar-benar memakai database salinan dengan membuat akun khusus yang hanya ada di <code>bagisto_uji</code>, lalu mencoba login dengan akun itu.</p>
-  <p>Di database salinan, stok produk <i>Red Nail Polish</i> kami ubah menjadi 5 supaya batas stok mudah diuji. Semua screenshot ada di folder <code>dokumentasi/screenshot/</code>.</p>
+  <p>Di database salinan, stok produk <i>Red Nail Polish</i> kami ubah menjadi 5 supaya batas stok mudah diuji, dan kami menambahkan satu akun pelanggan yang dinonaktifkan untuk menguji login akun nonaktif. Semua screenshot ada di folder <code>dokumentasi/screenshot/</code>.</p>
 
-  <h3>A. Pengujian lewat halaman toko</h3>
+  <h3>A1. Pengujian lewat halaman toko</h3>
   <div class="shots">
     <figure><a href="screenshot/01-beranda-toko.png"><img src="screenshot/01-beranda-toko.png" alt="Halaman kategori toko" loading="lazy"></a>
       <figcaption><b>01 · Halaman kategori Smartphone.</b> Toko berjalan dengan data salinan: produk, harga Rupiah, dan label diskon tampil. (Foto produk belum termuat saat screenshot otomatis diambil.)</figcaption></figure>
@@ -306,10 +306,66 @@
       <figcaption><b>08 · Bukti masalah no. 1 (harga terpotong).</b> Harga Rolex seharusnya sekitar Rp 224 juta, tetapi tersimpan 99.999.999,9999 dan tampil <b>Rp 100.000.000,00</b>. Data ini masuk sebelum perbaikan v1.0.2, jadi tetap terpotong. <span class="pill bad">Masalah</span></figcaption></figure>
   </div>
 
-  <h3>B. Pengujian di halaman admin (setelah perbaikan v1.0.2)</h3>
-  <div class="shots one">
+  <h3>A2. Registrasi dan login pelanggan</h3>
+  <div class="shots">
+    <figure><a href="screenshot/21-registrasi-password-pendek.png"><img src="screenshot/21-registrasi-password-pendek.png" alt="21 · Registrasi dengan password 5 karakter" loading="lazy"></a>
+      <figcaption><b>21 · Registrasi dengan password 5 karakter.</b> Muncul pesan "Kata Sandi minimal mengandung 6 karakter". Batas minimal 6 karakter berjalan. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/22-registrasi-email-terdaftar.png"><img src="screenshot/22-registrasi-email-terdaftar.png" alt="22 · Registrasi dengan email yang sudah terdaftar" loading="lazy"></a>
+      <figcaption><b>22 · Registrasi dengan email yang sudah terdaftar.</b> Ditolak: "email sudah digunakan". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/23-registrasi-berhasil.png"><img src="screenshot/23-registrasi-berhasil.png" alt="23 · Registrasi dengan data valid" loading="lazy"></a>
+      <figcaption><b>23 · Registrasi dengan data valid.</b> Akun berhasil dibuat dan pengguna diarahkan ke halaman login. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/24-login-akun-nonaktif.png"><img src="screenshot/24-login-akun-nonaktif.png" alt="24 · Login dengan akun yang dinonaktifkan" loading="lazy"></a>
+      <figcaption><b>24 · Login dengan akun yang dinonaktifkan.</b> Ditolak: "Akun Anda memerlukan persetujuan admin untuk aktivasi". <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A3. Pencarian dan keranjang</h3>
+  <div class="shots">
+    <figure><a href="screenshot/25-pencarian-produk.png"><img src="screenshot/25-pencarian-produk.png" alt="25 · Mencari produk &quot;iphone&quot;" loading="lazy"></a>
+      <figcaption><b>25 · Mencari produk "iphone".</b> Hasil pencarian tampil beserta harga. Rentang filter harga maksimum menunjukkan Rp 100.000.000,00, ikut terpengaruh harga Rolex yang terpotong (masalah no. 1). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/26-halaman-keranjang.png"><img src="screenshot/26-halaman-keranjang.png" alt="26 · Halaman keranjang" loading="lazy"></a>
+      <figcaption><b>26 · Halaman keranjang.</b> Barang yang dimasukkan tampil lengkap dengan subtotal. <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A4. Checkout sampai pesanan berhasil</h3>
+  <div class="shots">
+    <figure><a href="screenshot/27-checkout-email-tidak-valid.png"><img src="screenshot/27-checkout-email-tidak-valid.png" alt="27 · Form checkout dengan email &quot;bukan-email&quot;" loading="lazy"></a>
+      <figcaption><b>27 · Form checkout dengan email "bukan-email".</b> Di halaman web, email ini <b>ditolak</b> oleh pengecekan di browser ("Email harus berupa alamat surel yang benar"). Bandingkan dengan pengujian API (Request 10, bagian C): lewat API email yang sama <b>diterima</b>. Artinya pengecekan email hanya ada di tampilan, tidak di server (masalah no. 11). <span class="pill bad">Masalah (lewat API)</span></figcaption></figure>
+    <figure><a href="screenshot/28-checkout-kodepos-salah.png"><img src="screenshot/28-checkout-kodepos-salah.png" alt="28 · Form checkout dengan kode pos 1 karakter" loading="lazy"></a>
+      <figcaption><b>28 · Form checkout dengan kode pos 1 karakter.</b> Ditolak dengan pesan kode pos tidak valid. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/29-checkout-pilih-ongkir.png"><img src="screenshot/29-checkout-pilih-ongkir.png" alt="29 · Alamat valid, lalu klik Lanjut" loading="lazy"></a>
+      <figcaption><b>29 · Alamat valid, lalu klik Lanjut.</b> Pilihan ongkir muncul (Reguler / Flat Rate dan Gratis Ongkir). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/30-checkout-pilih-pembayaran.png"><img src="screenshot/30-checkout-pilih-pembayaran.png" alt="30 · Memilih ongkir Reguler" loading="lazy"></a>
+      <figcaption><b>30 · Memilih ongkir Reguler.</b> Pilihan pembayaran muncul (Cash On Delivery dan Money Transfer). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/31-checkout-pesanan-berhasil.png"><img src="screenshot/31-checkout-pesanan-berhasil.png" alt="31 · Memilih COD lalu membuat pesanan" loading="lazy"></a>
+      <figcaption><b>31 · Memilih COD lalu membuat pesanan.</b> Pesanan berhasil: "ID pesanan Anda adalah #41, Terima kasih atas pesanan Anda!" <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>A5. Akun pelanggan</h3>
+  <div class="shots">
+    <figure><a href="screenshot/32-riwayat-pesanan.png"><img src="screenshot/32-riwayat-pesanan.png" alt="32 · Riwayat pesanan pelanggan" loading="lazy"></a>
+      <figcaption><b>32 · Riwayat pesanan pelanggan.</b> Pelanggan melihat daftar pesanan miliknya sendiri. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/33-invoice-orang-lain.png"><img src="screenshot/33-invoice-orang-lain.png" alt="33 · Mencetak invoice milik pelanggan lain (#1)" loading="lazy"></a>
+      <figcaption><b>33 · Mencetak invoice milik pelanggan lain (#1).</b> Sistem menjawab "404 Halaman Tidak Ditemukan". Invoice orang lain tidak bisa dibuka. <span class="pill good">Sesuai</span></figcaption></figure>
+  </div>
+
+  <h3>B. Pengujian di halaman admin</h3>
+  <div class="shots">
     <figure><a href="screenshot/09-admin-harga-terlalu-besar.png"><img src="screenshot/09-admin-harga-terlalu-besar.png" alt="Admin harga terlalu besar" loading="lazy"></a>
       <figcaption><b>09 · Admin mengisi harga 100.000.000 lalu menekan Save Product.</b> Setelah perbaikan, harga ditolak dengan pesan "The price field must not be greater than 99999999.9999." Sebelum perbaikan, harga ini diterima lalu terpotong diam-diam (lihat screenshot 08 dan 18). <span class="pill fix">Sudah diperbaiki</span></figcaption></figure>
+    <figure><a href="screenshot/34-admin-login-gagal.png"><img src="screenshot/34-admin-login-gagal.png" alt="34 · Admin login dengan password salah" loading="lazy"></a>
+      <figcaption><b>34 · Admin login dengan password salah.</b> Ditolak: "Please check your credentials and try again." <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/35-admin-dashboard.png"><img src="screenshot/35-admin-dashboard.png" alt="35 · Dashboard admin" loading="lazy"></a>
+      <figcaption><b>35 · Dashboard admin.</b> Ringkasan penjualan tampil, termasuk pesanan #41 dari uji checkout (screenshot 31). <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/36-admin-harga-diskon-tidak-valid.png"><img src="screenshot/36-admin-harga-diskon-tidak-valid.png" alt="36 · Harga diskon sama dengan harga normal" loading="lazy"></a>
+      <figcaption><b>36 · Harga diskon sama dengan harga normal.</b> Ditolak: "The special price field must be less than 143900." Harga diskon harus lebih kecil. <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/37-admin-harga-negatif.png"><img src="screenshot/37-admin-harga-negatif.png" alt="37 · Harga negatif (−5000)" loading="lazy"></a>
+      <figcaption><b>37 · Harga negatif (−5000).</b> Ditolak: "The price must be valid." <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/38-admin-harga-valid.png"><img src="screenshot/38-admin-harga-valid.png" alt="38 · Harga normal disimpan" loading="lazy"></a>
+      <figcaption><b>38 · Harga normal disimpan.</b> Berhasil: "Product updated successfully". <span class="pill good">Sesuai</span></figcaption></figure>
+    <figure><a href="screenshot/39-admin-daftar-pesanan.png"><img src="screenshot/39-admin-daftar-pesanan.png" alt="39 · Daftar pesanan di admin" loading="lazy"></a>
+      <figcaption><b>39 · Daftar pesanan di admin.</b> Pesanan #41 dari uji checkout muncul paling atas. Terlihat juga pesanan #36 dengan total tepat <b>IDR 100,000,000.00</b>: total pesanan juga ikut terpotong di batas yang sama (masalah no. 1). <span class="pill bad">Bukti masalah</span></figcaption></figure>
+    <figure><a href="screenshot/40-admin-detail-pesanan.png"><img src="screenshot/40-admin-detail-pesanan.png" alt="40 · Detail pesanan #1" loading="lazy"></a>
+      <figcaption><b>40 · Detail pesanan #1.</b> Admin dapat membuka rincian pesanan. <span class="pill good">Sesuai</span></figcaption></figure>
   </div>
 
   <h3>C. Pengujian API langsung dari VS Code (ekstensi REST Client)</h3>

@@ -178,6 +178,26 @@ Semua gambar ada di folder `dokumentasi/screenshot/`.
 | 16–17 | `16-…sebelum.png`, `17-…sesudah.png` | Perbaikan 1 (minimum order) | Sebelum: 2 gagal; sesudah: semua lolos |
 | 18–19 | `18-…sebelum.png`, `19-…sesudah.png` | Perbaikan 2 (batas harga) | Sebelum: 3 gagal; sesudah: semua lolos |
 | 20 | `20-pest-regresi-akhir.png` | Pengecekan ulang setelah kedua perbaikan | Test bawaan tetap lolos semua |
+| 21 | `21-registrasi-password-pendek.png` | Registrasi password 5 karakter | Ditolak "minimal 6 karakter" (sesuai) |
+| 22 | `22-registrasi-email-terdaftar.png` | Registrasi email sudah terdaftar | Ditolak "email sudah digunakan" (sesuai) |
+| 23 | `23-registrasi-berhasil.png` | Registrasi data valid | Akun dibuat (sesuai) |
+| 24 | `24-login-akun-nonaktif.png` | Login akun nonaktif | Ditolak "memerlukan persetujuan admin" (sesuai) |
+| 25 | `25-pencarian-produk.png` | Pencarian "iphone" | Hasil tampil; filter harga maks. Rp 100.000.000 (efek masalah no. 1) |
+| 26 | `26-halaman-keranjang.png` | Halaman keranjang | Barang dan subtotal tampil (sesuai) |
+| 27 | `27-checkout-email-tidak-valid.png` | Form checkout email "bukan-email" | Ditolak di browser, padahal lewat API diterima (masalah no. 11) |
+| 28 | `28-checkout-kodepos-salah.png` | Form checkout kode pos 1 karakter | Ditolak (sesuai) |
+| 29 | `29-checkout-pilih-ongkir.png` | Alamat valid → Lanjut | Pilihan ongkir muncul (sesuai) |
+| 30 | `30-checkout-pilih-pembayaran.png` | Pilih ongkir | Pilihan pembayaran muncul (sesuai) |
+| 31 | `31-checkout-pesanan-berhasil.png` | Pilih COD → buat pesanan | Pesanan #41 berhasil (sesuai) |
+| 32 | `32-riwayat-pesanan.png` | Riwayat pesanan pelanggan | Tampil (sesuai) |
+| 33 | `33-invoice-orang-lain.png` | Cetak invoice milik orang lain | 404 (sesuai) |
+| 34 | `34-admin-login-gagal.png` | Admin login password salah | Ditolak (sesuai) |
+| 35 | `35-admin-dashboard.png` | Dashboard admin | Tampil, memuat pesanan #41 |
+| 36 | `36-admin-harga-diskon-tidak-valid.png` | Harga diskon = harga normal | Ditolak (sesuai) |
+| 37 | `37-admin-harga-negatif.png` | Harga −5000 | Ditolak (sesuai) |
+| 38 | `38-admin-harga-valid.png` | Simpan harga normal | "Product updated successfully" (sesuai) |
+| 39 | `39-admin-daftar-pesanan.png` | Daftar pesanan admin | Tampil; pesanan #36 bertotal tepat IDR 100.000.000 (bukti masalah no. 1) |
+| 40 | `40-admin-detail-pesanan.png` | Detail pesanan #1 | Tampil (sesuai) |
 
 ### Pengujian API langsung dari VS Code (REST Client)
 
