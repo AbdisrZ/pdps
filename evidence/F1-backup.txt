@@ -1,0 +1,14 @@
+# Cadangan DB - 2026-11-08 12:01:03 (dibuat dengan mysqldump MariaDB 10.4.32 client bawaan XAMPP; server MySQL 8.0.44)
+
+D:/Backup/bagisto_utama_20261108.sql
+  ukuran: 1550082 byte, CREATE TABLE: 131, INSERT: 66
+  sha256: 33c73f7aec2fada669bd68933acb66c001ebf6a0253583d2f4517483c177c0d3
+  -- Dump completed on 2026-11-08 11:59:40
+
+D:/Backup/bagisto_test_clean.sql
+  ukuran: 248891 byte, CREATE TABLE: 131, INSERT: 30
+  sha256: af9a45df02414d485d6d7a9655b0e826e7bdaa1a72b75f8c124b64aac922ad09
+  -- Dump completed on 2026-11-08 12:01:03
+
+Restore (bila perlu): mysql -uroot <nama_db> < file.sql  (gunakan cmd.exe, atau Get-Content -Raw di PowerShell)
+Uji restore BELUM dilakukan (butuh DB sementara + DROP -> perlu izin).

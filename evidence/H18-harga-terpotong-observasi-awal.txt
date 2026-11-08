@@ -1,0 +1,22 @@
+# Bukti H18 - harga > 99.999.999,9999 terpotong (query read-only ke DB utama 'bagisto', 2026-11-08 11:48:42)
+Sumber data: impor DummyJSON (harga USD x 16000) melalui ProductRepository::update (jalur yang sama dengan form admin, minus FormRequest).
+
+COLUMN_NAME	COLUMN_TYPE
+float_value	decimal(12,4)
+sku	name	price
+DJ-0095	Rolex Cellini Date Black Dial	99999999.9999
+DJ-0096	Rolex Cellini Moonphase	99999999.9999
+DJ-0097	Rolex Datejust	99999999.9999
+DJ-0098	Rolex Submariner Watch	99999999.9999
+DJ-0191	Rolex Cellini Moonphase	99999999.9999
+DJ-0192	Rolex Datejust Women	99999999.9999
+
+Harga yang dimaksudkan (USD x 16000):
+DJ-0095 Rolex Cellini Date Black Dial USD 8999.99 -> 143.999.840
+DJ-0096 Rolex Cellini Moonphase USD 12999.99 -> 207.999.840
+DJ-0097 Rolex Datejust USD 10999.99 -> 175.999.840
+DJ-0098 Rolex Submariner Watch USD 13999.99 -> 223.999.840
+DJ-0191 Rolex Cellini Moonphase USD 15999.99 -> 255.999.840
+DJ-0192 Rolex Datejust Women USD 10999.99 -> 175.999.840
+
+CATATAN: ini baru observasi 1x pada data impor, BELUM reproduksi terkontrol lewat form admin. Status: HIPOTESIS kuat.

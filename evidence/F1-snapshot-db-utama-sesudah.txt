@@ -1,0 +1,11 @@
+cart=0
+cart_items=107
+channels=1
+core_config=23
+customers=25
+migrations=120
+orders=0
+product_flat=390
+products=195
+EXACT products=195 orders=40 customers=26 migrations=167 cart=41
+UPDATE_TIME_MAX=2026-11-08 07:33:54

@@ -1,0 +1,261 @@
+# F1 instalasi DB test - 2026-11-08 12:00:14
+$ php artisan migrate --env=testing --seed --seeder="Webkul\Installer\Database\Seeders\DatabaseSeeder" --no-interaction
+
+   INFO  Preparing database.  
+
+  Creating migration table  ...  228.11ms DONE
+
+   INFO  Running migrations.  
+
+  2014_10_12_000000_create_users_table  ...  108.90ms DONE
+  2014_10_12_100000_create_admin_password_resets_table  ...  36.49ms DONE
+  2014_10_12_100000_create_password_resets_table  ...  38.58ms DONE
+  2018_06_12_111907_create_admins_table  ...  46.03ms DONE
+  2018_06_13_055341_create_roles_table  ...  12.60ms DONE
+  2018_07_05_130148_create_attributes_table  ...  31.86ms DONE
+  2018_07_05_132854_create_attribute_translations_table  ...  104.38ms DONE
+  2018_07_05_135150_create_attribute_families_table  ...  13.39ms DONE
+  2018_07_05_135152_create_attribute_groups_table  ...  190.25ms DONE
+  2018_07_05_140832_create_attribute_options_table  ...  81.15ms DONE
+  2018_07_05_140856_create_attribute_option_translations_table  ...  105.02ms DONE
+  2018_07_05_142820_create_categories_table  ...  65.12ms DONE
+  2018_07_10_055143_create_locales_table  ...  37.75ms DONE
+  2018_07_20_054426_create_countries_table  ...  14.12ms DONE
+  2018_07_20_054502_create_currencies_table  ...  15.85ms DONE
+  2018_07_20_054542_create_currency_exchange_rates_table  ...  86.75ms DONE
+  2018_07_20_064849_create_channels_table  ...  469.87ms DONE
+  2018_07_21_142836_create_category_translations_table  ...  185.47ms DONE
+  2018_07_23_110040_create_inventory_sources_table  ...  41.94ms DONE
+  2018_07_24_082635_create_customer_groups_table  ...  36.75ms DONE
+  2018_07_24_082930_create_customers_table  ...  143.90ms DONE
+  2018_07_27_065727_create_products_table  ...  942.75ms DONE
+  2018_07_27_070011_create_product_attribute_values_table  ...  191.70ms DONE
+  2018_07_27_092623_create_product_reviews_table  ...  84.08ms DONE
+  2018_07_27_113941_create_product_images_table  ...  93.24ms DONE
+  2018_07_27_113956_create_product_inventories_table  ...  158.66ms DONE
+  2018_08_30_064755_create_tax_categories_table  ...  37.44ms DONE
+  2018_08_30_065042_create_tax_rates_table  ...  33.27ms DONE
+  2018_08_30_065840_create_tax_mappings_table  ...  125.04ms DONE
+  2018_09_05_150444_create_cart_table  ...  213.94ms DONE
+  2018_09_05_150915_create_cart_items_table  ...  328.00ms DONE
+  2018_09_11_064045_customer_password_resets  ...  34.05ms DONE
+  2018_09_19_093453_create_cart_payment  ...  73.86ms DONE
+  2018_09_19_093508_create_cart_shipping_rates_table  ...  16.55ms DONE
+  2018_09_20_060658_create_core_config_table  ...  16.00ms DONE
+  2018_09_27_113154_create_orders_table  ...  215.99ms DONE
+  2018_09_27_113207_create_order_items_table  ...  168.48ms DONE
+  2018_09_27_115022_create_shipments_table  ...  150.60ms DONE
+  2018_09_27_115029_create_shipment_items_table  ...  79.62ms DONE
+  2018_09_27_115135_create_invoices_table  ...  102.24ms DONE
+  2018_09_27_115144_create_invoice_items_table  ...  163.87ms DONE
+  2018_10_01_095504_create_order_payment_table  ...  81.97ms DONE
+  2018_10_03_025230_create_wishlist_table  ...  228.10ms DONE
+  2018_10_12_101803_create_country_translations_table  ...  82.12ms DONE
+  2018_10_12_101913_create_country_states_table  ...  68.86ms DONE
+  2018_10_12_101923_create_country_state_translations_table  ...  88.19ms DONE
+  2018_11_16_173504_create_subscribers_list_table  ...  185.42ms DONE
+  2018_11_21_144411_create_cart_item_inventories_table  ...  16.44ms DONE
+  2018_12_06_185202_create_product_flat_table  ...  274.33ms DONE
+  2018_12_24_123812_create_channel_inventory_sources_table  ...  169.96ms DONE
+  2018_12_26_165327_create_product_ordered_inventories_table  ...  158.40ms DONE
+  2019_05_13_024321_create_cart_rules_table  ...  19.02ms DONE
+  2019_05_13_024322_create_cart_rule_channels_table  ...  118.34ms DONE
+  2019_05_13_024323_create_cart_rule_customer_groups_table  ...  113.30ms DONE
+  2019_05_13_024324_create_cart_rule_translations_table  ...  88.06ms DONE
+  2019_05_13_024325_create_cart_rule_customers_table  ...  131.86ms DONE
+  2019_05_13_024326_create_cart_rule_coupons_table  ...  83.25ms DONE
+  2019_05_13_024327_create_cart_rule_coupon_usage_table  ...  146.36ms DONE
+  2019_06_17_180258_create_product_downloadable_samples_table  ...  82.10ms DONE
+  2019_06_17_180314_create_product_downloadable_sample_translations_table  ...  73.25ms DONE
+  2019_06_17_180325_create_product_downloadable_links_table  ...  75.95ms DONE
+  2019_06_17_180346_create_product_downloadable_link_translations_table  ...  136.18ms DONE
+  2019_06_21_202249_create_downloadable_link_purchased_table  ...  230.32ms DONE
+  2019_07_02_180307_create_booking_products_table  ...  79.12ms DONE
+  2019_07_05_154415_create_booking_product_default_slots_table  ...  61.62ms DONE
+  2019_07_05_154429_create_booking_product_appointment_slots_table  ...  75.54ms DONE
+  2019_07_05_154440_create_booking_product_event_tickets_table  ...  80.25ms DONE
+  2019_07_05_154451_create_booking_product_rental_slots_table  ...  77.88ms DONE
+  2019_07_05_154502_create_booking_product_table_slots_table  ...  89.88ms DONE
+  2019_07_30_153530_create_cms_pages_table  ...  15.15ms DONE
+  2019_07_31_143339_create_category_filterable_attributes_table  ...  150.00ms DONE
+  2019_08_02_105320_create_product_grouped_products_table  ...  147.50ms DONE
+  2019_08_20_170510_create_product_bundle_options_table  ...  81.16ms DONE
+  2019_08_20_170520_create_product_bundle_option_translations_table  ...  98.73ms DONE
+  2019_08_20_170528_create_product_bundle_option_products_table  ...  149.52ms DONE
+  2019_09_11_184511_create_refunds_table  ...  127.99ms DONE
+  2019_09_11_184519_create_refund_items_table  ...  289.24ms DONE
+  2019_12_03_184613_create_catalog_rules_table  ...  19.50ms DONE
+  2019_12_03_184651_create_catalog_rule_channels_table  ...  123.01ms DONE
+  2019_12_03_184732_create_catalog_rule_customer_groups_table  ...  128.72ms DONE
+  2019_12_06_101110_create_catalog_rule_products_table  ...  302.61ms DONE
+  2019_12_06_110507_create_catalog_rule_product_prices_table  ...  285.84ms DONE
+  2019_12_14_000001_create_personal_access_tokens_table  ...  55.62ms DONE
+  2020_01_14_191854_create_cms_page_translations_table  ...  88.21ms DONE
+  2020_01_15_130209_create_cms_page_channels_table  ...  132.94ms DONE
+  2020_02_18_165639_create_bookings_table  ...  320.43ms DONE
+  2020_02_21_121201_create_booking_product_event_ticket_translations_table  ...  83.91ms DONE
+  2020_04_16_185147_add_table_addresses  ...  217.28ms DONE
+  2020_05_06_171638_create_order_comments_table  ...  97.66ms DONE
+  2020_05_21_171500_create_product_customer_group_prices_table  ...  141.09ms DONE
+  2020_06_25_162154_create_customer_social_accounts_table  ...  86.42ms DONE
+  2020_08_07_174804_create_gdpr_data_request_table  ...  152.45ms DONE
+  2020_11_19_112228_create_product_videos_table  ...  87.53ms DONE
+  2020_11_26_141455_create_marketing_templates_table  ...  18.08ms DONE
+  2020_11_26_150534_create_marketing_events_table  ...  26.04ms DONE
+  2020_11_26_150644_create_marketing_campaigns_table  ...  409.37ms DONE
+  2020_12_21_000200_create_channel_translations_table  ...  130.41ms DONE
+  2020_12_27_121950_create_jobs_table  ...  40.91ms DONE
+  2021_03_11_212124_create_order_transactions_table  ...  90.58ms DONE
+  2021_04_07_132010_create_product_review_images_table  ...  82.94ms DONE
+  2021_12_15_104544_notifications  ...  91.87ms DONE
+  2022_03_15_160510_create_failed_jobs_table  ...  41.48ms DONE
+  2022_04_01_094622_create_sitemaps_table  ...  17.91ms DONE
+  2022_10_03_144232_create_product_price_indices_table  ...  194.12ms DONE
+  2022_10_04_144444_create_job_batches_table  ...  16.95ms DONE
+  2022_10_08_134150_create_product_inventory_indices_table  ...  163.71ms DONE
+  2023_05_26_213105_create_wishlist_items_table  ...  184.79ms DONE
+  2023_05_26_213120_create_compare_items_table  ...  137.51ms DONE
+  2023_06_27_163529_rename_product_review_images_to_product_review_attachments  ...  112.30ms DONE
+  2023_07_06_140013_add_logo_path_column_to_locales  ...  64.31ms DONE
+  2023_07_10_184256_create_theme_customizations_table  ...  63.20ms DONE
+  2023_07_12_181722_remove_home_page_and_footer_content_column_from_channel_translations_table  ...  44.29ms DONE
+  2023_07_20_185324_add_column_column_in_attribute_groups_table  ...  50.66ms DONE
+  2023_07_25_145943_add_regex_column_in_attributes_table  ...  66.69ms DONE
+  2023_07_25_165945_drop_notes_column_from_customers_table  ...  127.41ms DONE
+  2023_07_25_171058_create_customer_notes_table  ...  76.19ms DONE
+  2023_07_31_125232_rename_image_and_category_banner_columns_from_categories_table  ...  190.70ms DONE
+  2023_09_15_170053_create_theme_customization_translations_table  ...  71.53ms DONE
+  2023_09_20_102031_add_default_value_column_in_attributes_table  ...  67.69ms DONE
+  2023_09_20_102635_add_inventories_group_in_attribute_groups_table  ...  4.47ms DONE
+  2023_09_26_155709_add_columns_to_currencies  ...  121.62ms DONE
+  2023_10_05_163612_create_visits_table  ...  54.40ms DONE
+  2023_10_12_090446_add_tax_category_id_column_in_order_items_table  ...  170.64ms DONE
+  2023_11_08_054614_add_code_column_in_attribute_groups_table  ...  52.06ms DONE
+  2023_11_08_140116_create_search_terms_table  ...  77.96ms DONE
+  2023_11_09_162805_create_url_rewrites_table  ...  15.99ms DONE
+  2023_11_17_150401_create_search_synonyms_table  ...  16.97ms DONE
+  2023_12_11_054614_add_channel_id_column_in_product_price_indices_table  ...  294.05ms DONE
+  2024_01_11_154640_create_imports_table  ...  23.43ms DONE
+  2024_01_11_154741_create_import_batches_table  ...  127.03ms DONE
+  2024_01_19_170350_add_unique_id_column_in_product_attribute_values_table  ...  67.49ms DONE
+  2024_01_19_170350_add_unique_id_column_in_product_customer_group_prices_table  ...  83.04ms DONE
+  2024_01_22_170814_add_unique_index_in_mapping_tables  ...  417.94ms DONE
+  2024_02_26_153000_add_columns_to_addresses_table  ...  253.29ms DONE
+  2024_03_07_193421_rename_address1_column_in_addresses_table  ...  91.09ms DONE
+  2024_04_16_144400_add_cart_id_column_in_cart_shipping_rates_table  ...  101.74ms DONE
+  2024_04_19_102939_add_incl_tax_columns_in_orders_table  ...  845.13ms DONE
+  2024_04_19_135405_add_incl_tax_columns_in_cart_items_table  ...  302.84ms DONE
+  2024_04_19_144641_add_incl_tax_columns_in_order_items_table  ...  264.87ms DONE
+  2024_04_23_133154_add_incl_tax_columns_in_cart_table  ...  425.55ms DONE
+  2024_04_23_150945_add_incl_tax_columns_in_cart_shipping_rates_table  ...  289.52ms DONE
+  2024_04_24_102939_add_incl_tax_columns_in_invoices_table  ...  398.22ms DONE
+  2024_04_24_102939_add_incl_tax_columns_in_refunds_table  ...  388.83ms DONE
+  2024_04_24_144641_add_incl_tax_columns_in_invoice_items_table  ...  366.38ms DONE
+  2024_04_24_144641_add_incl_tax_columns_in_refund_items_table  ...  266.05ms DONE
+  2024_04_24_144641_add_incl_tax_columns_in_shipment_items_table  ...  97.71ms DONE
+  2024_05_10_152848_create_saved_filters_table  ...  33.19ms DONE
+  2024_06_03_174128_create_product_channels_table  ...  153.51ms DONE
+  2024_06_04_130527_add_channel_id_column_in_customers_table  ...  282.45ms DONE
+  2024_06_04_130600_make_email_unique_per_channel  ...  140.40ms DONE
+  2024_06_04_134403_add_channel_id_column_in_visits_table  ...  131.84ms DONE
+  2024_06_13_184426_add_theme_column_into_theme_customizations_table  ...  73.91ms DONE
+  2024_07_17_172645_add_additional_column_to_sitemaps_table  ...  29.11ms DONE
+  2024_10_11_135010_create_product_customizable_options_table  ...  91.73ms DONE
+  2024_10_11_135110_create_product_customizable_option_translations_table  ...  91.40ms DONE
+  2024_10_11_135228_create_product_customizable_option_prices_table  ...  70.80ms DONE
+  2025_05_07_121250_update_total_weight_columns_in_shipments_and_weight_shipment_items_tables  ...  129.19ms DONE
+  2025_09_05_000100_add_indexes_to_channels_tables  ...  173.78ms DONE
+  2025_09_05_000200_add_indexes_to_product_relation_tables  ...  37.93ms DONE
+  2025_09_05_000300_add_indexes_to_product_media_and_attributes  ...  104.33ms DONE
+  2025_09_05_000400_add_indexes_to_attributes_and_product_types  ...  64.88ms DONE
+  2025_09_05_000500_add_indexes_to_product_grouped_products_and_product_bundle_option_products  ...  36.70ms DONE
+  2025_09_05_000500_add_indexes_to_url_rewrites_and_visits  ...  46.69ms DONE
+  2026_04_09_120000_change_tax_category_id_fk_on_cart_items_to_null_on_delete  ...  112.20ms DONE
+  2026_04_09_120100_change_tax_category_id_fk_on_order_items_to_null_on_delete  ...  138.97ms DONE
+  2026_04_17_000001_add_booking_product_enhancements  ...  225.85ms DONE
+  2026_04_17_000002_add_allow_cancellation_snapshot_to_bookings  ...  69.71ms DONE
+
+
+   INFO  Seeding database.  
+
+  Webkul\Installer\Database\Seeders\Attribute\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Attribute\AttributeFamilyTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Attribute\AttributeFamilyTableSeeder  ...  23 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Attribute\AttributeGroupTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Attribute\AttributeGroupTableSeeder  ...  11 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Attribute\AttributeTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Attribute\AttributeTableSeeder  ...  19 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Attribute\AttributeOptionTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Attribute\AttributeOptionTableSeeder  ...  9 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Attribute\DatabaseSeeder  ...  76 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Category\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Category\CategoryTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Category\CategoryTableSeeder  ...  9 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Category\DatabaseSeeder  ...  13 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\LocalesTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\LocalesTableSeeder  ...  420 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\CurrencyTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\CurrencyTableSeeder  ...  5 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\CountriesTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\CountriesTableSeeder  ...  39 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\StatesTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\StatesTableSeeder  ...  242 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\ChannelTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\ChannelTableSeeder  ...  39 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\ConfigTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Core\ConfigTableSeeder  ...  38 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Core\DatabaseSeeder  ...  802 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Customer\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Customer\CustomerGroupTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Customer\CustomerGroupTableSeeder  ...  4 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Customer\DatabaseSeeder  ...  7 ms DONE  
+
+  Webkul\Installer\Database\Seeders\CMS\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\CMS\CMSPagesTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\CMS\CMSPagesTableSeeder  ...  13 ms DONE  
+
+  Webkul\Installer\Database\Seeders\CMS\DatabaseSeeder  ...  16 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Inventory\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Inventory\InventorySourceTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Inventory\InventorySourceTableSeeder  ...  4 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Inventory\DatabaseSeeder  ...  7 ms DONE  
+
+  Webkul\Installer\Database\Seeders\SocialLogin\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\SocialLogin\CustomerSocialAccountTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\SocialLogin\CustomerSocialAccountTableSeeder  ...  3 ms DONE  
+
+  Webkul\Installer\Database\Seeders\SocialLogin\DatabaseSeeder  ...  6 ms DONE  
+
+  Webkul\Installer\Database\Seeders\Shop\ThemeCustomizationTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\Shop\ThemeCustomizationTableSeeder  ...  60 ms DONE  
+
+  Webkul\Installer\Database\Seeders\User\DatabaseSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\User\RolesTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\User\RolesTableSeeder  ...  6 ms DONE  
+
+  Webkul\Installer\Database\Seeders\User\AdminsTableSeeder  ...  RUNNING  
+  Webkul\Installer\Database\Seeders\User\AdminsTableSeeder  ...  438 ms DONE  
+
+  Webkul\Installer\Database\Seeders\User\DatabaseSeeder  ...  450 ms DONE  
+
+exit=0
+tabel=131
+migrations=167 channels=1 locales=en currencies=USD products=0 customers=0 admins=1 categories=1

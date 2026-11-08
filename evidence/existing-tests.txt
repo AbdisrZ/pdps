@@ -1,0 +1,90 @@
+Daftar test bawaan packages/Webkul/Shop/tests (Bagisto v2.3.19) - dihitung statis (grep it(/test(), TIDAK dijalankan)
+Dibuat: 2026-11-08 11:44
+
+FILE                                                         JUMLAH_TEST
+Feature/API/CategoryProductTest.php                          7
+Feature/API/ProductTest.php                                  3
+Feature/Checkout/CartTest.php                                42
+Feature/Checkout/CheckoutTest.php                            38
+Feature/Checkout/CouponUsageLimitTest.php                    11
+Feature/Customers/AccountTest.php                            20
+Feature/Customers/OrdersTest.php                             4
+Feature/Customers/WishlistTest.php                           7
+Feature/HomePageTest.php                                     14
+Feature/LoginPageTest.php                                    7
+Feature/Product/Prices/BundleTest.php                        47
+Feature/Product/Prices/ConfigurableTest.php                  46
+Feature/Product/Prices/DownloadableTest.php                  47
+Feature/Product/Prices/GroupedTest.php                       47
+Feature/Product/Prices/SimpleTest.php                        47
+Feature/Product/Prices/VirtualTest.php                       43
+Feature/RegistrationPageTest.php                             7
+
+TOTAL: 437 test di 17 file
+
+e2e Playwright (packages/Webkul/Shop/tests/e2e-pw/tests):
+e2e-pw/tests/auth.spec.ts
+e2e-pw/tests/cart.spec.ts
+e2e-pw/tests/checkout/booking-checkout.spec.ts
+e2e-pw/tests/checkout/bundle-checkout.spec.ts
+e2e-pw/tests/checkout/combination-product-checkout.spec.ts
+e2e-pw/tests/checkout/configurable-checkout.spec.ts
+e2e-pw/tests/checkout/downloadable-checkout.spec.ts
+e2e-pw/tests/checkout/group-checkout.spec.ts
+e2e-pw/tests/checkout/simple-checkout.spec.ts
+e2e-pw/tests/checkout/virtual-checkout.spec.ts
+e2e-pw/tests/compare.spec.ts
+e2e-pw/tests/customer.spec.ts
+e2e-pw/tests/filter.spec.ts
+e2e-pw/tests/home.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/item-qty.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/payment-meathod.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/shipping-country.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/shipping-meathod.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/shipping-postcode.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-attributes/subtotal.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-item-attribute/price-in.cart.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-item-attribute/quantity-in-cart.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-item-attribute/subtotal.spec.ts
+e2e-pw/tests/promotion/cart-rules/cart-item-attribute/total-weight.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/atribute-family.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/category.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/color.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/cost.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/featured.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/guest-checkout.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/height.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/length.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/name.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/new.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/price.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/product-number.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/size.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/sku.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/special-price.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/tax-category.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/urlKey.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/visible-individually.spec.ts
+e2e-pw/tests/promotion/cart-rules/product-attributes/width.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/atribute-family.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/categories.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/color.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/cost.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/featured.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/guest-checkout.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/height.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/length.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/name.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/new.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/price.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/product-number.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/size.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/sku.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/special-price.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/tax-category.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/urlKey.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/visible-individually.spec.ts
+e2e-pw/tests/promotion/catalog-rules/product-attributes/width.spec.ts
+e2e-pw/tests/review.spec.ts
+e2e-pw/tests/search.spec.ts
+e2e-pw/tests/wishlist.spec.ts
