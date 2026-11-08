@@ -1,0 +1,14 @@
+{
+    "id": "CT-01",
+    "waktu": "2026-11-08 13:03:32",
+    "status": 422,
+    "body": {
+        "message": "The product id field is required.",
+        "errors": {
+            "product_id": [
+                "The product id field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The product id field is required."
+}

@@ -1,0 +1,12 @@
+{
+    "id": "CO-02",
+    "waktu": "2026-11-08 13:02:37",
+    "status": 200,
+    "body": {
+        "redirect": false,
+        "data": "[dipangkas]"
+    },
+    "input": {
+        "email": "bukan-email"
+    }
+}

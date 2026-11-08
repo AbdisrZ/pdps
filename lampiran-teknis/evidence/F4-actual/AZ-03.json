@@ -1,0 +1,16 @@
+{
+    "id": "AZ-03",
+    "waktu": "2026-11-08 13:02:10",
+    "status": 200,
+    "body": {
+        "data": {
+            "id": 789,
+            "items_count": 1,
+            "items_qty": 1,
+            "coupon_code": null,
+            "grand_total": 240.06
+        },
+        "message": "Quantity updated successfully"
+    },
+    "qty_item_A": 2
+}

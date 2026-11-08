@@ -1,0 +1,20 @@
+{
+    "id": "PR-10",
+    "waktu": "2026-11-08 13:03:24",
+    "status": 422,
+    "body": {
+        "message": "The special price field must be less than 100.",
+        "errors": {
+            "special_price": [
+                "The special price field must be less than 100."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The special price field must be less than 100.",
+    "input": {
+        "price": "100",
+        "special_price": "100"
+    },
+    "price_sebelum": "351.2600",
+    "price_sesudah": "351.2600"
+}

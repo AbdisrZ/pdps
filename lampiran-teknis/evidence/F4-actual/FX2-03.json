@@ -1,0 +1,24 @@
+{
+    "id": "FX2-03",
+    "waktu": "2026-11-08 13:03:13",
+    "status": 422,
+    "body": {
+        "message": "The cost field must not be greater than 99999999.9999.",
+        "errors": {
+            "cost": [
+                "The cost field must not be greater than 99999999.9999."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The cost field must not be greater than 99999999.9999.",
+    "input": {
+        "cost": "100000000"
+    },
+    "sebelum": null,
+    "sesudah": null,
+    "errors": {
+        "cost": [
+            "The cost field must not be greater than 99999999.9999."
+        ]
+    }
+}

@@ -1,0 +1,10 @@
+{
+    "id": "CT-08",
+    "waktu": "2026-11-08 13:03:35",
+    "status": 400,
+    "body": {
+        "redirect_uri": "http://localhost:8000/qui-facere-voluptas-quam-minus-quibusdam-et",
+        "message": "Undefined array key \"quantity\""
+    },
+    "qty_item": null
+}

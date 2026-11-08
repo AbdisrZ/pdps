@@ -1,0 +1,17 @@
+{
+    "id": "CO-05",
+    "waktu": "2026-11-08 13:02:39",
+    "status": 422,
+    "body": {
+        "message": "The billing.address field is required.",
+        "errors": {
+            "billing.address": [
+                "The billing.address field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.address field is required.",
+    "input": {
+        "address": []
+    }
+}

@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dokumentasi Pengujian Bagisto</title>
+<style>
+  :root {
+    --bg: #f7f7f5; --paper: #ffffff; --ink: #1f2328; --muted: #5b6470;
+    --line: #e3e5e8; --accent: #2f6f5e; --accent-soft: #e6f2ee;
+    --warn: #9a5b00; --warn-soft: #fff4e0; --bad: #a2342b; --bad-soft: #fdecea;
+    --good: #2f6f3e; --good-soft: #e8f5ea; --code: #f1f3f5;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15171a; --paper: #1d2024; --ink: #e6e8eb; --muted: #a2a9b3;
+      --line: #30353b; --accent: #6fc2a8; --accent-soft: #1f3a33;
+      --warn: #f0b45a; --warn-soft: #3a2e1a; --bad: #f08a80; --bad-soft: #3d2220;
+      --good: #82cf92; --good-soft: #1f3524; --code: #262a2f;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font: 16px/1.65 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 32px 16px 64px; }
+  header.hero {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 28px 28px 22px; margin-bottom: 20px;
+  }
+  .eyebrow { color: var(--accent); font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; }
+  h1 { font-size: 30px; line-height: 1.25; margin: 6px 0 10px; }
+  .lead { color: var(--muted); margin: 0; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 20px; }
+  .stat { background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  .stat b { display: block; font-size: 24px; line-height: 1.2; }
+  .stat span { color: var(--muted); font-size: 13px; }
+  nav.toc {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 16px 22px; margin-bottom: 20px;
+  }
+  nav.toc ol { margin: 6px 0 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+  nav.toc a { color: var(--accent); text-decoration: none; }
+  nav.toc a:hover { text-decoration: underline; }
+  section {
+    background: var(--paper); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px 28px; margin-bottom: 16px;
+  }
+  h2 { font-size: 21px; margin: 0 0 12px; display: flex; gap: 10px; align-items: baseline; }
+  h2 .num { color: var(--accent); font-variant-numeric: tabular-nums; }
+  h3 { font-size: 17px; margin: 20px 0 8px; }
+  p { margin: 0 0 12px; }
+  ul, ol { margin: 0 0 12px; padding-left: 22px; }
+  li { margin: 4px 0; }
+  code { background: var(--code); padding: 1px 6px; border-radius: 5px; font-size: .9em;
+    font-family: "Cascadia Code", Consolas, monospace; word-break: break-word; }
+  .table-wrap { overflow-x: auto; margin: 8px 0 14px; border: 1px solid var(--line); border-radius: 10px; }
+  table { border-collapse: collapse; width: 100%; font-size: 14.5px; }
+  th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+  th { background: var(--bg); font-weight: 600; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  .note { border-radius: 10px; padding: 12px 16px; margin: 12px 0; }
+  .note.warn { background: var(--warn-soft); border-left: 4px solid var(--warn); }
+  .note.info { background: var(--accent-soft); border-left: 4px solid var(--accent); }
+  .pill { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 9px; border-radius: 999px; white-space: nowrap; }
+  .pill.good { background: var(--good-soft); color: var(--good); }
+  .pill.bad { background: var(--bad-soft); color: var(--bad); }
+  .pill.fix { background: var(--accent-soft); color: var(--accent); }
+  .grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+  .card { border: 1px solid var(--line); border-radius: 10px; padding: 14px 16px; background: var(--bg); }
+  .card h4 { margin: 0 0 6px; font-size: 15px; }
+  .card p { margin: 0; color: var(--muted); font-size: 14.5px; }
+  .steps { counter-reset: s; list-style: none; padding-left: 0; }
+  .steps li { counter-increment: s; position: relative; padding-left: 38px; margin: 10px 0; }
+  .steps li::before {
+    content: counter(s); position: absolute; left: 0; top: 1px; width: 26px; height: 26px;
+    border-radius: 50%; background: var(--accent); color: var(--paper);
+    font-size: 13px; font-weight: 700; display: grid; place-items: center;
+  }
+  .timeline { border-left: 2px solid var(--line); margin-left: 6px; padding-left: 18px; }
+  .timeline div { position: relative; margin-bottom: 12px; }
+  .timeline div::before { content: ""; position: absolute; left: -25px; top: 7px; width: 12px; height: 12px;
+    border-radius: 50%; background: var(--accent); }
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }
+  @media (max-width: 640px) {
+    h1 { font-size: 24px; } section, header.hero { padding: 18px; }
+    nav.toc ol { columns: 1; }
+  }
+  @media print {
+    body { background: #fff; color: #000; } .wrap { max-width: none; padding: 0; }
+    section, header.hero, nav.toc { border: 0; padding: 8px 0; break-inside: avoid-page; }
+    nav.toc { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero">
+  <div class="eyebrow">Pengujian dan Pemeliharaan Sistem · UNDIRA</div>
+  <h1>Dokumentasi Pengujian Sistem Toko Online Bagisto</h1>
+  <p class="lead">Laporan alur kerja kami: dari instalasi, persiapan database terpisah, mempelajari sistem, menemukan celah, menguji, sampai memperbaiki dua masalah dan mencatatnya di Git.</p>
+  <div class="stats">
+    <div class="stat"><b>112</b><span>kasus uji</span></div>
+    <div class="stat"><b>90</b><span>lolos</span></div>
+    <div class="stat"><b>15</b><span>masalah ditemukan</span></div>
+    <div class="stat"><b>2</b><span>masalah diperbaiki</span></div>
+  </div>
+</header>
+
+<nav class="toc">
+  <strong>Isi</strong>
+  <ol>
+    <li><a href="#s1">Apa yang kami uji dan kenapa</a></li>
+    <li><a href="#s2">Persiapan database</a></li>
+    <li><a href="#s3">Mempelajari alur sistem</a></li>
+    <li><a href="#s4">Dari mana kami menemukan celah</a></li>
+    <li><a href="#s5">Cara kami menguji</a></li>
+    <li><a href="#s6">Hasil pengujian</a></li>
+    <li><a href="#s7">Perbaikan pertama (v1.0.1)</a></li>
+    <li><a href="#s8">Perbaikan kedua (v1.0.2)</a></li>
+    <li><a href="#s9">Pengecekan ulang</a></li>
+    <li><a href="#s10">Riwayat Git</a></li>
+    <li><a href="#s11">Kesimpulan</a></li>
+  </ol>
+</nav>
+
+<section id="s1">
+  <h2><span class="num">1</span> Apa yang kami uji dan kenapa</h2>
+  <p>Kami menginstal <b>Bagisto</b>, aplikasi toko online open source berbasis Laravel, langsung dari GitHub (<code>github.com/bagisto/bagisto</code>), lalu menjalankannya secara lokal di laptop memakai XAMPP. Kami memilih Bagisto karena fiturnya lengkap seperti toko online sungguhan: login pelanggan, keranjang belanja, stok barang, checkout, ongkir, kupon, dan halaman admin untuk mengatur harga. Banyak bagian yang bisa dijadikan bahan latihan test case.</p>
+  <p>Versi yang kami pakai adalah <b>Bagisto 2.3.19</b>, bukan versi paling baru. Versi terbaru (2.5) membutuhkan PHP 8.4, sedangkan PHP di XAMPP kami versi 8.2. Versi 2.3.19 adalah versi terakhir yang masih berjalan di PHP 8.2.</p>
+  <p>Supaya toko terlihat "hidup", kami mengisinya dengan data contoh: sekitar 195 produk lengkap dengan gambar dan harga Rupiah, 25 pelanggan, dan 40 pesanan.</p>
+</section>
+
+<section id="s2">
+  <h2><span class="num">2</span> Persiapan: memisahkan database asli dan database testing</h2>
+  <p>Sebelum menguji, kami memastikan pengujian tidak merusak data toko yang asli.</p>
+  <ol class="steps">
+    <li><b>Backup database asli.</b> Database toko (<code>bagisto</code>) dicadangkan ke <code>D:\Backup\bagisto_utama_20261108.sql</code>.</li>
+    <li><b>Membuat database khusus testing.</b> Kami membuat database terpisah <code>bagisto_test</code>. Database ini tidak disalin dari database asli, melainkan diisi ulang dari awal dengan data bawaan Bagisto (kategori, bahasa, mata uang, akun admin), supaya kondisinya bersih dan sama setiap kali pengujian dimulai.</li>
+    <li><b>Mengarahkan aplikasi ke database testing.</b> Kami membuat file pengaturan <code>.env.testing</code> agar setiap test otomatis memakai <code>bagisto_test</code>, lalu mengecek ulang bahwa yang aktif saat test memang <code>bagisto_test</code>.</li>
+    <li><b>Menghindari perintah berbahaya.</b> Petunjuk Bagisto menyarankan <code>bagisto:install</code>. Setelah kami pelajari, perintah itu selalu membaca pengaturan database <i>asli</i> lalu mengosongkannya. Perintah itu tidak kami pakai; kami memakai perintah migrasi biasa yang hanya menyentuh <code>bagisto_test</code>.</li>
+    <li><b>Membuktikan data asli aman.</b> Jumlah produk, pesanan, dan pelanggan di database asli dicatat sebelum dan sesudah pengujian. Hasilnya selalu sama: 195 produk, 40 pesanan, 26 pelanggan.</li>
+  </ol>
+  <div class="note info">Setiap test berjalan di dalam "transaksi" yang otomatis dibatalkan di akhir test, jadi <code>bagisto_test</code> juga kembali kosong setelah pengujian.</div>
+</section>
+
+<section id="s3">
+  <h2><span class="num">3</span> Mempelajari alur sistem</h2>
+  <p>Sebelum membuat test case, kami mempelajari bagaimana Bagisto bekerja di bagian-bagian penting:</p>
+  <div class="table-wrap"><table>
+    <tr><th>Bagian</th><th>Yang kami pelajari</th></tr>
+    <tr><td>Login &amp; daftar akun</td><td>Password minimal 6 karakter, email harus unik, akun nonaktif atau belum diverifikasi tidak boleh masuk</td></tr>
+    <tr><td>Keranjang</td><td>Menambah, mengubah jumlah, dan menghapus barang, termasuk lewat API (<code>POST</code>, <code>PUT</code>, <code>DELETE</code> ke <code>api/checkout/cart</code>)</td></tr>
+    <tr><td>Stok barang</td><td>Barang tidak boleh dibeli melebihi stok; stok yang sudah dipesan orang lain ikut dikurangi</td></tr>
+    <tr><td>Checkout</td><td>Urutan alamat → ongkir → pembayaran → pesanan, serta aturan nomor telepon dan kode pos</td></tr>
+    <tr><td>Hak akses</td><td>Pelanggan A seharusnya tidak bisa melihat atau mengubah keranjang dan pesanan pelanggan B</td></tr>
+    <tr><td>Harga produk (admin)</td><td>Aturan harga di admin, misalnya harga diskon harus lebih kecil dari harga normal</td></tr>
+  </table></div>
+  <p>Kami juga menjalankan test bawaan yang sudah disediakan Bagisto: <b>132 test lolos semua</b>. Jadi kami tahu sistemnya stabil sebelum kami uji lebih jauh.</p>
+</section>
+
+<section id="s4">
+  <h2><span class="num">4</span> Dari mana kami menemukan celah untuk diuji</h2>
+  <div class="grid2">
+    <div class="card"><h4>1. Membaca aturan validasi</h4><p>Di alamat checkout, email hanya diwajibkan "harus diisi" tanpa dicek formatnya. Dari situ kami bertanya: bagaimana kalau diisi <code>bukan-email</code>?</p></div>
+    <div class="card"><h4>2. Mencoba nilai batas</h4><p>Stok 5: kami coba beli 4, 5, dan 6. Kode pos minimal 2 karakter: kami coba 1 dan 2. Harga maksimal 99.999.999,9999: kami coba tepat di batas dan sedikit di atasnya.</p></div>
+    <div class="card"><h4>3. Mencoba sebagai orang lain</h4><p>Login sebagai pelanggan B, lalu mencoba menghapus isi keranjang, membuka pesanan, dan mencetak invoice milik pelanggan A.</p></div>
+    <div class="card"><h4>4. Mencari bagian yang belum dites</h4><p>Bagian penolakan stok ("stok tidak cukup") ternyata belum pernah dijalankan oleh test bawaan, jadi kami prioritaskan.</p></div>
+  </div>
+</section>
+
+<section id="s5">
+  <h2><span class="num">5</span> Cara kami menguji</h2>
+  <p>Pengujian dilakukan dengan <b>test otomatis</b> memakai Pest (alat testing untuk Laravel). Setiap test mengirim permintaan ke aplikasi seperti yang dilakukan browser atau aplikasi lain:</p>
+  <div class="table-wrap"><table>
+    <tr><th>Metode</th><th>Dipakai untuk</th></tr>
+    <tr><td><code>POST</code></td><td>Menambah barang ke keranjang, mengisi alamat, login, daftar akun</td></tr>
+    <tr><td><code>PUT</code></td><td>Mengubah jumlah barang, mengubah harga produk di admin</td></tr>
+    <tr><td><code>GET</code></td><td>Membuka halaman pesanan dan invoice</td></tr>
+    <tr><td><code>DELETE</code></td><td>Menghapus barang dari keranjang</td></tr>
+  </table></div>
+  <p>Untuk setiap kasus kami mencatat tiga hal:</p>
+  <ul>
+    <li><b>Apa yang seharusnya terjadi.</b> Diambil dari aturan sistem, bukan dari hasil sistem.</li>
+    <li><b>Apa yang benar-benar terjadi.</b> Kode respons, pesan, dan isi database.</li>
+    <li><b>Statusnya</b>: lolos atau gagal.</li>
+  </ul>
+  <p>Setiap hasil disimpan sebagai file bukti. Semua test dijalankan <b>dua kali</b>, dan sebuah masalah baru disebut defect bila gagal di kedua percobaan dengan perilaku yang sama.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Bagian</th><th>Jumlah kasus</th></tr>
+    <tr><td>Hak akses</td><td>14</td></tr>
+    <tr><td>Stok</td><td>12</td></tr>
+    <tr><td>Keranjang</td><td>21</td></tr>
+    <tr><td>Alamat checkout</td><td>21</td></tr>
+    <tr><td>Ongkir, pesanan, minimum order</td><td>14</td></tr>
+    <tr><td>Login &amp; daftar akun</td><td>16</td></tr>
+    <tr><td>Harga produk</td><td>14</td></tr>
+    <tr><th>Total</th><th>112</th></tr>
+  </table></div>
+</section>
+
+<section id="s6">
+  <h2><span class="num">6</span> Hasil pengujian</h2>
+  <p>Dari 112 kasus, <b>90 lolos</b> dan <b>22 gagal</b>. Ke-22 kegagalan itu berasal dari <b>15 masalah</b>, karena satu masalah bisa muncul di beberapa kasus.</p>
+
+  <h3>6.1 Bagian yang ternyata aman</h3>
+  <div class="grid2">
+    <div class="card"><h4><span class="pill good">Aman</span> Stok barang</h4><p>12 dari 12 kasus lolos. Barang tidak bisa dibeli melebihi stok, termasuk saat ditambah sedikit-sedikit atau diubah jumlahnya.</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Pesanan orang lain</h4><p>Pelanggan B tidak bisa membuka, membatalkan, memesan ulang, atau mencetak invoice pesanan A; sistem menjawab "tidak ditemukan".</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Keranjang orang lain</h4><p>Pelanggan B tidak bisa menghapus atau mengubah barang di keranjang A.</p></div>
+    <div class="card"><h4><span class="pill good">Aman</span> Daftar akun &amp; login</h4><p>Password kurang dari 6 karakter ditolak, email ganda ditolak, akun nonaktif tidak bisa masuk.</p></div>
+  </div>
+
+  <h3>6.2 Masalah yang kami temukan</h3>
+  <div class="table-wrap"><table>
+    <tr><th>No</th><th>Bagian</th><th>Yang kami temukan</th><th>Cara mengujinya</th><th>Status</th></tr>
+    <tr><td>1</td><td>Harga (admin)</td><td>Harga di atas Rp99.999.999 diterima, tapi diam-diam tersimpan menjadi 99.999.999,9999</td><td>Ubah harga menjadi 100.000.000 lewat <code>PUT</code>, lalu cek database</td><td><span class="pill fix">Diperbaiki v1.0.2</span></td></tr>
+    <tr><td>2</td><td>Minimum order</td><td>Opsi "hitung dengan diskon" malah mengurangi pajak: subtotal 100 + pajak 10 dihitung 90</td><td>Jalankan fungsi perhitungan dengan angka contoh</td><td><span class="pill fix">Diperbaiki v1.0.1</span></td></tr>
+    <tr><td>3</td><td>Minimum order</td><td>Minimum 100,50 dianggap terpenuhi oleh belanja 100,25 karena angka desimal dibuang</td><td>Sama seperti nomor 2</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>4</td><td>Harga (admin)</td><td>Harga "0" diterima, tapi tersimpan kosong (NULL)</td><td>Ubah harga menjadi 0 lalu cek database</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>5</td><td>Keranjang</td><td>Ubah jumlah menjadi 0 atau −1 <b>menghapus barang</b>, padahal sistem membalas "berhasil"</td><td><code>PUT</code> jumlah 0, cek apakah barang masih ada</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>6</td><td>Keranjang</td><td>Menambah barang tanpa menyebut jumlah ditolak dengan pesan error PHP, padahal seharusnya otomatis 1</td><td><code>POST</code> tanpa <code>quantity</code></td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>7</td><td>Keranjang &amp; checkout</td><td>Tujuh permintaan membuat server error (500), misalnya cek ongkir tanpa keranjang, hapus kupon tanpa keranjang, dan alamat tanpa data billing</td><td>Kirim permintaan dalam kondisi tidak lengkap</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>8</td><td>Keranjang</td><td>Ubah jumlah yang gagal tetap dibalas "OK" (200)</td><td><code>PUT</code> tanpa data jumlah</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>9</td><td>Checkout</td><td>Pesan tanpa memilih pembayaran dibalas error server (500). Pesanan memang tidak dibuat</td><td>Checkout sampai akhir tanpa pembayaran</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>10</td><td>Hak akses</td><td>Menghapus barang milik orang lain dibalas "berhasil dihapus", padahal barangnya tidak terhapus</td><td>Login sebagai B, hapus barang milik A</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>11</td><td>Checkout</td><td>Format email di alamat tidak dicek; <code>bukan-email</code> diterima</td><td>Isi alamat dengan email asal</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>12</td><td>Checkout</td><td>Nama lebih dari 255 huruf terpotong tanpa peringatan</td><td>Isi nama 256 huruf</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>13</td><td>Hak akses</td><td>Checkout menerima nomor alamat milik pelanggan lain. Data alamatnya <b>tidak</b> bocor, hanya nomornya yang tercatat</td><td>Login sebagai B, kirim nomor alamat A</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>14</td><td>Login</td><td>Akun dari toko (channel) lain ditolak lewat web, tapi <b>berhasil masuk lewat API</b></td><td>Buat channel kedua, login lewat web dan API</td><td><span class="pill bad">Terbuka</span></td></tr>
+    <tr><td>15</td><td>Login</td><td>Tidak ada batas percobaan login; 10 kali salah berturut-turut tidak diblokir</td><td>Login dengan password salah 10 kali</td><td><span class="pill bad">Terbuka</span></td></tr>
+  </table></div>
+  <div class="note warn"><b>Catatan jujur.</b> Beberapa masalah (misalnya nomor 10, 11, 14, 15) bergantung pada aturan yang kami tetapkan sendiri, karena Bagisto tidak punya dokumen kebutuhan resmi. Kami menandainya agar bisa dikonfirmasi ke dosen. Selama pengujian kami juga sempat salah: dua kegagalan awal ternyata kesalahan di test kami sendiri, dan satu harapan hasil kami koreksi. Ketiganya sudah diperbaiki dan tidak dihitung sebagai defect.</div>
+</section>
+
+<section id="s7">
+  <h2><span class="num">7</span> Perbaikan pertama — v1.0.1 (minimum order)</h2>
+  <p>Kami memperbaiki <b>masalah nomor 2</b>.</p>
+  <ul>
+    <li><b>Penyebab:</b> di file <code>Cart.php</code>, bagian yang seharusnya mengurangi <i>diskon</i> ternyata juga mengurangi <i>pajak</i>. Sepertinya baris itu salah salin dari bagian pajak.</li>
+    <li><b>Perbaikan:</b> satu baris yang salah itu dihapus.</li>
+    <li><b>Bukti sebelum:</b> kami menulis test yang gagal lebih dulu. Subtotal 100 + pajak 10 harusnya 100, tetapi hasilnya 90.</li>
+    <li><b>Bukti sesudah:</b> test yang sama lolos, dan semua test keranjang serta checkout bawaan tetap lolos (42/42, 38/38, 11/11).</li>
+    <li><b>Git:</b> branch <code>fix/min-order-include-discount</code>, tag <b>v1.0.1</b>.</li>
+  </ul>
+</section>
+
+<section id="s8">
+  <h2><span class="num">8</span> Perbaikan kedua — v1.0.2 (harga produk)</h2>
+  <p>Kami memperbaiki <b>masalah nomor 1</b>, karena dampaknya paling besar untuk toko berbasis Rupiah. Harga di atas Rp100 juta sangat mungkin terjadi, misalnya untuk jam tangan mewah atau laptop.</p>
+  <ul>
+    <li><b>Penyebab:</b> aturan harga di admin hanya mengecek format angka, tanpa batas maksimal. Kolom harga di database hanya muat sampai 99.999.999,9999, dan database diatur untuk memotong angka yang terlalu besar tanpa error.</li>
+    <li><b>Perbaikan:</b> kami menambahkan aturan "harga maksimal 99.999.999,9999" di form produk admin. Sekarang harga yang terlalu besar ditolak dengan pesan <i>"The price field must not be greater than 99999999.9999."</i></li>
+    <li><b>Bukti sebelum dan sesudah:</b> harga 100.000.000 sebelumnya tersimpan terpotong; sekarang ditolak dan harga lama tidak berubah. Harga normal (150.000), harga terkecil (0,0001), dan harga tepat di batas tetap bisa disimpan.</li>
+    <li><b>Tidak ada yang rusak:</b> 52 test bawaan halaman produk admin lolos semua, baik <i>sebelum</i> maupun <i>sesudah</i> perbaikan.</li>
+    <li><b>Git:</b> branch <code>fix/harga-batas-maksimum</code>, tag <b>v1.0.2</b>.</li>
+  </ul>
+</section>
+
+<section id="s9">
+  <h2><span class="num">9</span> Pengecekan ulang setelah kedua perbaikan</h2>
+  <ul>
+    <li>Test kami: kegagalan turun dari 22 menjadi <b>20</b>. Yang berubah dari gagal ke lolos hanya dua kasus yang memang diperbaiki. Tidak ada test yang sebelumnya lolos lalu menjadi gagal.</li>
+    <li>Semua test bawaan Bagisto yang terkait tetap lolos: 132/132, ditambah 52/52 test admin produk.</li>
+  </ul>
+</section>
+
+<section id="s10">
+  <h2><span class="num">10</span> Riwayat Git</h2>
+  <div class="timeline">
+    <div><b>v1.0.0-baseline</b>: kondisi awal Bagisto 2.3.19 tanpa perubahan kode, plus dokumen awal.</div>
+    <div><b>v1.0.1</b>: perbaikan minimum order (masalah nomor 2).</div>
+    <div><b>v1.0.2</b>: perbaikan batas harga produk (masalah nomor 1).</div>
+  </div>
+  <p>Semua pekerjaan ada di branch <code>praktikum</code>. Perubahan kode Bagisto secara total sangat kecil: hanya 2 file, 11 baris ditambah dan 2 baris dihapus.</p>
+  <div class="note info">Riwayat ini masih tersimpan di komputer lokal. Untuk menaruhnya di GitHub sendiri: buat repo kosong di GitHub, lalu jalankan <code>git remote add saya &lt;url-repo&gt;</code> dan <code>git push saya praktikum --tags</code>.</div>
+</section>
+
+<section id="s11">
+  <h2><span class="num">11</span> Kesimpulan</h2>
+  <ul>
+    <li>Bagian paling penting toko, yaitu stok dan hak akses pesanan, ternyata <b>aman</b>.</li>
+    <li>Masalah yang paling banyak berkaitan dengan <b>penanganan input yang tidak lengkap atau tidak wajar</b>: sistem sering menjawab dengan error server, bukan pesan yang jelas.</li>
+    <li>Masalah yang paling berbahaya ada di <b>penyimpanan angka</b>: harga besar terpotong diam-diam. Masalah ini sudah kami perbaiki.</li>
+    <li>Yang belum kami kerjakan: pengujian kupon, pengujian tampilan dengan browser otomatis, pengujian kecepatan, dan perbaikan 13 masalah lainnya.</li>
+  </ul>
+  <p><b>Lampiran:</b> semua file teknis (dokumen rinci, hasil per kasus, laporan coverage, skrip bantu) ada di folder <code>lampiran-teknis/</code>. File test ada di <code>packages/Webkul/Shop/tests/Feature/Praktikum/</code>.</p>
+</section>
+
+<footer>Bagisto 2.3.19 · XAMPP (PHP 8.2, MySQL 8.0) · Pest · 2026</footer>
+</div>
+</body>
+</html>

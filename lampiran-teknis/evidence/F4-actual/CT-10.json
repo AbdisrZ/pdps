@@ -1,0 +1,14 @@
+{
+    "id": "CT-10",
+    "waktu": "2026-11-08 13:03:35",
+    "status": 422,
+    "body": {
+        "message": "The selected is buy now is invalid.",
+        "errors": {
+            "is_buy_now": [
+                "The selected is buy now is invalid."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The selected is buy now is invalid."
+}

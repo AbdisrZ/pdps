@@ -177,7 +177,7 @@ trait PraktikumHelpers
      */
     public function record(string $id, ?TestResponse $response = null, array $extra = []): void
     {
-        $dir = base_path('evidence/F4-actual');
+        $dir = base_path('lampiran-teknis/evidence/F4-actual');
 
         if (! is_dir($dir)) {
             mkdir($dir, 0777, true);

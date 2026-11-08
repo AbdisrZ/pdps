@@ -1,0 +1,9 @@
+{
+    "id": "CT-09",
+    "waktu": "2026-11-08 13:03:35",
+    "status": 400,
+    "body": {
+        "redirect_uri": "http://localhost:8000/neque-aut-repudiandae-et-rerum-harum",
+        "message": "Inactive item cannot be added to cart."
+    }
+}

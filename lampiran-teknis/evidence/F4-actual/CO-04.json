@@ -1,0 +1,17 @@
+{
+    "id": "CO-04",
+    "waktu": "2026-11-08 13:02:38",
+    "status": 422,
+    "body": {
+        "message": "The billing.first name field is required.",
+        "errors": {
+            "billing.first_name": [
+                "The billing.first name field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The billing.first name field is required.",
+    "input": {
+        "first_name": ""
+    }
+}

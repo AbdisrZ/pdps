@@ -1,0 +1,11 @@
+{
+    "id": "CT-12",
+    "waktu": "2026-11-08 13:03:37",
+    "status": 200,
+    "body": {
+        "data": {
+            "message": "Quantity cannot be lesser than one."
+        }
+    },
+    "qty_item_sesudah": null
+}

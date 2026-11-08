@@ -1,0 +1,17 @@
+{
+    "id": "AU-07",
+    "waktu": "2026-11-08 13:01:59",
+    "status": 422,
+    "body": {
+        "message": "The first name field is required.",
+        "errors": {
+            "first_name": [
+                "The first name field is required."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The first name field is required.",
+    "input": {
+        "first_name": ""
+    }
+}

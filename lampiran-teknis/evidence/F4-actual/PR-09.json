@@ -1,0 +1,22 @@
+{
+    "id": "PR-09",
+    "waktu": "2026-11-08 13:03:26",
+    "status": 422,
+    "body": {
+        "message": "The price field must not be greater than 99999999.9999.",
+        "errors": {
+            "price": [
+                "The price field must not be greater than 99999999.9999."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The price field must not be greater than 99999999.9999.",
+    "input": "100000000",
+    "tersimpan_attribute_values": "770.6100",
+    "tersimpan_product_flat": "770.6100",
+    "errors": {
+        "price": [
+            "The price field must not be greater than 99999999.9999."
+        ]
+    }
+}

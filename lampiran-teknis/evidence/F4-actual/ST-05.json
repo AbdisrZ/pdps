@@ -1,0 +1,9 @@
+{
+    "id": "ST-05",
+    "waktu": "2026-11-08 13:03:28",
+    "status": 400,
+    "body": {
+        "message": "The requested quantity is not available, please try again later."
+    },
+    "qty_item": 5
+}

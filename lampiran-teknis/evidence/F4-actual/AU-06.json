@@ -1,0 +1,14 @@
+{
+    "id": "AU-06",
+    "waktu": "2026-11-08 13:02:00",
+    "status": 422,
+    "body": {
+        "message": "The email has already been taken.",
+        "errors": {
+            "email": [
+                "The email has already been taken."
+            ]
+        }
+    },
+    "exception": "Illuminate\\Validation\\ValidationException: The email has already been taken."
+}

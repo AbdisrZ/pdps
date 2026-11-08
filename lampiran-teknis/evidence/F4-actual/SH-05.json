@@ -1,0 +1,40 @@
+{
+    "id": "SH-05",
+    "waktu": "2026-11-08 13:02:58",
+    "status": 200,
+    "body": {
+        "payment_methods": [
+            {
+                "method": "cashondelivery",
+                "method_title": "Cash On Delivery",
+                "description": "Cash On Delivery",
+                "sort": 1,
+                "image": "http://localhost:8000/themes/shop/default/build/assets/cash-on-delivery-Ck2rBtSq.png"
+            },
+            {
+                "method": "moneytransfer",
+                "method_title": "Money Transfer",
+                "description": "Money Transfer",
+                "sort": 2,
+                "image": "http://localhost:8000/themes/shop/default/build/assets/money-transfer-BNjtOcYo.png"
+            },
+            {
+                "method": "paypal_standard",
+                "method_title": "PayPal Standard",
+                "description": "PayPal Standard",
+                "sort": 3,
+                "image": "http://localhost:8000/themes/shop/default/build/assets/paypal-CIu1GKlz.png"
+            },
+            {
+                "method": "paypal_smart_button",
+                "method_title": "PayPal Smart Button",
+                "description": "PayPal",
+                "sort": 4,
+                "image": "http://localhost:8000/themes/shop/default/build/assets/paypal-CIu1GKlz.png"
+            }
+        ]
+    },
+    "status_order_tanpa_alamat": 500,
+    "pesan_order": "Shipping address is missing.",
+    "order_bertambah": 0
+}
