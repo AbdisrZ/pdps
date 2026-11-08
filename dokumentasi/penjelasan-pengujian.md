@@ -174,12 +174,26 @@ Semua gambar ada di folder `dokumentasi/screenshot/`.
 | 07 | `07-stok-cukup.png` | Beli 5 barang, stok 5 | Berhasil masuk keranjang (sesuai) |
 | 08 | `08-harga-rolex-terpotong.png` | Harga Rolex (data lama, sebelum perbaikan) | Tampil Rp 100.000.000,00, padahal harga asli sekitar Rp 224 juta (masalah no. 1) |
 | 09 | `09-admin-harga-terlalu-besar.png` | Admin isi harga 100.000.000 | Ditolak dengan pesan jelas (sudah diperbaiki v1.0.2) |
-| 10 | `10-api-stok.png` | API tambah 6 / 5 barang | 400 / 200 (sesuai) |
-| 11 | `11-api-tanpa-quantity.png` | API tambah tanpa jumlah | 400 (masalah no. 6) |
-| 12 | `12-api-qty-nol-hapus-item.png` | API ubah jumlah menjadi 0 | 200, tetapi keranjang jadi kosong (masalah no. 5) |
-| 13 | `13-api-ongkir-tanpa-keranjang.png` | API cek ongkir & hapus kupon tanpa keranjang | 500 error server (masalah no. 7) |
-| 14 | `14-api-email-tidak-valid.png` | API alamat dengan email "bukan-email" | Diterima 200 (masalah no. 11); pembanding kode pos 1 karakter ditolak 422 |
 | 15 | `15-pest-hasil-pengujian.png` | Hasil 112 kasus uji otomatis | 91 lolos (termasuk test pengaman), 22 gagal |
 | 16–17 | `16-…sebelum.png`, `17-…sesudah.png` | Perbaikan 1 (minimum order) | Sebelum: 2 gagal; sesudah: semua lolos |
 | 18–19 | `18-…sebelum.png`, `19-…sesudah.png` | Perbaikan 2 (batas harga) | Sebelum: 3 gagal; sesudah: semua lolos |
 | 20 | `20-pest-regresi-akhir.png` | Pengecekan ulang setelah kedua perbaikan | Test bawaan tetap lolos semua |
+
+### Pengujian API langsung dari VS Code (REST Client)
+
+Request API ditulis dalam file `dokumentasi/uji-api/pengujian-api.http` dan dijalankan di VS Code dengan ekstensi REST Client (klik *Send Request*). Sebelumnya, `node dokumentasi/uji-api/siapkan-sesi.mjs` dijalankan untuk menyiapkan cookie sesi dan token CSRF yang diwajibkan API Bagisto. Screenshot ada di `dokumentasi/screenshot-vscode/`; tiap request punya dua gambar: `x1.png` (request & kode status) dan `x2.png` (isi jawaban).
+
+| Request | Screenshot | Yang diuji | Hasil |
+|---|---|---|---|
+| 1 | `a1`, `a2` | Tambah 6 barang (stok 5) | 400, "Jumlah yang diminta tidak tersedia" (sesuai) |
+| 2 | `b1`, `b2` | Tambah 5 barang | 200 (sesuai) |
+| 3 | `c1`, `c2` | Tambah tanpa `quantity` | 400 `Undefined array key "quantity"` (masalah no. 6) |
+| 4 | `d1`, `d2` | Keranjang sebelum | 200, berisi 2 barang |
+| 5 | `e1`, `e2` | Ubah jumlah menjadi 0 | 200 dengan pesan "Jumlah tidak boleh kurang dari satu" |
+| 6 | `f1`, `f2` | Keranjang sesudah | `data: null`, barang ikut terhapus (masalah no. 5) |
+| 7 | `g1`, `g2` | Cek ongkir tanpa keranjang | 500 (masalah no. 7) |
+| 8 | `h1`, `h2` | Hapus kupon tanpa keranjang | 500 (masalah no. 7) |
+| 9 | `i1`, `i2` | Tambah 1 barang (persiapan) | 200 |
+| 10 | `j1`, `j2` | Alamat dengan email "bukan-email" | 200, diterima (masalah no. 11) |
+| 11 | `k1`, `k2` | Kode pos 1 karakter (pembanding) | 422, ditolak (sesuai) |
+| 12 | `l1`, `l2` | Login API password salah | 403, ditolak (sesuai) |

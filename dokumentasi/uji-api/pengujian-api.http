@@ -11,6 +11,11 @@
 #
 # Cara menguji: klik tulisan "Send Request" di atas tiap request, BERURUTAN
 # dari nomor 1. Hasil (status + isi jawaban) muncul di panel kanan.
+#
+# PENTING: setiap sesi hanya untuk SATU kali putaran. Kalau ingin mengulang
+# (misalnya untuk screenshot ulang), jalankan lagi skrip persiapan di atas
+# terlebih dulu. Kalau tidak, keranjang masih berisi sisa putaran sebelumnya
+# dan hasil request 2 dan 4-6 akan berbeda.
 ############################################################################
 
 @base = {{$dotenv BASE}}

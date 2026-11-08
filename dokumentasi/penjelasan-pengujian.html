@@ -88,6 +88,11 @@
   figure img { width: 100%; display: block; border-bottom: 1px solid var(--line); background: #fff; max-height: 520px; object-fit: cover; object-position: top; }
   .shots.one figure img { max-height: none; }
   figcaption { padding: 10px 12px; font-size: 14px; line-height: 1.5; }
+  .shots.two { grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); margin: 8px 0 6px; }
+  .shots.two figure img { max-height: 340px; object-fit: contain; background: #1e1e1e; }
+  .apicase { border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 12px 0; }
+  .apihead { font-size: 15px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+  .apiresult { margin: 4px 0 0; font-size: 14.5px; }
   footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 24px; }
   @media (max-width: 640px) {
     h1 { font-size: 24px; } section, header.hero { padding: 18px; }
@@ -112,7 +117,7 @@
     <div class="stat"><b>90</b><span>lolos</span></div>
     <div class="stat"><b>15</b><span>masalah ditemukan</span></div>
     <div class="stat"><b>2</b><span>masalah diperbaiki</span></div>
-    <div class="stat"><b>20</b><span>screenshot bukti</span></div>
+    <div class="stat"><b>39</b><span>screenshot bukti</span></div>
   </div>
 </header>
 
@@ -195,6 +200,7 @@
     <li><b>Apa yang benar-benar terjadi.</b> Kode respons, pesan, dan isi database.</li>
     <li><b>Statusnya</b>: lolos atau gagal.</li>
   </ul>
+  <p>Selain test otomatis, request API juga kami jalankan secara manual di <b>VS Code</b> memakai ekstensi <b>REST Client</b> (file <code>dokumentasi/uji-api/pengujian-api.http</code>), supaya request dan jawabannya bisa dilihat langsung (lihat bagian 10C).</p>
   <p>Setiap hasil disimpan sebagai file bukti. Semua test dijalankan <b>dua kali</b>, dan sebuah masalah baru disebut defect bila gagal di kedua percobaan dengan perilaku yang sama.</p>
   <div class="table-wrap"><table>
     <tr><th>Bagian</th><th>Jumlah kasus</th></tr>
@@ -277,7 +283,7 @@
 
 <section id="sbukti">
   <h2><span class="num">10</span> Bukti screenshot pengujian</h2>
-  <p>Screenshot diambil otomatis dengan browser Chrome yang dijalankan oleh skrip, supaya langkahnya bisa diulang persis sama. Untuk pengujian lewat browser, kami menjalankan toko di alamat <code>http://127.0.0.1:8001</code> yang memakai <b>database salinan</b> <code>bagisto_uji</code>. Database ini disalin dari backup database asli, sehingga produk, pelanggan, dan pesanannya sama persis, tetapi semua perubahan saat pengujian tidak menyentuh database asli. Kami sempat memastikan server benar-benar memakai database salinan dengan membuat akun khusus yang hanya ada di <code>bagisto_uji</code>, lalu mencoba login dengan akun itu.</p>
+  <p>Screenshot halaman toko, halaman admin, dan hasil test otomatis diambil dengan browser Chrome yang dijalankan oleh skrip, supaya langkahnya bisa diulang persis sama. Screenshot pengujian API diambil langsung dari VS Code (bagian C). Untuk pengujian lewat browser, kami menjalankan toko di alamat <code>http://127.0.0.1:8001</code> yang memakai <b>database salinan</b> <code>bagisto_uji</code>. Database ini disalin dari backup database asli, sehingga produk, pelanggan, dan pesanannya sama persis, tetapi semua perubahan saat pengujian tidak menyentuh database asli. Kami sempat memastikan server benar-benar memakai database salinan dengan membuat akun khusus yang hanya ada di <code>bagisto_uji</code>, lalu mencoba login dengan akun itu.</p>
   <p>Di database salinan, stok produk <i>Red Nail Polish</i> kami ubah menjadi 5 supaya batas stok mudah diuji. Semua screenshot ada di folder <code>dokumentasi/screenshot/</code>.</p>
 
   <h3>A. Pengujian lewat halaman toko</h3>
@@ -306,19 +312,105 @@
       <figcaption><b>09 · Admin mengisi harga 100.000.000 lalu menekan Save Product.</b> Setelah perbaikan, harga ditolak dengan pesan "The price field must not be greater than 99999999.9999." Sebelum perbaikan, harga ini diterima lalu terpotong diam-diam (lihat screenshot 08 dan 18). <span class="pill fix">Sudah diperbaiki</span></figcaption></figure>
   </div>
 
-  <h3>C. Pengujian API (POST / PUT / GET / DELETE)</h3>
-  <p>Permintaan dikirim dari dalam browser ke API toko, lalu permintaan dan jawabannya ditampilkan dalam satu panel. Label hijau berarti jawaban berhasil (2xx), kuning berarti ditolak (4xx), dan merah berarti error server (5xx).</p>
-  <div class="shots">
-    <figure><a href="screenshot/10-api-stok.png"><img src="screenshot/10-api-stok.png" alt="API stok" loading="lazy"></a>
-      <figcaption><b>10 · Tambah ke keranjang lewat API.</b> 6 barang ditolak (400), 5 barang diterima (200). <span class="pill good">Sesuai</span></figcaption></figure>
-    <figure><a href="screenshot/11-api-tanpa-quantity.png"><img src="screenshot/11-api-tanpa-quantity.png" alt="API tanpa quantity" loading="lazy"></a>
-      <figcaption><b>11 · Tambah ke keranjang tanpa jumlah (masalah no. 6).</b> Ditolak 400, padahal seharusnya otomatis 1 barang. <span class="pill bad">Masalah</span></figcaption></figure>
-    <figure><a href="screenshot/12-api-qty-nol-hapus-item.png"><img src="screenshot/12-api-qty-nol-hapus-item.png" alt="API qty nol" loading="lazy"></a>
-      <figcaption><b>12 · Ubah jumlah menjadi 0 (masalah no. 5).</b> Jawaban 200 dengan pesan "Jumlah tidak boleh kurang dari satu", tetapi keranjang setelahnya <b>kosong</b>: barangnya terhapus. <span class="pill bad">Masalah</span></figcaption></figure>
-    <figure><a href="screenshot/13-api-ongkir-tanpa-keranjang.png"><img src="screenshot/13-api-ongkir-tanpa-keranjang.png" alt="API tanpa keranjang" loading="lazy"></a>
-      <figcaption><b>13 · Cek ongkir dan hapus kupon tanpa keranjang (masalah no. 7).</b> Keduanya membuat error server (500). <span class="pill bad">Masalah</span></figcaption></figure>
-    <figure><a href="screenshot/14-api-email-tidak-valid.png"><img src="screenshot/14-api-email-tidak-valid.png" alt="API email tidak valid" loading="lazy"></a>
-      <figcaption><b>14 · Alamat checkout dengan email "bukan-email" (masalah no. 11).</b> Diterima (200). Sebagai pembanding, kode pos 1 karakter ditolak (422), artinya validasi lain berjalan. <span class="pill bad">Masalah</span></figcaption></figure>
+  <h3>C. Pengujian API langsung dari VS Code (ekstensi REST Client)</h3>
+  <p>Pengujian API dilakukan di <b>VS Code</b> memakai ekstensi <b>REST Client</b>. Semua request ditulis dalam satu file <code>dokumentasi/uji-api/pengujian-api.http</code>, lalu dijalankan satu per satu dengan menekan <i>Send Request</i>. Hasilnya muncul di panel kanan: kode status di baris pertama dan isi jawaban di bawahnya.</p>
+  <p>API toko Bagisto mewajibkan cookie sesi dan token keamanan (CSRF). Karena itu, sebelum menguji kami menjalankan <code>node dokumentasi/uji-api/siapkan-sesi.mjs</code> di terminal VS Code. Skrip ini membuat beberapa sesi tamu baru dan menyimpan token serta cookie-nya ke file <code>.env</code> yang dibaca oleh file <code>.http</code>. Semua request dikirim ke server uji <code>127.0.0.1:8001</code> yang memakai database salinan.</p>
+  <p>Setiap request punya dua screenshot: <b>kiri</b> menampilkan request dan kode status, <b>kanan</b> menampilkan isi jawaban.</p>
+  <div class="apicase">
+    <div class="apihead"><b>Request 1</b> &middot; Tambah 6 barang padahal stok 5 <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/a1.png"><img src="screenshot-vscode/a1.png" alt="Request 1 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/a2.png"><img src="screenshot-vscode/a2.png" alt="Request 1 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>400 Bad Request</b>, pesan "Jumlah yang diminta tidak tersedia".</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 2</b> &middot; Tambah 5 barang (tepat sama dengan stok) <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/b1.png"><img src="screenshot-vscode/b1.png" alt="Request 2 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/b2.png"><img src="screenshot-vscode/b2.png" alt="Request 2 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>, barang berhasil ditambahkan.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 3</b> &middot; Tambah barang tanpa field <code>quantity</code> <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/c1.png"><img src="screenshot-vscode/c1.png" alt="Request 3 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/c2.png"><img src="screenshot-vscode/c2.png" alt="Request 3 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>400</b> dengan pesan error PHP <code>Undefined array key "quantity"</code>. Seharusnya otomatis 1 barang (masalah no. 6).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 4</b> &middot; Lihat isi keranjang sebelum diubah <span class="pill good">Kondisi awal</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/d1.png"><img src="screenshot-vscode/d1.png" alt="Request 4 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/d2.png"><img src="screenshot-vscode/d2.png" alt="Request 4 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200</b>, keranjang berisi 2 barang.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 5</b> &middot; Ubah jumlah barang menjadi 0 <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/e1.png"><img src="screenshot-vscode/e1.png" alt="Request 5 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/e2.png"><img src="screenshot-vscode/e2.png" alt="Request 5 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b> dengan pesan "Jumlah tidak boleh kurang dari satu", seolah-olah ditolak.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 6</b> &middot; Lihat isi keranjang sesudah diubah <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/f1.png"><img src="screenshot-vscode/f1.png" alt="Request 6 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/f2.png"><img src="screenshot-vscode/f2.png" alt="Request 6 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200</b>, tetapi isinya <code>"data": null</code>: barangnya ikut terhapus padahal pesannya menolak (masalah no. 5).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 7</b> &middot; Cek ongkir saat belum punya keranjang <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/g1.png"><img src="screenshot-vscode/g1.png" alt="Request 7 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/g2.png"><img src="screenshot-vscode/g2.png" alt="Request 7 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>500 Internal Server Error</b>. Seharusnya pesan 4xx yang jelas (masalah no. 7).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 8</b> &middot; Hapus kupon saat belum punya keranjang <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/h1.png"><img src="screenshot-vscode/h1.png" alt="Request 8 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/h2.png"><img src="screenshot-vscode/h2.png" alt="Request 8 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>500 Internal Server Error</b> (masalah no. 7).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 9</b> &middot; Masukkan 1 barang ke keranjang (persiapan) <span class="pill good">Persiapan</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/i1.png"><img src="screenshot-vscode/i1.png" alt="Request 9 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/i2.png"><img src="screenshot-vscode/i2.png" alt="Request 9 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 10</b> &middot; Isi alamat checkout dengan email <code>bukan-email</code> <span class="pill bad">Masalah</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/j1.png"><img src="screenshot-vscode/j1.png" alt="Request 10 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/j2.png"><img src="screenshot-vscode/j2.png" alt="Request 10 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>200 OK</b>, alamat diterima dan sistem langsung menawarkan ongkir. Email tidak dicek formatnya (masalah no. 11).</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 11</b> &middot; Pembanding: kode pos hanya 1 karakter <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/k1.png"><img src="screenshot-vscode/k1.png" alt="Request 11 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/k2.png"><img src="screenshot-vscode/k2.png" alt="Request 11 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>422</b>, ditolak dengan pesan "kode pos yang valid". Artinya validasi lain berjalan; hanya email yang lolos.</p>
+  </div>
+  <div class="apicase">
+    <div class="apihead"><b>Request 12</b> &middot; Login API dengan password salah <span class="pill good">Sesuai</span></div>
+    <div class="shots two">
+      <figure><a href="screenshot-vscode/l1.png"><img src="screenshot-vscode/l1.png" alt="Request 12 - status" loading="lazy"></a><figcaption>Request &amp; kode status</figcaption></figure>
+      <figure><a href="screenshot-vscode/l2.png"><img src="screenshot-vscode/l2.png" alt="Request 12 - isi jawaban" loading="lazy"></a><figcaption>Isi jawaban</figcaption></figure>
+    </div>
+    <p class="apiresult"><b>Hasil:</b> <b>403 Forbidden</b>, login ditolak.</p>
   </div>
 
   <h3>D. Hasil test otomatis (Pest)</h3>
