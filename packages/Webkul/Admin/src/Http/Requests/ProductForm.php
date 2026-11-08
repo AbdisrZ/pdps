@@ -16,6 +16,13 @@ use Webkul\Product\Repositories\ProductRepository;
 class ProductForm extends FormRequest
 {
     /**
+     * Maximum value that fits the price columns, which are decimal(12,4)
+     * (product_attribute_values.float_value, product_flat.price). Larger values
+     * would be silently truncated by MySQL when strict mode is off.
+     */
+    public const MAX_PRICE = '99999999.9999';
+
+    /**
      * Rules.
      *
      * @var array
@@ -134,6 +141,10 @@ class ProductForm extends FormRequest
 
             if ($attribute->type == AttributeTypeEnum::PRICE->value) {
                 $validations[] = new Decimal;
+
+                $validations[] = 'numeric';
+
+                $validations[] = 'max:'.self::MAX_PRICE;
             }
 
             if ($attribute->is_unique) {

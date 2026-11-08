@@ -1,0 +1,70 @@
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\ProductTest
+  ✓ it should return the product index page                                                                      5.35s  
+  ✓ it should copy the existing product                                                                          0.45s  
+  ✓ it should perform the mass action from update status for products                                            0.52s  
+  ✓ it should perform the mass action for delete for products                                                    0.54s  
+  ✓ it should search the product                                                                                 0.47s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\BundleTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in bundle product  0.15s  
+  ✓ it should return the create page of bundle product                                                           0.34s  
+  ✓ it should return the edit page of bundle product                                                             6.78s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in bundle produc… 1.37s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in bundle product        1.32s  
+  ✓ it should update the bundle product                                                                          1.66s  
+  ✓ it should delete a bundle product                                                                            1.56s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\ConfigurableTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in configurable p… 0.13s  
+  ✓ it should return the create page of configurable product                                                     0.35s  
+  ✓ it should return the edit page of configurable product                                                       3.51s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in configurable…  2.29s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in configurable product  2.27s  
+  ✓ it should update the configurable product                                                                    2.51s  
+  ✓ it should update the configurable product variants                                                           3.32s  
+  ✓ it should delete a configurable product                                                                      2.61s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\DownloadableTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in downloadable p… 0.15s  
+  ✓ it should return the create page of downloadable product                                                     0.44s  
+  ✓ it should return the edit page of downloadable product                                                       2.16s  
+  ✓ it should upload link the product upload link                                                                0.64s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in downloadable…  0.69s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in downloadable product  0.64s  
+  ✓ it should upload the sample file                                                                             0.60s  
+  ✓ it should download the product which is downloadable                                                         1.58s  
+  ✓ it should update the downloadable product                                                                    1.93s  
+  ✓ it should delete a downloadable product                                                                      1.00s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\GroupedTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in grouped produc… 0.27s  
+  ✓ it should return the create page of grouped product                                                          0.69s  
+  ✓ it should return the grouped edit page                                                                       2.95s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in grouped produ… 1.51s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in grouped product       1.28s  
+  ✓ it should update the grouped product                                                                         1.84s  
+  ✓ it should update the grouped product options                                                                 3.15s  
+  ✓ it should delete a grouped product                                                                           2.28s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\SimpleTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in simple product  0.25s  
+  ✓ it should return the create page of simple product                                                           0.81s  
+  ✓ it should return the edit page of simple product                                                             4.39s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in simple produc… 2.01s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in simple product        0.98s  
+  ✓ it should update the simple product                                                                          1.53s  
+  ✓ it should delete a simple product                                                                            1.38s  
+
+   PASS  Packages\Webkul\Admin\tests\Feature\Catalog\Products\Types\VirtualTest
+  ✓ it should fail the validation with errors when certain inputs are not provided when store in virtual produc… 0.77s  
+  ✓ it should return the create page of virtual product                                                          1.82s  
+  ✓ it should return the edit page of virtual product                                                            3.29s  
+  ✓ it should fail the validation with errors when certain inputs are not provided when update in virtual produ… 0.75s  
+  ✓ it should fail the validation with errors if certain data is not provided correctly in virtual product       0.69s  
+  ✓ it should update the virtual product                                                                         1.10s  
+  ✓ it should delete a virtual product                                                                           1.00s  
+
+  Tests:    52 passed (303 assertions)
+  Duration: 82.61s
+

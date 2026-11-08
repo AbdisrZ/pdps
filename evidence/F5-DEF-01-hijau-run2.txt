@@ -1,0 +1,13 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\FixHargaMaksimumTest
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-01 price 100000… 0.96s  
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-03 cost 1000000… 0.36s  
+  ✓ it nilai harga di atas kapasitas ditolak 422 dan nilai lama tidak berubah with dataset "FX2-04 price 13 dig… 0.33s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-02 price tepat kapa… 0.70s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-05 price normal 150… 0.54s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-06 price terkecil 0… 0.52s  
+  ✓ it nilai harga di dalam kapasitas tetap diterima dan tersimpan persis with dataset "FX2-07 cost tepat kapas… 0.49s  
+
+  Tests:    7 passed (17 assertions)
+  Duration: 4.51s
+
