@@ -1,0 +1,11 @@
+{
+    "id": "FX1-03",
+    "waktu": "2026-11-08 12:52:00",
+    "include_tax_to_amount": "1",
+    "include_discount_amount": "1",
+    "sub_total": 100,
+    "tax_total": 10,
+    "discount_amount": 15,
+    "expected": 95,
+    "getOrderAmount": 95
+}

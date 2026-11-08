@@ -1,0 +1,11 @@
+
+   PASS  Packages\Webkul\Shop\tests\Feature\Praktikum\FixMinOrderTest
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-01 diskon=1, pajak 1… 0.66s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-02 diskon=1, pajak 0… 0.13s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-03 pajak=1 + diskon=… 0.16s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-04 pajak=1 saja, paj… 0.17s  
+  ✓ it getOrderAmount sesuai REQ-CO-05 untuk kombinasi opsi pajak/diskon with dataset "FX1-05 tanpa opsi -> sub… 0.14s  
+
+  Tests:    5 passed (5 assertions)
+  Duration: 1.63s
+
